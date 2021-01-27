@@ -6,18 +6,17 @@ type Props = {
 }
 
 export default function Index({ posts }: Props): JSX.Element {
-  console.log(posts);
   const post = posts[0];
 
   return (
     <>
-      <p>{post.text}</p>
+      <article dangerouslySetInnerHTML={{ __html: post.text }} />
     </>
   );
 }
 
 export const getStaticProps = async(): Promise<{ props: Props }> => {
-  const posts = getPosts();
+  const posts = await getPosts();
   return {
     props: { posts }
   };
