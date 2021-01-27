@@ -12,12 +12,51 @@ ogImage:
 
 # foobar
 
-```rust
+```rust[class="line-numbers"][class="match-braces"][data-line="3"][data-file="main.rs"]
+use std::io;
+
+/// @see https://google.com
+#[allow(dead_code)]
+fn read<T>() -> Vec<T>
+where T:
+    std::str::FromStr,
+    T::Err: std::fmt::Debug {
+
+    let mut buf = String::new();
+    io::stdin().read_line(&mut buf).unwrap();
+    buf.split(' ')
+        .map(|s| s.trim().parse().unwrap())
+        .collect()
+}
+
+#[allow(dead_code)]
+fn read_one<T>() -> T
+where T:
+    std::str::FromStr,
+    T::Err: std::fmt::Debug {
+
+    let mut buf = String::new();
+    io::stdin().read_line(&mut buf).unwrap();
+    buf.trim().parse().unwrap()
+}
+
+fn main() {
+
+}
 pub(crate) fn main {
   let vec = Vec::new();
 }
 ```
 
+### diff
+
+```diff[class="language-diff"][data-file="diff.js"]
+@@ -4,6 +4,5 @@
+-    let foo = bar.baz([1, 2, 3]);
+-    foo = foo + 1;
++    const foo = bar.baz([1, 2, 3]) + 1;
+     console.log(`foo: ${foo}`);
+```
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
 
 Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at tempor. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
