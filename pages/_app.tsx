@@ -1,7 +1,7 @@
 import React from "react";
 import { AppProps } from "next/app";
 
-import "../styles/globals.css";
+import "../styles/globals.scss";
 import "../styles/prism-gruvbox.scss";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {

@@ -14,3 +14,20 @@ a {
 * {
   box-sizing: border-box;
 }
+
+h1 > a:hover,
+h2 > a:hover,
+h3 > a:hover {
+  text-decoration: underline;
+  &::before {
+    // color: white;
+    text-decoration: underline;
+  }
+}
+
+h1 > a::before,
+h2 > a::before,
+h3 > a::before {
+  content: "#";
+  display: inline-block;
+}
