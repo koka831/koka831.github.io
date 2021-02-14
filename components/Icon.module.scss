@@ -1,0 +1,18 @@
+@import "../styles/color.scss";
+
+.icon__container {
+  display: inline-block;
+}
+
+ul.icon {
+  display: flex;
+
+  li {
+    width: 15px;
+    height: 15px;
+
+    &.green {
+      background-color: $orange;
+    }
+  }
+}

@@ -1,21 +1,14 @@
-/* Generated with http://k88hudson.github.io/syntax-highlighting-theme-generator/www */
-/* http://k88hudson.github.io/react-markdocs */
-/**
- * @author k88hudson
- *
- * Based on prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
- */
-/*********************************************************
-* General
-*/
 $black: #282828;
 $white: #ebdbb2;
-$gray: #928374;
+$bg: #fcf7ec;
+$fg2: #d5c4a1;
+$bg2: #7c6f64;
+$gray: #3c3836;
+$lightGray: #a89984;
 $red: #fb4934;
 $green: #b8bb26;
 $blue: #83a598;
+$aqua: #8ec07c;
 $yellow: #fabd2f;
 $orange: #fe8019;
 
@@ -31,33 +24,30 @@ code[class*="language-"] {
   word-spacing: normal;
   word-break: normal;
   line-height: 1.5;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
   tab-size: 4;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
   hyphens: none;
 }
+
 pre[class*="language-"]::selection,
-code[class*="language-"]::selection,
-pre[class*="language-"]::mozselection,
-code[class*="language-"]::mozselection {
+code[class*="language-"]::selection {
   text-shadow: none;
   background: $yellow;
 }
+
 @media print {
   pre[class*="language-"],
   code[class*="language-"] {
     text-shadow: none;
   }
 }
+
 pre[class*="language-"] {
   padding: 1em;
   margin: .5em 0;
   overflow: auto;
   background: $black;
 }
+
 :not(pre) > code[class*="language-"] {
   padding: .1em .3em;
   border-radius: .3em;
@@ -65,26 +55,29 @@ pre[class*="language-"] {
   background: #a89984;
 }
 /*********************************************************
-* Tokens
-*/
+ * Tokens
+ */
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata,
-.token.coord {
-  color: $gray;
-}
+.token.coord,
 .token.punctuation {
-  color: $gray;
+  color: $lightGray;
 }
+
+.token.namespace {
+  color: $orange;
+}
+
 .token.property,
 .token.tag,
 .token.boolean,
 .token.number,
-.token.constant,
 .token.symbol {
   color: $green;
 }
+
 .token.selector,
 .token.attr-name,
 .token.string,
@@ -97,8 +90,7 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #bdae93;
-  background: $black;
+  color: $fg2;
 }
 .token.atrule,
 .token.attr-value,
@@ -107,7 +99,8 @@ pre[class*="language-"] {
   color: $red;
 }
 
-.token.class-name {
+.token.class-name,
+.token.constant {
   color: $yellow;
 }
 .token.regex,
@@ -117,6 +110,11 @@ pre[class*="language-"] {
 .token.inserted {
   color: $green;
 }
+
+.token.macro.property {
+  color: $aqua;
+}
+
 .token.important,
 .token.bold {
   font-weight: bold;
@@ -132,10 +130,16 @@ pre[class*="language-"] {
   text-decoration: underline;
 }
 
+// git diff highlight
+pre.language-git {
+  .token.string {
+    color: $white;
+  }
+}
 
 /*********************************************************
-* Line highlighting
-*/
+ * Line highlighting
+ */
 pre[data-line] {
   position: relative;
 }
@@ -148,10 +152,10 @@ pre[data-file] {
   position: relative;
 }
 
-pre[data-file]:before {
+pre[data-file]::before {
   content: attr(data-file);
   position: absolute;
-  color: $gray;
+  color: $lightGray;
   top: 4px;
   right: 4px;
 }
@@ -171,14 +175,14 @@ pre[data-file]:before {
 }
 
 pre[class*="language-"].line-numbers {
-	position: relative;
-	padding-left: 3.8em;
-	counter-reset: linenumber;
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
 }
 
 pre[class*="language-"].line-numbers > code {
-	position: relative;
-	white-space: inherit;
+  position: relative;
+  white-space: inherit;
 }
 
 .line-numbers .line-numbers-rows {
@@ -190,10 +194,6 @@ pre[class*="language-"].line-numbers > code {
   width: 3em; /* works for line-numbers below 1000 lines */
   letter-spacing: -1px;
   border-right: 1px solid $gray;
-
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 
 }
@@ -205,8 +205,31 @@ pre[class*="language-"].line-numbers > code {
 
 .line-numbers-rows > span:before {
   content: counter(linenumber);
-  color: $gray;
+  color: $bg2;
   display: block;
   padding-right: 0.8em;
   text-align: right;
+}
+
+pre[class*="language-shell-session"] {
+  position: relative;
+
+  &::before {
+    content: "terminal";
+    position: absolute;
+    color: $lightGray;
+    top: 4px;
+    right: 4px;
+  }
+
+  span.shell-symbol {
+    user-select: none;
+    margin-right: 0.5em;
+
+    &::before {
+      font-weight: normal;
+      content: "koka@blog:~";
+      color: $lightGray;
+    }
+  }
 }

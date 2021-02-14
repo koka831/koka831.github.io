@@ -1,0 +1,51 @@
+@import "../../styles/config.scss";
+@import "../../styles/color.scss";
+@import "../../styles/mixin.scss";
+
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr minmax($max-width, $max-width) 1fr;
+  grid-template-areas: "empty main sidebar";
+  grid-auto-rows: max-content;
+}
+
+.article_container {
+  grid-area: main;
+}
+
+.sidebar_container {
+  grid-area: sidebar;
+  height: max-content;
+  position: sticky;
+  top: 10px;
+  padding-left: 20px;
+}
+
+.article {
+  color: $black;
+  background-color: $beige;
+  padding: 40px;
+}
+
+.commit_logs {
+  @include centering($max-width);
+  color: $black;
+  background-color: $gray;
+  margin-top: 40px;
+  padding: 40px;
+}
+
+@media (max-width: 1200px) {
+  .sidebar_container { display: none; }
+}
+
+@media (max-width: $break-tablet) {
+  .container {
+    display: block;
+  }
+
+  .article {
+    padding: 10px 20px;
+  }
+}

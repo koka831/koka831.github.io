@@ -1,9 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700');
+@import "color.scss";
+@import "math.scss";
+@import "markdown.scss";
+@import "prismjs/plugins/command-line/prism-command-line.css";
+
+$plex-mono: 'IBM Plex Mono';
+
 html,
 body {
   padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-family: $plex-mono, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  html,body {
+    background: $bg;
+    color: $white;
+  }
 }
 
 a {
@@ -11,23 +27,62 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+ul {
+  margin: 0;
+  padding: 0;
 }
 
-h1 > a:hover,
-h2 > a:hover,
-h3 > a:hover {
-  text-decoration: underline;
+ul li {
+  list-style-type: none;
+}
+
+blockquote {
+  position: relative;
+  margin: 0.1rem 0;
+  color: lighten($black, 20%);
+  border-left: 3px solid $gray;
+  padding: 2rem 0 0.5rem 1rem;
+
+  p {
+    margin: 0;
+  }
+
   &::before {
-    // color: white;
-    text-decoration: underline;
+    font-size: 2.5em;
+    content: "\"";
+    color: $gray;
+    font-weight: 900;
+    position: absolute;
+    top: 0.2em;
+    left: 0.3em;
   }
 }
 
-h1 > a::before,
-h2 > a::before,
-h3 > a::before {
-  content: "#";
-  display: inline-block;
+// h1 > a:hover .. h6 > a:hover
+@for $i from 1 through 6 {
+  h#{$i} > a:hover {
+    text-decoration: underline;
+    &::before {
+      text-decoration: underline;
+    }
+  }
+
+  h#{$i} > a::before {
+    content: "#";
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+}
+
+table {
+  margin: 0 auto;
+  padding: 1rem;
+  // border: 2px solid $white;
+
+  thead {
+    background-color: $mocha;
+  }
+  th, td {
+    padding: 0.25rem 1rem;
+  }
 }

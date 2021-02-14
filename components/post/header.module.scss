@@ -1,0 +1,27 @@
+@import "../../styles/color.scss";
+
+.header__container {
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post__title {
+  font-size: 2em;
+  line-height: 1.2em;
+  margin-top: 10px;
+  margin-bottom: 0.2em;
+}
+
+.post__tags {
+  display: flex;
+}
+.post__date {
+  font-size: 1em;
+}

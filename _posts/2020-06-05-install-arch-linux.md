@@ -11,16 +11,34 @@ description: log
 ## 0. Partition Table
 インストール先のディスク名を調べる.
 
-```sh
-fdisk -l
+```shell-session[data-file="terminal"]
+$fdisk -l
+bar
 ```
 
 ## 1. Reset Partition
 - cgdisk/sgdiskを使う
     - cgdiskがcursesベースなので使いやすい
 
-```sh
-cgdisk /dev/nvme0n1
+```shell-session
+$echo $EDITOR
+vim
+$git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'
+#foo
+$git push
+Everything up-to-date
+[sudo] password for koka:
+$echo 'All
+> done!'
+All
+done!
+$cgdisk /dev/nvme0n1
+```
+
+```shell-session
+$ ls -la
 ```
 
 最低限必要なpartitionは以下の3つ. 
@@ -32,7 +50,7 @@ cgdisk /dev/nvme0n1
 ブートセクタの開始領域がEFIになっている必要があるので、上から順に設定していく.
 /boot/efiが/bootに入れ子になっているが, mount時に調整する.
 
-### 1.1 EFI partition
+### EFI partition
 
 - /boot/efi partition
     - First Sector: Enter(default)
@@ -40,7 +58,7 @@ cgdisk /dev/nvme0n1
     - Hex code or GUID: ef00
     - Enter new partition name: EFI System
 
-### 1.2 boot partition
+### boot partition
 
 - /boot
     - First Sector: Enter(default)
@@ -48,7 +66,7 @@ cgdisk /dev/nvme0n1
     - Hex: 8300
     - Enter new partition name: Linux filesystem
 
-### 1.3 root partition
+### root partition
 
 - /
     - First Sector: Enter(default)
@@ -57,7 +75,7 @@ cgdisk /dev/nvme0n1
     - Enter new partition name: Linux filesystem
 
 
-### 1.4 Result of partitioning
+### Result of partitioning
 - 512G SSDを対象に行うと以下のようになる.
 
 ```sh
@@ -82,53 +100,52 @@ mkfs.ext4 /dev/nvme0n1p3
 1, 2で作成したpartitionをboot USBからアクセスできるようにマウントする.
 1.で行ったパーティショニングとマウントの順番が異なるので注意(1敗).
 
-```sh
+```shell-session
 # /root
-mount /dev/nvme0n1p3 /mnt
+$ mount /dev/nvme0n1p3 /mnt
 
 # /boot
-mkdir /mnt/boot
-mount /dev/nvme0n1p2 /mnt/boot
+$ mkdir /mnt/boot
+$ mount /dev/nvme0n1p2 /mnt/boot
 
 # /boot/efi
-mkdir /mnt/boot/efi
-mount /dev/nvme0n1p1 /mnt/boot/efi
+$ mkdir /mnt/boot/efi
+$ mount /dev/nvme0n1p1 /mnt/boot/efi
 ```
 
 ## 4. Install Linux system
 
-### 4.1 Setup repository mirror
+### Setup repository mirror
 `/etc/pacman.d/mirrorlist`を編集し現在位置から距離の近いミラーを一番上にもってくる.
 
-```sh
-vim /etc/pacman.d/mirrorlist
+```shell-session
+$ vim /etc/pacman.d/mirrorlist
 # use mirror in Japan
 ```
 
 
-### 4.2 Install base system
+### Install base system
 マウントした`/root`に対してLinuxやその後の作業に必要な諸々をインストールする.
 後述する5.1でマウント領域に`chroot`したあとはboot USB内のデフォルトツール類が使えなくなるので, エディタはここでインストールしておく.
 
 
-```sh
+```shell-session
 # linux base system
 pacstrap /mnt base linux linux-firmware
 # for wifi
 pacstrap /mnt base-devel grub efibootmgr dosfstools netctl iw wpa_supplicant networkmanager dialog vim
 ```
 
-### 4.3 generate fstab file
+### generate fstab file
 
 ```sh
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-### 4.4 check filesystem
+### check filesystem
 
-```sh
+```shell-session
 $ cat /mnt/etc/fstab
-
 /dev/nvme0n1p3 /         ext4 rw,relatime 0 1
 /dev/nvme0n1p2 /boot     ext4 rw,relatime 0 2
 /dev/nvme0n1p1 /boot/efi vfat rw,relatime,fmask=0022,codepage=... 0 2
@@ -137,13 +154,13 @@ $ cat /mnt/etc/fstab
 
 ## 5 enter arch!
 
-```sh
+```shell-session
 arch-chroot /mnt /bin/bash
 ```
 
-### 5.1 Setup locale/timezone
+### Setup locale/timezone
 
-```sh
+```shell-session
 # locale
 $ vim /etc/locale.gen
 # uncomment en_US.UTF-8 and ja_JP.UTF-8
@@ -155,62 +172,60 @@ $ tzselect 4, 19, 1
 $ hwclock --systohc --utc
 ```
 
-### 5.2 Setup bootloader
+### Setup bootloader
 bootloaderの作成.
 
-```sh
+```shell-session
 $ mkinitcpio -p linux
 $ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch --boot-directory=/boot/efi/EFI --recheck
 $ grub-mkconfig -o /boot/efi/EFI/grub/grub.cfg
 ```
 
-### 5.3 Change Root password & add User
+### Change Root password & add User
 5.4にてリブートする前にユーザを作成しておく(1敗).
 
-```sh
+```shell-session
 $ passwd
 $ useradd -m -g users -G wheel -s /bin/bash koka
 $ passwd koka
 $ visudo # and uncomment %Wheel all=(all) all
 ```
-### 5.4 Reboot & eject USB
+### Reboot & eject USB
 シャットダウンしてbootUSBを取り外し再起動する
 
 ## 6. Setup Arch Linux
 
-### 6.1 network
+### network
 wifiの設定.
 `nmtui`が好きなのでNetworkManagerを用いた.
 セットアップ後の開発において`systemd-nspawn`を使う場合, ネットワークアダプタは`systemd-networkd`なのでそっちの場合は`systemd`に統一しといたほうが後々楽.
 
-```sh
+```shell-session
 $ systemctl start NetworkManager
 $ systemctl enable NetworkManager
 $ nmtui
 ```
 
-### 6.2 Setup X Window System
+### Setup X Window System
 [ref](https://wiki.archlinux.jp/index.php/Xorg)
 CUIからGUIへ.
 
-```sh
+```shell-session
 $ lspci | grep -e VGA -e 3D
-# XとDMとしてlight DM(とログイン画面)をインストール
+$ # XとDMとしてlight DM(とログイン画面)をインストール
 $ pacman -S xf86-video-intel xorg-server xorg-xrdb lightdm lightdm-gtk-greeter
-# terminal emulatorも入ってないので何かしらいれとく(1敗)
+$ # terminal emulatorも入ってないので何かしらいれとく(1敗)
 $ pacman -S rxvt-unicode
-# 
+
 $ systemctl enable lightdm
-# WMをインストール
+$ # WMをインストール
 $ pacman -S i3-gaps i3status dmenu
-# tlp/バッテリ最適化モジュール
+$ # tlp/バッテリ最適化モジュール
 $ pacman -S tlp
-# フォント
-# ブラウザやアプリはデフォだとシステム設定のフォント読まずに表示が汚くなるので、
-# デフォ指定に含まれているttf-dejavuを入れとく(Ubuntuのデフォフォント).
+$ # フォント
+$ # ブラウザやアプリはデフォだとシステム設定のフォント読まずに表示が汚くなるので、
+$ # デフォ指定に含まれているttf-dejavuを入れとく(Ubuntuのデフォフォント).
 $ pacman -S ttf-fira-code oft-ipamjfont ttf-dejavu
-# 画面の明るさ
-$ pacman -S xorg-xbacklight
-# 音量
-$ pacman -S pulseaudio-alsa alsa-utils alsa-plugins
+$ pacman -S xorg-xbacklight # 画面の明るさ
+$ pacman -S pulseaudio-alsa alsa-utils alsa-plugins # 音量
 ```

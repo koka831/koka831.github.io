@@ -1,0 +1,6 @@
+@import "../styles/mixin.scss";
+@import "../styles/config.scss";
+
+.container {
+  @include centering($max-width);
+}
