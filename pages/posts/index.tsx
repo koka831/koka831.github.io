@@ -28,6 +28,7 @@ const Article: React.FC<{ post: Post }> = ({ post }: { post: Post }): JSX.Elemen
     <Link as={`/posts/${post.slug}`} href="/posts/[slug]">
       <a className={styles.post__title}>{post.title}</a>
     </Link>
+    <p>{post.description}</p>
     <div className={styles.flex}>
       <div className={styles.post__tags}>
         {post.tags.map((tag) => <Tag key={tag} name={tag} />) }

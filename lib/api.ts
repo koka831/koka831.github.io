@@ -34,6 +34,7 @@ const getMarkdownContent = async (fname: string): Promise<Post> => {
     categories: data.categories || [],
     tags: data.tags || [],
     content: html,
+    description: data.description || `${content.slice(0, 100)}...`,
   };
 
   return post;

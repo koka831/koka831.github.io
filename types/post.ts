@@ -7,6 +7,7 @@ type Post = {
   coverImage?: string;
   ogImage?: string;
   content: string;
+  description?: string;
 }
 
 export default Post;
