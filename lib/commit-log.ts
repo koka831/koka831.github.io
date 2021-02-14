@@ -22,7 +22,7 @@ const getCommitLogs = async(fname: string): Promise<CommitLog[]> => {
   const commits: CommitLog[] = [];
 
   // remove first empty line
-  logs.split(/(?=commit)/g).slice(1).forEach(async (diff) => {
+  logs.split(/(?=commit)/g).forEach(async (diff) => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const [hash, author, date, empty, title] = diff.split("\n");
     /* eslint-enable @typescript-eslint/no-unused-vars */
