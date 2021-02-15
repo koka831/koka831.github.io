@@ -21,7 +21,6 @@ const getCommitLogs = async(fname: string): Promise<CommitLog[]> => {
   const logs = await execGitLogFollow(fname);
   const commits: CommitLog[] = [];
 
-  // remove first empty line
   logs.split(/(?=commit)/g).forEach(async (diff) => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const [hash, author, date, empty, title] = diff.split("\n");
