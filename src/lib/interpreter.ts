@@ -1,13 +1,13 @@
 import remark from "remark";
-import headings from "remark-autolink-headings";
-import gfm from "remark-gfm";
 import emoji from "remark-emoji";
 import footnotes from "remark-footnotes";
+import gfm from "remark-gfm";
+import headings from "remark-autolink-headings";
+import katex from "rehype-katex";
 import math from "remark-math";
 import prism from "remark-prism";
-import slug from "remark-slug";
 import remark2rehype from "remark-rehype";
-import katex from "rehype-katex";
+import slug from "remark-slug";
 import stringify from "rehype-stringify";
 
 const prismPlugins = [
