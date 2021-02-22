@@ -8,7 +8,7 @@ import { Post, CommitLog } from "../../types";
 import { getPosts, getPostBySlug } from "../../lib/api";
 import getCommitLogs from "../../lib/commit-log";
 
-import { Layout, ToC } from "../../components";
+import { Layout, TableOfContent } from "../../components";
 import PostHeader from "../../components/post/header";
 import styles from "./slug.module.scss";
 
@@ -45,7 +45,7 @@ const Page: React.FC<Props> = ({ post, logs }: Props) => {
           </div>
         </div>
         <aside className={styles.sidebar_container}>
-          <ToC />
+          <TableOfContent />
         </aside>
       </div>
     </Layout>
