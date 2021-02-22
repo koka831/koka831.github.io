@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Post } from "../../types";
 import { getPosts } from "../../lib/api";
 
-import Layout from "../../components/layout";
+import { Layout } from "../../components";
 import styles from "./index.module.scss";
 import Tag from "../../components/post/tag";
 

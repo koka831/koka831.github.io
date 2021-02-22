@@ -8,9 +8,8 @@ import { Post, CommitLog } from "../../types";
 import { getPosts, getPostBySlug } from "../../lib/api";
 import getCommitLogs from "../../lib/commit-log";
 
-import Layout from "../../components/layout";
-import ToC from "../../components/Toc";
-import Header from "../../components/post/header";
+import { Layout, ToC } from "../../components";
+import PostHeader from "../../components/post/header";
 import styles from "./slug.module.scss";
 
 type Props = {
@@ -33,7 +32,7 @@ const Page: React.FC<Props> = ({ post, logs }: Props) => {
       <div className={styles.container}>
         <div className={styles.article_container}>
           <article className={styles.article}>
-            <Header
+            <PostHeader
               title={post.title}
               tags={post.tags}
               date={post.date}
