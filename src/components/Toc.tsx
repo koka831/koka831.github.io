@@ -4,9 +4,9 @@ import throttle from "../lib/throttle";
 import styles from "./Toc.module.scss";
 import "./Toc.module.scss";
 
-type ElementLikeObject = HTMLElement | Element | null;
+type ElementLikeObject = HTMLElement | Element;
 
-const accumulateOffset = (e: ElementLikeObject) => {
+const accumulateOffset = (e: ElementLikeObject | null) => {
   let offset = 0;
   while (e instanceof HTMLElement) {
     offset += e.offsetTop - e.scrollTop + e.clientTop;
