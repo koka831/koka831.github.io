@@ -55,7 +55,7 @@ const TableOfContent = (): JSX.Element => {
   }, [headings]);
 
   return (
-    <nav className={styles.toc__nav}>
+    <nav className={styles.toc__nav} role="navigation">
       <ul className={styles.toc}>
         {headings.titles.map(({ title, depth }, index) => (
           <TocTitle

@@ -31,7 +31,7 @@ const Page: React.FC<Props> = ({ post, logs }: Props) => {
       </Head>
       <div className={styles.container}>
         <div className={styles.article_container}>
-          <article className={styles.article}>
+          <article className={styles.article} role="article">
             <PostHeader
               title={post.title}
               tags={post.tags}
@@ -39,8 +39,7 @@ const Page: React.FC<Props> = ({ post, logs }: Props) => {
             />
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
-          {/* TODO: extract EditHistory Component */}
-          <div className={styles.commit_logs}>
+          <div className={styles.commit_logs} role="log">
             <Logs logs={logs} />
           </div>
         </div>
