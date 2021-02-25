@@ -26,8 +26,8 @@ const Page: React.FC<Props> = ({ post, logs }: Props) => {
   return (
     <Layout>
       <Head>
-        <meta property="title" content={post.title} />
-        <meta property="og:title" content={post.title} />
+        <meta key="title" property="title" content={post.title} />
+        <meta key="og:title" property="og:title" content={post.title} />
       </Head>
       <div className={styles.container}>
         <div className={styles.article_container}>
