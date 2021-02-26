@@ -86,7 +86,7 @@ const Skills: React.FC = () => {
 const DevTools: React.FC = () => {
   return (
     <section className={styles.devtools_container}>
-      <h2>Works</h2>
+      <h2>Side Projects</h2>
       <ul>
         <li>
           <h3>Automatic-control system for UAV(Unmanned Aerial Vehicle, a.k.a Drone)</h3>

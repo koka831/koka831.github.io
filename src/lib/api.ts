@@ -34,6 +34,7 @@ const getMarkdownContent = async (fname: string): Promise<Post> => {
     categories: data.categories || [],
     tags: data.tags || [],
     content: html,
+    // create exerpt from the beginning of the content
     description: data.description || `${content.slice(0, 100)}...`,
   };
 
