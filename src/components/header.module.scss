@@ -4,6 +4,7 @@
 
 .navigation {
   @include centering($max-width);
+
   display: flex;
   margin-bottom: 40px;
   padding: 10px;

@@ -31,12 +31,15 @@
 
 .profile__main {
   padding: 0 40px;
-  p, h2 {
+
+  p,
+  h2 {
     margin-top: 0;
   }
 
   a {
     text-decoration: underline;
+
     &:hover {
       color: $orange;
     }

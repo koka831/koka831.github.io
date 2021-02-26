@@ -30,6 +30,7 @@
 
 .commit_logs {
   @include centering($max-width);
+
   color: $black;
   background-color: $gray;
   margin-top: 40px;

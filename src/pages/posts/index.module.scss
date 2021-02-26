@@ -9,13 +9,19 @@
   justify-content: space-between;
 }
 
+.page_title {
+  color: $mos;
+}
+
 .posts {
   @include centering($max-width);
+
   color: $black;
 }
 
 .post {
   @include centering($max-width);
+
   position: relative;
   background: $beige;
   padding: 40px;
@@ -62,6 +68,7 @@
   .post {
     padding: 20px;
     padding-bottom: 10px;
+
     &:not(:last-child)::after {
       width: calc(100% - 40px);
     }
