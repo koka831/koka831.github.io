@@ -16,6 +16,13 @@ $fdisk -l
 bar
 ```
 
+[[info | custom container]]
+| content
+| bar
+
+
+multi line
+
 ## 1. Reset Partition
 - cgdisk/sgdiskを使う
     - cgdiskがcursesベースなので使いやすい

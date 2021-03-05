@@ -2,27 +2,30 @@
  * @jest-environment jsdom
  */
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { TableOfContent } from "../components";
 
 const MockPage: React.FC = () => {
   return (
     <>
       <article>
-        <h1>H1 Heading</h1>
-        <h2>H2 Heading</h2>
+        <div>
+          <h1 id="h1-heading"><a href="#">H1 Heading</a></h1>
+          <p>H1 text</p>
+          <h2 id="h2-heading"><a href="#">H2 Heading</a></h2>
+          <p>H2 text</p>
+        </div>
       </article>
-      <TableOfContent />
+      <aside>
+        <TableOfContent />
+      </aside>
     </>
   );
 };
 
 it("contains headings", () => {
-  expect(TableOfContent).toBeTruthy();
-});
-
-it("contains headings", () => {
-  const { container } = render(<MockPage />);
-  expect(container).toHaveTextContent("H1 Heading");
-  expect(container).toHaveTextContent("H2 Heading");
+  render(<MockPage />);
+  const toc = screen.getByRole("navigation");
+  expect(toc).toHaveTextContent("H1 Heading");
+  expect(toc).toHaveTextContent("H2 Heading");
 });

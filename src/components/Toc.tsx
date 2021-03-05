@@ -37,6 +37,7 @@ const TableOfContent = (): JSX.Element => {
       title: n.innerText,
       depth: Number(n.nodeName[1])
     }));
+    console.log(titles);
 
     const minDepth = Math.min(...titles.map(h => h.depth));
     setHeadings({ titles, nodes, minDepth });
@@ -59,7 +60,7 @@ const TableOfContent = (): JSX.Element => {
       <ul className={styles.toc}>
         {headings.titles.map(({ title, depth }, index) => (
           <TocTitle
-            key={title}
+            key={title?.replace(/ /g, "_")}
             title={title}
             depth={depth}
             active={active === index}
@@ -81,16 +82,14 @@ type TocProps = {
 const TocTitle: React.FC<TocProps> = ({ title, depth, active, onClick }: TocProps) => {
   const head = `toc__h${depth}`;
   return (
-    <>
-      <li
-        onClick={onClick}
-        className={`
+    <li
+      onClick={onClick}
+      className={`
         ${active ? styles.toc__active : ""}
         ${styles[head]}
         `}>
-        {title}
-      </li>
-    </>
+      {title}
+    </li>
   );
 };
 

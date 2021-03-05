@@ -16,6 +16,7 @@ type Props = {
 const Index: React.FC<Props> = ({ posts }: Props): JSX.Element => {
   return (
     <Layout>
+      <h2 className={styles.page_title}>Articles</h2>
       <div className={styles.posts}>
         {posts.map(post => <Article key={post.slug} post={post} />)}
       </div>
