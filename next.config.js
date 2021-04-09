@@ -3,6 +3,11 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: "/about(/?)",
+        destination: "/",
+        permanent: true
+      },
+      {
         source: "/2020/06/05/install-arch-linux(/?)",
         destination: "/posts/2020-06-05-install-arch-linux/",
         permanent: true
