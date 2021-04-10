@@ -20,7 +20,7 @@ description: Yubikeyを自宅に忘れて１敗
 
 ## Install Dependencies
 
-```sh
+```shell-session[data-file="terminal"]
 $ sudo add-apt-repository ppa:yubico/stable
 $ sudo apt-get install yubikey-manager-qt yubioath-desktop yubikey-personalization-gui
 ```
@@ -28,14 +28,14 @@ $ sudo apt-get install yubikey-manager-qt yubioath-desktop yubikey-personalizati
 ## Setup U2F Key
 ### U2F Keyの登録
 
-```sh
+```shell-session[data-file="terminal"]
 $ mkdir -p $HOME/.config/Yubico
 $ pamu2fcfg -u${USER} > $HOME/.config/Yubico/u2f_keys
 ```
 
 またバックアップデバイスを追加する場合には`--nouser`をつけて追記[^pamu2fcfg].
 
-```sh
+```shell-session[data-file="terminal"]
 $ pamu2fcfg -n >> $HOME/.config/Yubico/u2f_keys
 ```
 
@@ -44,7 +44,7 @@ $ pamu2fcfg -n >> $HOME/.config/Yubico/u2f_keys
 
 **`/etc/pam.d/sudo`**
 
-```diff
+```diff[data-file="/etc/pam.d/sudo"]
  #%PAM-1.0
 
  session    required    pam_env.so readenv=1 user_readenv=0
@@ -61,7 +61,7 @@ Display ManagerにGDM(Gnome Display Manager)を用いている場合は以下の
 その他のDMを用いている場合(KDE等)は **`/etc/pam.d/lightdm`** に追記する.
 
 
-```diff
+```diff[data-file="/etc/pam.d/gdm-password"]
  #%PAM-1.0
  auth     requisite       pam_nologin.so
  auth     required        pam_succeed_if.so user != root quiet_success
@@ -88,7 +88,7 @@ Apple Watchを身に着けた状態でMacの自動ログインが可能[^applewa
 U2F Keyモニターをudevに任せることにする. まず対象のIDを特定する.
 `udevadm monitor`でudevのイベントをモニタリングした状態でU2F Keyを抜き差しすると `bind`, `remove` イベントが通知されるので， `$ID_MODEL_ID` 及び `$ID_VENDOR_ID` を取得する.
 
-```sh
+```shell-session[data-file="terminal"]
 $ udevadm monitor --environment --udev
 
 UDEV  [28028.490650] bind     /devices/pci0000:00/0000:00:14.0/usb1/1-3 (usb)
@@ -123,13 +123,13 @@ USEC_INITIALIZED=28027949334
 
 **`/etc/udev/rules.d/xx-u2fkey.rules`** (xxは適当な数字)
 
-```config
+```config[data-file="/etc/udev/rules.d/xx-u2fkey.rules"]
 ACTION=="remove", ENV{ID_VENDOR_ID}=="1ea8", ENV{ID_MODEL_ID}=="f025", RUN+="/usr/local/bin/i3lock"
 ```
 
 最後にrulesを登録し完了.
 
-```sh
+```shell-session[data-file="terminal"]
 $ udevadm control --reload-rules
 $ service udev reload
 ```
