@@ -40,9 +40,10 @@ const getCommitLogs = async(fname: string): Promise<CommitLog[]> => {
 };
 
 const diffToHtml = async (text: string): Promise<string> => {
+  const escaped = text.replace(/```/gi, "\\```");
   const markdown = `
   \`\`\`git[class="language-diff"][data-file="commit.patch"]
-  ${text}
+  ${escaped}
   \`\`\`
   `;
 
