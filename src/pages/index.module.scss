@@ -17,10 +17,11 @@
 
 .profile_container,
 .skills_container,
-.devtools_container,
+.projects_container,
 .contact_container {
   padding: 40px;
   padding-top: 20px;
+
 }
 
 .profile_container {
@@ -52,7 +53,7 @@
   background: $mos;
 }
 
-.devtools_container {
+.projects_container {
   margin-top: 40px;
   background: $beige;
 }
@@ -82,9 +83,14 @@
 @media (max-width: $break-tablet) {
   .profile_container,
   .skills_container,
-  .devtools_container,
+  .projects_container,
   .contact_container {
     margin: 15px;
     padding: 25px 15px;
+
+    h1,
+    h2 {
+      margin-top: 0;
+    }
   }
 }

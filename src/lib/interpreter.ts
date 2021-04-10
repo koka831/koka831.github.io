@@ -1,11 +1,12 @@
-import remark from "remark";
 import emoji from "remark-emoji";
+import externalLink from "remark-external-links";
 import footnotes from "remark-footnotes";
 import gfm from "remark-gfm";
 import headings from "remark-autolink-headings";
 import katex from "rehype-katex";
 import math from "remark-math";
 import prism from "remark-prism";
+import remark from "remark";
 import remark2rehype from "remark-rehype";
 import slug from "remark-slug";
 import stringify from "rehype-stringify";
@@ -23,6 +24,7 @@ const markdownToHtml = async (markdown: string): Promise<string> => {
     .use(math)
     .use(emoji)
     .use(prism, { plugins: prismPlugins, transformInlineCode: true })
+    .use(externalLink)
     .use(slug)
     .use(headings, { behavior: "wrap" })
     .use(footnotes)

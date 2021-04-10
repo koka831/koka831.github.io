@@ -1,6 +1,7 @@
 import React from "react";
 import { GetStaticProps } from "next";
 import Link from "next/link";
+import Head from "next/head";
 
 import { Post } from "../../types";
 import { getPosts } from "../../lib/api";
@@ -16,7 +17,11 @@ type Props = {
 const Index: React.FC<Props> = ({ posts }: Props): JSX.Element => {
   return (
     <Layout>
-      <h2 className={styles.page_title}>Articles</h2>
+      <Head>
+        <meta key="title" property="title" content="Archives" />
+        <title>Archives | /var/log/koka</title>
+      </Head>
+      <h2 className={styles.page_title}>Archives</h2>
       <div className={styles.posts}>
         {posts.map(post => <Article key={post.slug} post={post} />)}
       </div>

@@ -26,6 +26,7 @@ const Page: React.FC<Props> = ({ post, logs }: Props) => {
   return (
     <Layout>
       <Head>
+        <title>{post.title} | /var/log/koka</title>
         <meta key="title" property="title" content={post.title} />
         <meta key="og:title" property="og:title" content={post.title} />
       </Head>
@@ -35,7 +36,7 @@ const Page: React.FC<Props> = ({ post, logs }: Props) => {
             <PostHeader
               title={post.title}
               tags={post.tags}
-              date={post.date}
+              published_at={post.date}
             />
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>

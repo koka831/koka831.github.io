@@ -12,7 +12,7 @@ const Index: React.FC = () =>  {
       <div className={styles.container}>
         <Profile />
         <Skills />
-        <DevTools />
+        <Projects />
         <Contact />
       </div>
     </Layout>
@@ -33,7 +33,7 @@ const Profile: React.FC = () => {
       <div itemProp="fn" className={styles.profile__main}>
         <h2 itemProp="n">Koka</h2>
         <p itemProp="role">Software Engineer</p>
-        <p>Bachelor of Engineering @ <a target="_blank" rel="noopener noreferrer" href="https://www.ynu.ac.jp/">YNU</a></p>
+        <p>Bachelor of Engineering @<a target="_blank" rel="noopener noreferrer" href="https://www.ynu.ac.jp/">YNU</a></p>
       </div>
     </section>
   );
@@ -42,17 +42,19 @@ const Profile: React.FC = () => {
 const Skills: React.FC = () => {
   return (
     <section className={styles.skills_container}>
-      <h2>Skills</h2>
+      <h1>Skills</h1>
       <ul className={styles.skills} aria-label="Skills">
         <li>
           <h3>Rust</h3>
-          - Low-Level Programming<br />
-          - Network Programming<br />
+          - Low-Level Programming like <a target="_blank" rel="noopener noreferrer" href="https://github.com/koka831/runix">Hobby Kernel</a>, 
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/koka831/marmoset">Interpreter</a>
+          <br />
           - Algorithms (AtCoder Highest: 1201)<br />
         </li>
         <li>
           <h3>Ruby</h3>
-          - Ruby on Rails + devise / devise token auth + capistrano<br />
+          have some experiences with Ruby on Rails, devise token auth and capistrano.<br />
+          I usually use Rails for APIs and provide them with token authentication by devise.
         </li>
         <li>
           <h3>TypeScript</h3>
@@ -65,7 +67,7 @@ const Skills: React.FC = () => {
           <h3>Python</h3>
           - NLP, Self-Attention model + Encoder-Decoder<br />
           - time-series data analysis<br />
-          - wrote some contents for <a href="https://tracks.run/">track</a><br />
+          - wrote some contents for <a target="_blank" rel="noreferrer noopener" href="https://tracks.run/">track</a><br />
         </li>
         <li>
           <h3>Tools</h3>
@@ -75,17 +77,18 @@ const Skills: React.FC = () => {
           - Terraform<br />
         </li>
         <li>
-          <h3>Others</h3>
+          <h3>Interests</h3>
           - Oil Painting<br />
+          - Tea<br />
         </li>
       </ul>
     </section>
   );
 };
 
-const DevTools: React.FC = () => {
+const Projects: React.FC = () => {
   return (
-    <section className={styles.devtools_container}>
+    <section className={styles.projects_container}>
       <h2>Side Projects</h2>
       <ul>
         <li>

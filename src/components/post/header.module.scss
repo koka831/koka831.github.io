@@ -23,6 +23,11 @@
   display: flex;
 }
 
+.post__dates {
+  display: flex;
+  flex-direction: column;
+}
+
 .post__date {
   font-size: 1em;
 }

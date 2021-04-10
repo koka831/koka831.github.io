@@ -160,7 +160,7 @@ pre[data-file]::before {
   content: attr(data-file);
   position: absolute;
   color: $lightGray;
-  top: 4px;
+  top: 0;
   right: 4px;
 }
 
@@ -221,13 +221,12 @@ pre[class*="language-shell-session"] {
     content: "terminal";
     position: absolute;
     color: $lightGray;
-    top: 4px;
+    top: 0;
     right: 4px;
   }
 
   span.shell-symbol {
     user-select: none;
-    margin-right: 0.5em;
 
     &::before {
       font-weight: normal;

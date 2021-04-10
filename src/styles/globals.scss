@@ -75,6 +75,11 @@ blockquote {
   }
 }
 
+hr {
+  margin-top: 16px;
+  border: 1px dotted $mos;
+}
+
 // h1 > a:hover .. h6 > a:hover
 @for $i from 1 through 6 {
   h#{$i} > a:hover {
