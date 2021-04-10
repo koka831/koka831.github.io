@@ -15,7 +15,6 @@
 
 .posts {
   @include centering($max-width);
-
   color: $black;
 }
 
@@ -57,12 +56,20 @@
     align-items: flex-start;
   }
 
+  .page_title {
+    margin-left: 20px;
+  }
+
   .post__title {
     font-size: 1.4em;
   }
 
   .post__date {
     font-size: 0.9em;
+  }
+
+  .posts {
+    padding: 0 15px;
   }
 
   .post {
