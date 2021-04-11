@@ -8,7 +8,7 @@ const Header = (): JSX.Element => (
       <Link href="/">/var/log/koka</Link>
     </div>
     <div>
-      <Link href="/posts">archive</Link>
+      <Link href="/archives">archive</Link>
     </div>
   </nav>
 );

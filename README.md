@@ -1,5 +1,19 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## TODOs
+
+- [ ] refactor css
+  - 構成要素ごとに切り出してまとめる
+- [ ] prev/next posts
+- [ ] setup head - meta
+- [ ] custom container
+  - [ ] custom container parser plugin
+- [ ] code line-highlight
+- [ ] tags page
+- [ ] hover variable highlight
+- [ ] hover footnotes
+- [ ] project page
+
 ## Getting Started
 
 First, run the development server:
