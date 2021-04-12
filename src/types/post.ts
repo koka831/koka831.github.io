@@ -1,3 +1,5 @@
+import CommitLog from "./git";
+
 type Post = {
   slug: string;
   title: string;
@@ -8,6 +10,7 @@ type Post = {
   ogImage?: string;
   content: string;
   description: string;
+  commits: CommitLog[];
 }
 
 export default Post;

@@ -8,7 +8,7 @@ import markdownToHtml from "./interpreter";
 
 const exec = util.promisify(sync_exec);
 
-const execGitLogFollow = async(slug: string): Promise<string> => {
+const execGitLogFollow = async (slug: string): Promise<string> => {
   const fullpath = path.join(postsDir, `${slug}.md`);
   const fname = path.relative(process.cwd(), fullpath);
   const { stdout, stderr } = await exec(`git log --follow -p ${fname}`);
@@ -17,7 +17,7 @@ const execGitLogFollow = async(slug: string): Promise<string> => {
   return stdout;
 };
 
-const getCommitLogs = async(fname: string): Promise<CommitLog[]> => {
+const getCommitLogs = async (fname: string): Promise<CommitLog[]> => {
   const logs = await execGitLogFollow(fname);
   const commits: CommitLog[] = [];
 

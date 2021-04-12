@@ -6,7 +6,6 @@ import ErrorPage from "next/error";
 
 import { Post, CommitLog } from "../../types";
 import { getPosts, getPostBySlug } from "../../lib/api";
-import getCommitLogs from "../../lib/commit-log";
 
 import { Layout, TableOfContent } from "../../components";
 import PostHeader from "../../components/post/header";
@@ -14,10 +13,9 @@ import styles from "./slug.module.scss";
 
 type Props = {
  post: Post;
- logs: CommitLog[];
 }
 
-const Page: React.FC<Props> = ({ post, logs }: Props) => {
+const Page: React.FC<Props> = ({ post }: Props) => {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -41,7 +39,7 @@ const Page: React.FC<Props> = ({ post, logs }: Props) => {
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
           <div className={styles.commit_logs} role="log">
-            <Logs logs={logs} />
+            <Logs logs={post.commits} />
           </div>
         </div>
         <aside className={styles.sidebar_container}>
@@ -76,17 +74,14 @@ export const Logs: React.FC<LogProps> = ({ logs }: LogProps): JSX.Element => {
 type Params = {
   params: {
     slug: string;
-    logs: CommitLog[];
   }
 }
 
 export const getStaticProps = async ({ params }: Params): Promise<{ props: Props }>  => {
   const post = await getPostBySlug(params.slug);
-  const logs = await getCommitLogs(params.slug);
   return {
     props: {
       post,
-      logs
     }
   };
 };
