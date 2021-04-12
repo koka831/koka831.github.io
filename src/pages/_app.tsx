@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
       <Head>
+        <title>/var/log/koka</title>
         <meta key="title" name="title" content={title} />
         <meta key="description" name="description" content={description} />
         <meta key="theme-color" name="theme-color" content="282828" />
