@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
+        <link rel="alternate" type="application/rss+xml" href="https://koka831.github.io/feed" title="/var/log/koka RSS2.0" />
       </Head>
       <Component {...pageProps} />
     </>
