@@ -8,6 +8,23 @@ tags:
 description: Styling Test
 ---
 
+```diff-rust[class="diff-highlight"][data-file="btree.rs"]
+@@ -111,6 +114,9 @@
+         nasty_btree_map.insert(i, MyLeafNode(i));
+     }
+-    let mut st_btree_map: BtreeMap<(), ()> = BTreeMap::new();
++    let mut zst_btree_map: BTreeMap<(), ()> = BTreeMap::new();
++    zst_btree_map.insert((), ());
++
+     // VecDeque
+     let mut vec_deque = VecDeque::new();
+     vec_deque.push_back(5);
+```
+
+[[warn | my title]]
+| content
+| content2
+
 Styling check
 
 Color Schemeには[Gruvbox](https://github.com/morhetz/gruvbox)を利用しています.
