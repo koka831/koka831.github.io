@@ -25,12 +25,12 @@ const getCommitLogs = async(fname: string): Promise<CommitLog[]> => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const [hash, author, date, empty, title] = diff.split("\n");
     /* eslint-enable @typescript-eslint/no-unused-vars */
-
+    const readableHash = hash.replace("commit ", "").substring(0, 8);
     const log = {
       title,
       date,
-      hash: hash.replace("commit ", "").substring(0, 8),
-      diff: await diffToHtml(diff.trim()),
+      hash: readableHash,
+      diff: await diffToHtml(readableHash, diff.trim()),
     } as CommitLog;
 
     commits.push(log);
@@ -39,10 +39,10 @@ const getCommitLogs = async(fname: string): Promise<CommitLog[]> => {
   return commits;
 };
 
-const diffToHtml = async (text: string): Promise<string> => {
+const diffToHtml = async (title: string, text: string): Promise<string> => {
   const escaped = text.replace(/```/gi, "\\```");
   const markdown = `
-  \`\`\`git[class="language-diff"][data-file="commit.patch"]
+  \`\`\`git[class="language-diff"][data-file="${title}.patch"]
   ${escaped}
   \`\`\`
   `;

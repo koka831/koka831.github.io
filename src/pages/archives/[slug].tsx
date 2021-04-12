@@ -59,6 +59,7 @@ type LogProps = {
 export const Logs: React.FC<LogProps> = ({ logs }: LogProps): JSX.Element => {
   return (
     <>
+      <h2>Commits</h2>
       {logs.map((log) => {
         return (
           <details key={log.hash}>
