@@ -3,6 +3,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## TODOs
 
 - [ ] refactor css
+- [ ] sitemap xml
+- [ ] rss feed
   - 構成要素ごとに切り出してまとめる
 - [ ] prev/next posts
 - [ ] setup head - meta
@@ -13,6 +15,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - [ ] hover variable highlight
 - [ ] hover footnotes
 - [ ] project page
+- [ ] readme
 
 ## Getting Started
 
