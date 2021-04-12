@@ -31,7 +31,7 @@ const Index: React.FC<Props> = ({ posts }: Props): JSX.Element => {
 
 const Article: React.FC<{ post: Post }> = ({ post }: { post: Post }): JSX.Element => (
   <section className={styles.post}>
-    <Link as={`/archives/${post.slug}`} href="/posts/[slug]">
+    <Link as={`/archives/${post.slug}`} href="/archives/[slug]">
       <a className={styles.post__title}>{post.title}</a>
     </Link>
     <p>{post.description}</p>
