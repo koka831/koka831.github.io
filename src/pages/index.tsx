@@ -46,10 +46,11 @@ const Skills: React.FC = () => {
       <ul className={styles.skills} aria-label="Skills">
         <li>
           <h3>Rust</h3>
-          - Low-Level Programming like <a target="_blank" rel="noopener noreferrer" href="https://github.com/koka831/runix">Hobby Kernel</a>, 
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/koka831/marmoset">Interpreter</a>
+          some personal experiences in Low-Layer Programming like <a target="_blank" rel="noopener noreferrer" href="https://github.com/koka831/runix">Hobby Kernel</a>, 
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/koka831/marmoset">Interpreter</a>, interested in boot loading sequence and Linux kernel especially memory mapping.
           <br />
-          - Algorithms (AtCoder Highest: 1201)<br />
+          <br />
+          practices <a target="_blank" rel="noopener noreferrer" href="https://github.com/koka831/algorithm">algorithms</a> (AtCoder Highest: 1201).<br />
         </li>
         <li>
           <h3>Ruby</h3>

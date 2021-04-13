@@ -8,7 +8,7 @@ tags:
 description: Styling Test
 ---
 
-```diff-rust[class="diff-highlight"][data-file="btree.rs"]
+```diff-rust[class="diff-highlight"][class="line-numbers"][data-file="btree.rs"][data-line="2"]
 @@ -111,6 +114,9 @@
          nasty_btree_map.insert(i, MyLeafNode(i));
      }
