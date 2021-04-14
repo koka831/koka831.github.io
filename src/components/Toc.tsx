@@ -37,7 +37,6 @@ const TableOfContent = (): JSX.Element => {
       title: n.innerText,
       depth: Number(n.nodeName[1])
     }));
-    console.log(titles);
 
     const minDepth = Math.min(...titles.map(h => h.depth));
     setHeadings({ titles, nodes, minDepth });
