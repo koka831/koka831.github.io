@@ -8,39 +8,40 @@ import markdownToHtml from "./interpreter";
 
 const exec = util.promisify(sync_exec);
 
-const execGitLogFollow = async (slug: string): Promise<string> => {
-  const fullpath = path.join(postsDir, `${slug}.md`);
-  const fname = path.relative(process.cwd(), fullpath);
-  const { stdout, stderr } = await exec(`git log --follow -p ${fname}`);
+const execGitLogFollow = async (fname: string): Promise<string> => {
+  const fullpath = path.join(postsDir, fname);
+  const relative = path.relative(process.cwd(), fullpath);
+  const { stdout, stderr } = await exec(`git log --follow -p ${relative}`);
   if (stderr) throw new Error(`failed to exec git log: ${stderr}`);
 
   return stdout;
 };
 
 const getCommitLogs = async (fname: string): Promise<CommitLog[]> => {
-  const logs = await execGitLogFollow(fname);
   const commits: CommitLog[] = [];
+  const logs = await execGitLogFollow(fname);
 
-  logs.split(/(?=commit)/g).forEach(async (diff) => {
+  for (const commit of logs.split(/(?=commit \b[0-9a-f]{5,40}\b)/g)) {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const [hash, author, date, empty, title] = diff.split("\n");
+    const [hash, _author, date, _empty, title] = commit.split("\n");
     /* eslint-enable @typescript-eslint/no-unused-vars */
     const readableHash = hash.replace("commit ", "").substring(0, 8);
+
     const log = {
-      title,
+      title: title?.trim() || "commit",
       date,
       hash: readableHash,
-      diff: await diffToHtml(readableHash, diff.trim()),
+      diff: await diffToHtml(readableHash, commit.trim()),
     } as CommitLog;
 
     commits.push(log);
-  });
-
+  }
   return commits;
 };
 
 const diffToHtml = async (title: string, text: string): Promise<string> => {
-  const escaped = text.replace(/```/gi, "\\```");
+  // add space before codeblock to avoid rendering codeblock in codeblock
+  const escaped = text.replace(/```/gi, " ```");
   const markdown = `
   \`\`\`git[class="language-diff"][data-file="${title}.patch"]
   ${escaped}
