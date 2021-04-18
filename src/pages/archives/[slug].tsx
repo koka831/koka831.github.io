@@ -4,11 +4,12 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 
-import { Post, CommitLog } from "../../types";
+import type { Post } from "../../types";
 import { getSlugs, getPostBySlug } from "../../lib/api";
 
 import { Layout, TableOfContent } from "../../components";
 import PostHeader from "../../components/post/header";
+import CommitLogs from "../../components/post/CommitLogs";
 import styles from "./slug.module.scss";
 
 type Props = {
@@ -38,9 +39,7 @@ const Page: React.FC<Props> = ({ post }: Props) => {
             />
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
-          <div className={styles.commit_logs} role="log">
-            <Logs logs={post.commits} />
-          </div>
+          <CommitLogs logs={post.commits} />
         </div>
         <aside className={styles.sidebar_container}>
           <TableOfContent />
@@ -49,27 +48,6 @@ const Page: React.FC<Props> = ({ post }: Props) => {
     </Layout>
   );
 };
-
-type LogProps = {
-  logs: CommitLog[];
-}
-
-export const Logs: React.FC<LogProps> = ({ logs }: LogProps) => {
-  return (
-    <>
-      <h2>Commits</h2>
-      {logs.map((log) => {
-        return (
-          <details key={log.hash}>
-            <summary>{log.title} | {log.hash} | {log.date}</summary>
-            <p dangerouslySetInnerHTML={{__html: log.diff}} />
-          </details>
-        );
-      })}
-    </>
-  );
-};
-
 
 type Params = {
   params: {

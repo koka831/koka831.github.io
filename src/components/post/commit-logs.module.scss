@@ -1,0 +1,48 @@
+@import "../../styles/config.scss";
+@import "../../styles/color.scss";
+@import "../../styles/mixin.scss";
+
+.commit_logs {
+  @include centering($max-width);
+
+  color: $black;
+  background-color: $gray;
+  margin-top: 40px;
+  padding: 40px;
+
+  summary {
+    position: relative;
+    padding: 4px 12px;
+    list-style: none;
+    cursor: pointer;
+
+    &::after {
+      content: '+';
+      opacity: 0;
+      position: absolute;
+      top: 45%;
+      right: 30px;
+      transform: translateY(-50%);
+      transition: opacity 0.2s, transform 0.5s;
+      font-size: 24px;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  details[open] > summary::after {
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  summary:hover,
+  details[open] summary {
+    background-color: $mos;
+    color: $white;
+  }
+}
