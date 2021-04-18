@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 
 import { Post, CommitLog } from "../../types";
-import { getPosts, getPostBySlug } from "../../lib/api";
+import { getSlugs, getPostBySlug } from "../../lib/api";
 
 import { Layout, TableOfContent } from "../../components";
 import PostHeader from "../../components/post/header";
@@ -54,7 +54,7 @@ type LogProps = {
   logs: CommitLog[];
 }
 
-export const Logs: React.FC<LogProps> = ({ logs }: LogProps): JSX.Element => {
+export const Logs: React.FC<LogProps> = ({ logs }: LogProps) => {
   return (
     <>
       <h2>Commits</h2>
@@ -87,16 +87,10 @@ export const getStaticProps = async ({ params }: Params): Promise<{ props: Props
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getPosts();
+  const slugs = await getSlugs();
 
   return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      };
-    }),
+    paths: slugs.map((slug) => ({ params: { slug } })),
     fallback: false,
   };
 };

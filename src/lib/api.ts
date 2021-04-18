@@ -18,19 +18,24 @@ export const getPosts = async (): Promise<Post[]> => {
   return posts.reverse();
 };
 
+export const getSlugs = async (): Promise<string[]> => {
+  const files = await fs.readdir(postsDir);
+  const slugs = files.map((fname) => fname.replace(RegExp(`${POST_EXT}$`), ""));
+
+  return slugs.reverse();
+};
+
 export const getPostBySlug = async (slug: string): Promise<Post> => {
-  const commits = await getCommitLogs(slug);
   const post = await getMarkdownContent(`${slug}${POST_EXT}`);
-  post.commits = commits;
 
   return post;
 };
 
-// TODO: refac data type
 const getMarkdownContent = async (fname: string): Promise<Post> => {
   const rawContent = await fs.readFile(path.join(postsDir, fname), "utf8");
   const { content, data } = matter(rawContent);
   const html = await interpreter(content);
+  const commits = await getCommitLogs(fname);
 
   const post: Post = {
     slug: fname.replace(RegExp(`${POST_EXT}$`), ""),
@@ -42,7 +47,7 @@ const getMarkdownContent = async (fname: string): Promise<Post> => {
     content: html,
     // create excerpt from the beginning of the content
     description: data.description || `${content.slice(0, 100)}...`,
-    commits: [],
+    commits,
   };
 
   return post;

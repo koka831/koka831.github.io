@@ -50,7 +50,7 @@ const Article: React.FC<{ post: Post }> = ({ post }: { post: Post }): JSX.Elemen
   </section>
 );
 
-export const getStaticProps: GetStaticProps = async (): Promise<{ props: Props }> => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const posts = await getPosts();
   return {
     props: { posts }
