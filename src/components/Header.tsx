@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import styles from "./header.module.scss";
+import styles from "./Header.module.scss";
 
-const Header = (): JSX.Element => (
+const Header: React.VFC = () => (
   <nav className={styles.navigation}>
     <div className={styles.navigation__inner}>
       <Link href="/">/var/log/koka</Link>

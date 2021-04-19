@@ -21,7 +21,6 @@
 .contact_container {
   padding: 40px;
   padding-top: 20px;
-
 }
 
 .profile_container {
@@ -49,8 +48,7 @@
 
 .skills_container {
   margin-top: 40px;
-  color: $white;
-  background: $mos;
+  background: $gray;
 }
 
 .projects_container {
@@ -60,7 +58,8 @@
 
 .contact_container {
   margin-top: 40px;
-  background: $gray;
+  color: $white;
+  background: $mos;
 }
 
 .contact,

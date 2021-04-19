@@ -3,7 +3,7 @@ import { GetStaticProps } from "next";
 
 import { getPosts } from "../../lib/api";
 
-import Layout from "../../components/layout";
+import { Layout } from "../../components";
 
 type Props = {
   tags: string[];

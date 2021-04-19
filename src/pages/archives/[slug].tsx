@@ -8,15 +8,14 @@ import type { Post } from "../../types";
 import { getSlugs, getPostBySlug } from "../../lib/api";
 
 import { Layout, TableOfContent } from "../../components";
-import PostHeader from "../../components/post/header";
-import CommitLogs from "../../components/post/CommitLogs";
+import { PostHeader, CommitLogs } from "../../components/archives";
 import styles from "./slug.module.scss";
 
 type Props = {
  post: Post;
 }
 
-const Page: React.FC<Props> = ({ post }: Props) => {
+const Page: React.VFC<Props> = ({ post }: Props) => {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;

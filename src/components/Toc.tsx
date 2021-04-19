@@ -21,7 +21,7 @@ type Headings = {
   minDepth: number;
 }
 
-const TableOfContent = (): JSX.Element => {
+const TableOfContent: React.VFC = () => {
   const [headings, setHeadings] = useState<Headings>({ titles: [], nodes: [], minDepth: 0 });
   const [active, setActive] = useState<number>();
 
@@ -78,7 +78,7 @@ type TocProps = {
   onClick: React.MouseEventHandler;
 }
 
-const TocTitle: React.FC<TocProps> = ({ title, depth, active, onClick }: TocProps) => {
+const TocTitle: React.VFC<TocProps> = ({ title, depth, active, onClick }: TocProps) => {
   const head = `toc__h${depth}`;
   return (
     <li

@@ -18,37 +18,6 @@
   color: $black;
 }
 
-.post {
-  @include centering($max-width);
-
-  position: relative;
-  background: $beige;
-  padding: 40px;
-  padding-bottom: 20px;
-
-  &:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: calc(100% - 80px);
-    display: block;
-    border-bottom: 1px solid black;
-  }
-}
-
-.post__title {
-  font-size: 1.5em;
-  font-weight: 600;
-}
-
-.post__tags {
-  display: flex;
-}
-
-.post__date {
-  font-size: 1em;
-}
-
 @media (max-width: $break-tablet) {
   .flex {
     margin-top: 20px;

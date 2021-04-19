@@ -6,7 +6,7 @@ import "../../node_modules/modern-normalize/modern-normalize.css";
 import "../styles/globals.scss";
 import "../styles/prism-gruvbox.scss";
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+const MyApp: React.VFC<AppProps> = ({ Component, pageProps }: AppProps) => {
   const url = "https://koka.dev";
   const title = "/var/log/koka";
   const description = "my log";
@@ -31,6 +31,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       <Component {...pageProps} />
     </>
   );
-}
+};
 
 export default MyApp;

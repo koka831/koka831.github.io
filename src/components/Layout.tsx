@@ -1,13 +1,13 @@
 import React from "react";
-import { Header, Footer } from "./";
+import { Header, Footer } from ".";
 
-import styles from "./layout.module.scss";
+import styles from "./Layout.module.scss";
 
 type Props = {
   children: React.ReactNode;
 }
 
-const Layout = ({ children }: Props): JSX.Element => (
+const Layout: React.VFC<Props> = ({ children }: Props) => (
   <>
     <Header />
     <main className={styles.container}>

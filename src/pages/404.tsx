@@ -2,7 +2,7 @@ import React from "react";
 import { Layout } from "../components";
 import styles from "./404.module.scss";
 
-const NotFound: React.FC = () => {
+const NotFound: React.VFC = () => {
   return (
     <Layout>
       <div className={styles.container}>

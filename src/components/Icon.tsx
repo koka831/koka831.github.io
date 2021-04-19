@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Icon.module.scss";
 
-const Icon: React.FC = () => {
+const Icon: React.VFC = () => {
   return (
     <div className={styles.icon__container}>
       <ul className={styles.icon}>

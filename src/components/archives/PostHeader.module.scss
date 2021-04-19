@@ -1,5 +1,3 @@
-@import "../../styles/color.scss";
-
 .header__container {
   padding-bottom: 10px;
   margin-bottom: 40px;
@@ -26,8 +24,4 @@
 .post__dates {
   display: flex;
   flex-direction: column;
-}
-
-.post__date {
-  font-size: 1em;
 }

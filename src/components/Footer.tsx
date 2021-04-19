@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./footer.module.scss";
+import styles from "./Footer.module.scss";
 
-const Footer = (): JSX.Element => (
+const Footer: React.VFC = () => (
   <footer className={styles.footer}>
     <small>
       Code snippets licensed under MIT, unless otherwise noted.

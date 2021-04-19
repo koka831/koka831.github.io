@@ -1,6 +1,7 @@
 import React from "react";
-import styles from "./header.module.scss";
-import Tag from "./tag";
+import styles from "./PostHeader.module.scss";
+import Tag from "./Tag";
+import PublishDate from "./PublishDate";
 
 type Props = {
   title: string;
@@ -9,7 +10,7 @@ type Props = {
   updated_at?: string;
 }
 
-const PostHeader = ({ title, tags, published_at, updated_at }: Props): JSX.Element => {
+const PostHeader: React.VFC<Props> = ({ title, tags, published_at, updated_at }: Props) => {
   return (
     <header itemScope className={styles.header__container}>
       <h1 className={styles.post__title}>{title}</h1>
@@ -27,22 +28,6 @@ const PostHeader = ({ title, tags, published_at, updated_at }: Props): JSX.Eleme
         </div>
       </div>
     </header>
-  );
-};
-
-type PublishDateProps = {
-  date?: string;
-}
-
-const PublishDate: React.FC<PublishDateProps> = ({ date, children }) => {
-  return (
-    <time
-      dateTime={date}
-      itemProp="datePublished"
-      className={styles.post__date}
-    >
-      {children}
-    </time>
   );
 };
 

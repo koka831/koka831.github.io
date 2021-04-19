@@ -1,12 +1,12 @@
 import React from "react";
-import Layout from "../components/layout";
-import styles from "./index.module.scss";
 
 import { faTwitterSquare, faGithubSquare } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Icon from "../components/Icon";
 
-const Index: React.FC = () =>  {
+import { Layout, Icon } from "../components";
+import styles from "./index.module.scss";
+
+const Index: React.VFC = () =>  {
   return (
     <Layout>
       <div className={styles.container}>
@@ -19,7 +19,7 @@ const Index: React.FC = () =>  {
   );
 };
 
-const Profile: React.FC = () => {
+const Profile: React.VFC = () => {
   return (
     <section
       itemScope
@@ -39,7 +39,7 @@ const Profile: React.FC = () => {
   );
 };
 
-const Skills: React.FC = () => {
+const Skills: React.VFC = () => {
   return (
     <section className={styles.skills_container}>
       <h1>Skills</h1>
@@ -87,7 +87,7 @@ const Skills: React.FC = () => {
   );
 };
 
-const Projects: React.FC = () => {
+const Projects: React.VFC = () => {
   return (
     <section className={styles.projects_container}>
       <h2>Side Projects</h2>
@@ -124,7 +124,7 @@ const Projects: React.FC = () => {
   );
 };
 
-export const Links: React.FC = () => {
+export const Links: React.VFC = () => {
   return (
     <nav className={styles.links_container}>
       <a
@@ -146,7 +146,7 @@ export const Links: React.FC = () => {
   );
 };
 
-const Contact: React.FC = () => {
+const Contact: React.VFC = () => {
   return (
     <section itemScope className={styles.contact_container}>
       <h2>Contact</h2>
