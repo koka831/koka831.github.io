@@ -35,6 +35,7 @@ const Page: React.VFC<Props> = ({ post }: Props) => {
               title={post.title}
               tags={post.tags}
               publishedAt={post.publishedAt}
+              updatedAt={post.updatedAt}
             />
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
