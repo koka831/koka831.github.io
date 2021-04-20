@@ -8,7 +8,7 @@ import type { Post } from "../../types";
 import { getSlugs, getPostBySlug } from "../../lib/api";
 
 import { Layout, TableOfContent } from "../../components";
-import { PostHeader, CommitLogs } from "../../components/archives";
+import { ArticleHeader, CommitLogs } from "../../components/archives";
 import styles from "./slug.module.scss";
 
 type Props = {
@@ -31,7 +31,7 @@ const Page: React.VFC<Props> = ({ post }: Props) => {
       <div className={styles.container}>
         <div className={styles.main}>
           <article className={styles.article} role="article">
-            <PostHeader
+            <ArticleHeader
               title={post.title}
               tags={post.tags}
               publishedAt={post.publishedAt}

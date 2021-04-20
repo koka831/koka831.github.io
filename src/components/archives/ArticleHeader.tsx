@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./PostHeader.module.scss";
+import styles from "./ArticleHeader.module.scss";
 import { PublishDate, Tag } from ".";
 
 type Props = {

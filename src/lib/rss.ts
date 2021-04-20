@@ -11,14 +11,12 @@ const generateRssXml = async (): Promise<string> => {
     language: "ja",
   });
 
-  // 例としてpostsを含めるイメージ
-  // このあたりの書き方はライブラリのドキュメントを参考にしてください
   const posts = await getPosts();
   posts?.forEach((post) => {
     feed.item({
       title: post.title,
       description: post.description,
-      date: new Date(post.date),
+      date: new Date(post.publishedAt),
       url: `https://koka831.github.io/archives/${post.slug}`,
     });
   });

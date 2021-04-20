@@ -48,8 +48,8 @@ const getMarkdownContent = async (fname: string): Promise<Post> => {
     commits,
     // NOTE `Date` object cannot be serialized in `getStaticProps`
     publishedAt: new Date(data.date)?.toDateString() || "-",
-    // TODO
-    updatedAt: "-",
+    // extract latest edit date from commit history
+    updatedAt: new Date(commits[0].date)?.toDateString() || "-",
   };
 
   return post;
