@@ -29,7 +29,7 @@ const Page: React.VFC<Props> = ({ post }: Props) => {
         <meta key="og:title" property="og:title" content={post.title} />
       </Head>
       <div className={styles.container}>
-        <div className={styles.article_container}>
+        <div className={styles.main}>
           <article className={styles.article} role="article">
             <PostHeader
               title={post.title}
@@ -40,7 +40,7 @@ const Page: React.VFC<Props> = ({ post }: Props) => {
           </article>
           <CommitLogs logs={post.commits} />
         </div>
-        <aside className={styles.sidebar_container}>
+        <aside className={styles.aside}>
           <TableOfContent />
         </aside>
       </div>

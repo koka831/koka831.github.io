@@ -20,7 +20,7 @@ const Index: React.VFC<Props> = ({ posts }: Props) => {
         <meta key="title" property="title" content="Archives" />
         <title>Archives | /var/log/koka</title>
       </Head>
-      <h2 className={styles.page_title}>Archives</h2>
+      <h2 className={styles.title}>Archives</h2>
       <div className={styles.posts}>
         {posts.map(post => <Article key={post.slug} post={post} />)}
       </div>

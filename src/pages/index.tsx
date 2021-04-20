@@ -94,7 +94,7 @@ const Projects: React.VFC = () => {
       <ul>
         <li>
           <h3>Automatic-control system for UAV(Unmanned Aerial Vehicle, a.k.a Drone)</h3>
-          - written in C(C++)<br />
+          - written in C(+ inline asm)<br />
           - in-time object recognition in movies from UAVs<br />
         </li>
         <li>
@@ -112,12 +112,12 @@ const Projects: React.VFC = () => {
         </li>
         <li>
           <h3>Marmoset, a Toy Interpreter in Rust</h3>
-          - write a tiny interpreter referring <a href="https://interpreterbook.com/">Writing An Interepreter In Go</a>
+          - write a tiny interpreter referring <a href="https://interpreterbook.com/">Writing An Interpreter In Go</a>
         </li>
         <li>
           <h3>Blog using Static Props with Next.js</h3>
           - build a static blog system with Next.js<br />
-          - generate edit histries for each posts from <code className="language-unknown">git log --follow</code><br />
+          - generate edit histories for each posts from <code className="language-unknown">git log --follow</code><br />
         </li>
       </ul>
     </section>

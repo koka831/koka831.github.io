@@ -10,11 +10,11 @@
   grid-auto-rows: max-content;
 }
 
-.article_container {
+.main {
   grid-area: main;
 }
 
-.sidebar_container {
+.aside {
   grid-area: sidebar;
   height: max-content;
   position: sticky;
@@ -41,7 +41,7 @@
 }
 
 @media (max-width: 1200px) {
-  .sidebar_container { display: none; }
+  .aside { display: none; }
 }
 
 @media (max-width: $break-tablet) {
