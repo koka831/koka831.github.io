@@ -2,9 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 import type { Post } from "../../types";
-
-import { Tag } from ".";
 import styles from "./Article.module.scss";
+import { PublishDate, Tag } from ".";
 
 type Props = {
   post: Post;
@@ -20,13 +19,9 @@ const Article: React.VFC<Props> = ({ post }: Props) => (
       <div className={styles.post__tags}>
         {post.tags.map((tag) => <Tag key={tag} name={tag} />) }
       </div>
-      <time
-        dateTime={post.date}
-        itemProp="datePublished"
-        className={styles.post__date}
-      >
-        published: {post.date}
-      </time>
+      <PublishDate date={post.publishedAt}>
+        published: {post.publishedAt}
+      </PublishDate>
     </div>
   </section>
 );

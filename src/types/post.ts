@@ -3,7 +3,6 @@ import CommitLog from "./git";
 type Post = {
   slug: string;
   title: string;
-  date: string;
   categories: string[];
   tags: string[];
   coverImage?: string;
@@ -11,6 +10,8 @@ type Post = {
   content: string;
   description: string;
   commits: CommitLog[];
+  publishedAt: string;
+  updatedAt: string;
 }
 
 export default Post;

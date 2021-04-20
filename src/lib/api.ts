@@ -40,14 +40,16 @@ const getMarkdownContent = async (fname: string): Promise<Post> => {
   const post: Post = {
     slug: fname.replace(RegExp(`${POST_EXT}$`), ""),
     title: data.title,
-    // NOTE `Date` object cannot be serialized in `getStaticProps`
-    date: new Date(data.date)?.toDateString() || "-",
     categories: data.categories || [],
     tags: data.tags || [],
     content: html,
     // create excerpt from the beginning of the content
     description: data.description || `${content.slice(0, 100)}...`,
     commits,
+    // NOTE `Date` object cannot be serialized in `getStaticProps`
+    publishedAt: new Date(data.date)?.toDateString() || "-",
+    // TODO
+    updatedAt: "-",
   };
 
   return post;
