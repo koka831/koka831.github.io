@@ -31,7 +31,7 @@ const Page: React.VFC<Props> = ({ post }: Props) => {
         <meta key="description" property="description" content={post.description} />
         <meta key="og:description" property="og:description" content={post.description} />
         <meta key="twitter:description" property="twitter:description" content={post.description} />
-        <meta key="og:image" property="og:image" content={post.ogImage} />
+        <meta key="og:image" property="og:image" content={post.image} />
       </Head>
       <div className={styles.container}>
         <div className={styles.main}>

@@ -5,8 +5,7 @@ type Post = {
   title: string;
   categories: string[];
   tags: string[];
-  coverImage?: string;
-  ogImage?: string;
+  image?: string;
   content: string;
   description: string;
   commits: CommitLog[];
