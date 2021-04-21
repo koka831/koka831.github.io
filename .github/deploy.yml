@@ -27,6 +27,7 @@ jobs:
       - run: npm run build
         env:
           CI: false
+          GITHUB_PAGES: true
         # github pages doesn't recognize any directories named with prefix `_`
       - run: npm run export
       - run: touch out/.nojekyll
