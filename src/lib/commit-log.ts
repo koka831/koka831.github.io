@@ -29,7 +29,7 @@ const getCommitLogs = async (fname: string): Promise<CommitLog[]> => {
 
     const log = {
       title: title?.trim() || "commit",
-      date: date.slice(0, -6),
+      date: date.slice(6, -6),
       hash: readableHash,
       diff: await diffToHtml(readableHash, commit.trim()),
     } as CommitLog;
