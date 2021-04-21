@@ -14,7 +14,11 @@ export const CommitLogs: React.VFC<Props> = ({ logs }: Props) => {
       {logs.map((log) => {
         return (
           <details key={log.hash}>
-            <summary>{log.title} | {log.hash} | {log.date}</summary>
+            <summary>
+              <span className={styles.commit__date}>{log.date}</span>
+              <span className={styles.commit__hash}>{log.hash}</span>
+              <span className={styles.commit__message}>{log.title}</span>
+            </summary>
             <p dangerouslySetInnerHTML={{__html: log.diff}} />
           </details>
         );

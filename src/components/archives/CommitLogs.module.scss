@@ -11,10 +11,26 @@
   padding: 40px;
 
   summary {
+    display: grid;
     position: relative;
     padding: 4px 12px;
     list-style: none;
     cursor: pointer;
+    grid-template-columns: 24fr 12fr 64fr;
+    grid-template-areas: "timestamp hash message";
+    grid-auto-rows: max-content;
+
+    .commit__message {
+      grid-area: message;
+    }
+
+    .commit_hash {
+      grid-area: hash;
+    }
+
+    .commit_date {
+      grid-area: timestamp;
+    }
 
     &::after {
       content: '+';
@@ -44,5 +60,20 @@
   details[open] summary {
     background-color: $mos;
     color: $white;
+  }
+}
+
+@media (max-width: $break-tablet) {
+  .commit_logs {
+    summary {
+      display: static;
+      grid-template-columns: 1fr;
+      grid-template-areas: "message";
+
+      .commit__date,
+      .commit__hash {
+        display: none;
+      }
+    }
   }
 }
