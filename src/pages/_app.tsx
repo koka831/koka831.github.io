@@ -28,7 +28,7 @@ const MyApp: React.VFC<AppProps> = ({ Component, pageProps }: AppProps) => {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:site" content="@k_0ka" />
         <meta name="twitter:description" content={description} />
-        <link rel="alternate" type="application/rss+xml" href="https://koka831.github.io/feed" title="/var/log/koka RSS2.0" />
+        <link rel="alternate" type="application/rss+xml" href="https://koka831.github.io/feed.xml" title="/var/log/koka RSS2.0" />
       </Head>
       <Component {...pageProps} />
     </>

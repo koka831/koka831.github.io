@@ -1,0 +1,38 @@
+name: deploy to github pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-blog-${{ hashFiles('**/package-lock.json') }}
+      - name: build
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: npm run build
+        env:
+          CI: false
+        # github pages doesn't recognize any directories named with prefix `_`
+      - run: npm run export
+      - run: touch out/.nojekyll
+      - name: deploy
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: out
+          CLEAN: true
