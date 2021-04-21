@@ -1,4 +1,5 @@
 @import "../styles/color.scss";
+@import "../styles/animation.scss";
 
 .container {
   min-height: 60vh;
@@ -9,4 +10,9 @@
 
 .message {
   color: $mos;
+
+  &::after {
+    content: '_';
+    animation: cursor 1s infinite;
+  }
 }
