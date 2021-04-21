@@ -1,6 +1,7 @@
 {
   "name": "blog",
   "version": "0.1.0",
+  "homepage": "https://github.com/koka831/koka831.github.io",
   "private": true,
   "scripts": {
     "dev": "next dev",

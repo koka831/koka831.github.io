@@ -27,6 +27,7 @@ const Page: React.VFC<Props> = ({ post }: Props) => {
         <title>{post.title} | /var/log/koka</title>
         <meta key="title" property="title" content={post.title} />
         <meta key="og:title" property="og:title" content={post.title} />
+        <meta key="og:image" property="og:image" content={post.ogImage} />
       </Head>
       <div className={styles.container}>
         <div className={styles.main}>

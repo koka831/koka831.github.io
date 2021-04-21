@@ -41,6 +41,7 @@ const getMarkdownContent = async (fname: string): Promise<Post> => {
     slug: fname.replace(RegExp(`${POST_EXT}$`), ""),
     title: data.title,
     categories: data.categories || [],
+    ogImage: data.ogImage || "https://koka831.github.io/img/icon.png",
     tags: data.tags || [],
     content: html,
     // create excerpt from the beginning of the content
