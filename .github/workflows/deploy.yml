@@ -28,8 +28,8 @@ jobs:
         env:
           CI: false
           GITHUB_PAGES: true
-        # github pages doesn't recognize any directories named with prefix `_`
       - run: npm run export
+        # github pages doesn't recognize any directories named with prefix `_`
       - run: touch out/.nojekyll
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3

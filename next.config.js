@@ -3,6 +3,7 @@ module.exports = {
   future: {
     webpack5: true,
   },
+  basePath: process.env.GITHUB_PAGES ? "/blog" : "",
   assetPrefix: process.env.GITHUB_PAGES ? "/blog" : "",
   async redirects() {
     return [
