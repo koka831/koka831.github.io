@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><meta name="description" content="my log"/><meta name="theme-color" content="#ddd4bb"/><meta property="og:type" content="website"/><meta property="og:url" content="https://koka.dev"/><meta property="og:description" content="my log"/><meta property="og:site_name" content="/var/log/koka"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="/var/log/koka"/><meta name="twitter:site" content="@k_0ka"/><meta name="twitter:description" content="my log"/><link rel="alternate" type="application/rss+xml" href="https://koka831.github.io/feed.xml" title="/var/log/koka RSS2.0"/><title>Styling Test | /var/log/koka</title><meta property="title" content="Styling Test"/><meta property="og:title" content="Styling Test"/><meta property="og:image" content="https://koka831.github.io/img/icon.png"/><meta name="next-head-count" content="17"/><link rel="preload" href="/blog/_next/static/css/e36a84cff8eb786dd838.css" as="style"/><link rel="stylesheet" href="/blog/_next/static/css/e36a84cff8eb786dd838.css" data-n-g=""/><link rel="preload" href="/blog/_next/static/css/254f17c58cfd700a35b7.css" as="style"/><link rel="stylesheet" href="/blog/_next/static/css/254f17c58cfd700a35b7.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/blog/_next/static/chunks/webpack-8ee5b8048e17a76f4173.js" as="script"/><link rel="preload" href="/blog/_next/static/chunks/framework-fa084fb9440caadd7405.js" as="script"/><link rel="preload" href="/blog/_next/static/chunks/commons-67afd69f0438b864db32.js" as="script"/><link rel="preload" href="/blog/_next/static/chunks/main-6f040fcbb9831e40a9fd.js" as="script"/><link rel="preload" href="/blog/_next/static/chunks/pages/_app-5f44d4623abad7e89937.js" as="script"/><link rel="preload" href="/blog/_next/static/chunks/148-666076dd1d6135e3d14f.js" as="script"/><link rel="preload" href="/blog/_next/static/chunks/pages/archives/%5Bslug%5D-88d5fadb35297e43b6c3.js" as="script"/></head><body><div id="__next"><nav class="Header_navigation__container__3D5xg"><div class="Header_navigation__16lxy"><a href="/">/var/log/koka</a></div><div><a href="/archives">archive</a></div></nav><main class="Layout_container__QVNsN"><div class="slug_container__2Nysm"><div class="slug_main__1TLKU"><article class="slug_article__3n4cv" role="article"><header itemscope="" class="ArticleHeader_header__container__AO3KC"><h1 class="ArticleHeader_post__title__2ujta">Styling Test</h1><div class="ArticleHeader_flex__36wQ5"><div><div class="ArticleHeader_post__tags__18geI"><p class="Tag_tag__FntIt">Design</p></div></div><div class="ArticleHeader_post__dates__s80K2"><time dateTime="Sun Apr 11 2021" itemProp="datePublished" class="PublishDate_post__date__2Kcmg">published: <!-- -->Sun Apr 11 2021</time><time dateTime="Thu Apr 22 2021" itemProp="datePublished" class="PublishDate_post__date__2Kcmg">updated: Thu Apr 22 2021</time></div></div></header><div><div class="remark-highlight"><pre data-file="btree.rs" data-line="2" class="language-diff-rust  diff-highlight line-numbers"><code class="language-diff-rust"><span class="token coord">@@ -111,6 +114,9 @@</span>
+<span class="token unchanged language-rust"><span class="token prefix unchanged"> </span>        nasty_btree_map<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token class-name">MyLeafNode</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token prefix unchanged"> </span>    <span class="token punctuation">}</span>
+</span><span class="token deleted-sign deleted language-rust"><span class="token prefix deleted">-</span>    <span class="token keyword">let</span> <span class="token keyword">mut</span> st_btree_map<span class="token punctuation">:</span> <span class="token class-name">BtreeMap</span><span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token class-name">BTreeMap</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="token inserted-sign inserted language-rust"><span class="token prefix inserted">+</span>    <span class="token keyword">let</span> <span class="token keyword">mut</span> zst_btree_map<span class="token punctuation">:</span> <span class="token class-name">BTreeMap</span><span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token class-name">BTreeMap</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token prefix inserted">+</span>    zst_btree_map<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token prefix inserted">+</span>
+</span><span class="token unchanged language-rust"><span class="token prefix unchanged"> </span>    <span class="token comment">// VecDeque</span>
+<span class="token prefix unchanged"> </span>    <span class="token keyword">let</span> <span class="token keyword">mut</span> vec_deque <span class="token operator">=</span> <span class="token class-name">VecDeque</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token prefix unchanged"> </span>    vec_deque<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span>
+</code></pre></div>
+<p>[[warn | my title]]
+| content
+| content2</p>
+<p>Styling check</p>
+<p>Color Schemeには<a href="https://github.com/morhetz/gruvbox" target="_blank" rel="nofollow noopener noreferrer">Gruvbox</a>を利用しています.</p>
+<p>==highlight==</p>
+<p><strong>Custom Blocks</strong></p>
+<blockquote>
+<p>This is a blockquote</p>
+</blockquote>
+<p>::: tip
+This is a tip
+:::</p>
+<p>::: warning
+This is a warning
+:::</p>
+<p>::: danger
+This is a dangerous warning
+:::</p>
+<h1 id="an-h1-header"><a href="#an-h1-header">An h1 header</a></h1>
+<h2 id="h2"><a href="#h2">h2</a></h2>
+<h3 id="h3"><a href="#h3">h3</a></h3>
+<h4 id="h4"><a href="#h4">h4</a></h4>
+<p>Paragraphs are separated by a blank line.</p>
+<p><em>Italic</em>, <strong>bold</strong>, and <code class="language-unknown">monospace</code>. Itemized lists
+look like:</p>
+<ul>
+<li>this one</li>
+<li>that one</li>
+<li>the other one</li>
+</ul>
+<p>Note that --- not considering the asterisk --- the actual text
+content starts at 4-columns in.</p>
+<blockquote>
+<p>Block quotes are
+written like so.<br>
+They can span multiple paragraphs,
+if you like.</p>
+</blockquote>
+<p>Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all
+in chapters 12--14"). Three dots ... will be converted to an ellipsis.
+Unicode is supported. ☺</p>
+<p>Here's a numbered list:</p>
+<ol>
+<li>first item</li>
+<li>second item</li>
+<li>third item</li>
+</ol>
+<p>Note again how the actual text starts at 4 columns in (4 characters
+from the left side). Here's a code sample:</p>
+<div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown"># Let me re-iterate ...
+for i in 1 .. 10 { do-something(i) }</code></pre></div>
+<p>As you probably guessed, indented 4 spaces. By the way, instead of
+indenting the block, you can use delimited blocks, if you like:</p>
+<div class="remark-highlight"><pre class="language-python"><code class="language-python">define foobar<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">print</span> <span class="token string">"Welcome to flavor country!"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+<p>(which makes copying &#x26; pasting easier). You can optionally mark the
+delimited block for Pandoc to syntax highlight it:</p>
+<div class="remark-highlight"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> time
+<span class="token comment"># Quick, count to ten!</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># (but not *too* quick)</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span> i
+</code></pre></div>
+<h3 id="an-h3-header"><a href="#an-h3-header">An h3 header</a></h3>
+<p>Now a nested list:</p>
+<ol>
+<li>
+<p>First, get these ingredients:</p>
+<ul>
+<li>carrots</li>
+<li>celery</li>
+<li>lentils</li>
+</ul>
+</li>
+<li>
+<p>Boil some water.</p>
+</li>
+<li>
+<p>Dump everything in the pot and follow
+this algorithm:</p>
+<div class="remark-highlight"><pre data-file="python" class="language-python"><code class="language-python">find wooden spoon
+uncover pot
+stir
+cover pot
+balance wooden spoon precariously on pot handle
+wait <span class="token number">10</span> minutes
+goto first step <span class="token punctuation">(</span><span class="token keyword">or</span> shut off burner when done<span class="token punctuation">)</span>
+</code></pre></div>
+<p>Do not bump wooden spoon or it will fall.</p>
+</li>
+</ol>
+<p>Notice again how text always lines up on 4-space indents (including
+that last line which continues item 3 above).</p>
+<p>Here's a link to <a href="http://foo.bar" target="_blank" rel="nofollow noopener noreferrer">a website</a>, and to a <a href="#an-h2-header">section heading in the current
+doc</a>. Here's a footnote <sup id="fnref-1"><a href="#fn-1" class="footnote-ref">1</a></sup>.</p>
+<p>Tables can look like this:</p>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th align="center">Are</th>
+<th align="right">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td align="center">right-aligned</td>
+<td align="right">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td align="center">centered</td>
+<td align="right">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td align="center">are neat</td>
+<td align="right">$1</td>
+</tr>
+<tr>
+<td>A horizontal rule follows.</td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+<p>🎉</p>
+<p>🤔</p>
+<hr>
+<h2 id="a2-2nd"><a href="#a2-2nd">A2 2nd</a></h2>
+<p>[[toc]]</p>
+<h2 id="a2-3rd"><a href="#a2-3rd">A2 3rd</a></h2>
+<p>[[toc]]</p>
+<h2 id="a2-2nd-1"><a href="#a2-2nd-1">A2 2nd</a></h2>
+<p>[[toc]]</p>
+<h2 id="a2-2nd-2"><a href="#a2-2nd-2">A2 2nd</a></h2>
+<p>[[toc]]</p>
+<h2 id="a2-2nd-3"><a href="#a2-2nd-3">A2 2nd</a></h2>
+<p>[[toc]]</p>
+<h2 id="a2-2nd-4"><a href="#a2-2nd-4">A2 2nd</a></h2>
+<p>[[toc]]</p>
+<h2 id="a2-2nd-5"><a href="#a2-2nd-5">A2 2nd</a></h2>
+<p>[[toc]]</p>
+<h2 id="a2-2nd-6"><a href="#a2-2nd-6">A2 2nd</a></h2>
+<p>[[toc]]</p>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn-1">Footnote text goes here.<a href="#fnref-1" class="footnote-backref">↩</a></li>
+</ol>
+</div></div></article><div class="CommitLogs_commit_logs__2xJyI" role="log"><h2>Commits</h2><details><summary><span class="CommitLogs_commit__date__Vg5RN">  Thu Apr 22 00:55:54 2021</span><span class="CommitLogs_commit__hash__2k3a3">e3fbaa17</span><span class="CommitLogs_commit__message__nS85e">fix</span></summary><p><div class="remark-highlight"><pre data-file="e3fbaa17.patch" class="language-git  language-diff"><code class="language-git"><span class="token commit-sha1">commit e3fbaa17c115a1c6534cb3bcd8046413e7ec291e</span>
+Author: koka &#x3C;<a href="mailto:koka.code@gmail.com" class="token email-link">koka.code@gmail.com</a>>
+Date:   Thu Apr 22 00:55:54 2021 +0900
+
+  fix
+
+diff --git a/_posts/2021-04-11-styling-test.md b/_posts/2021-04-11-styling-test.md
+new file mode 100644
+index 0000000..bc5d2e1
+<span class="token deleted">--- /dev/null</span>
+<span class="token inserted">+++ b/_posts/2021-04-11-styling-test.md</span>
+<span class="token coord">@@ -0,0 +1,188 @@</span>
+<span class="token inserted">+---</span>
+<span class="token inserted">+title: Styling Test</span>
+<span class="token inserted">+date: 2021-04-11</span>
+<span class="token inserted">+categories:</span>
+<span class="token inserted">+- Design</span>
+<span class="token inserted">+tags:</span>
+<span class="token inserted">+- Design</span>
+<span class="token inserted">+description: Styling Test</span>
+<span class="token inserted">+---</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```diff-rust{1,2}[class="diff-highlight"][class="line-numbers"][data-file="btree.rs"][data-line="2"]</span>
+<span class="token inserted">+@@ -111,6 +114,9 @@</span>
+<span class="token inserted">+         nasty_btree_map.insert(i, MyLeafNode(i));</span>
+<span class="token inserted">+     }</span>
+<span class="token inserted">+-    let mut st_btree_map: BtreeMap&#x3C;(), ()> = BTreeMap::new();</span>
+<span class="token inserted">++    let mut zst_btree_map: BTreeMap&#x3C;(), ()> = BTreeMap::new();</span>
+<span class="token inserted">++    zst_btree_map.insert((), ());</span>
+<span class="token inserted">++</span>
+<span class="token inserted">+     // VecDeque</span>
+<span class="token inserted">+     let mut vec_deque = VecDeque::new();</span>
+<span class="token inserted">+     vec_deque.push_back(5);</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+[[warn | my title]]</span>
+<span class="token inserted">+| content</span>
+<span class="token inserted">+| content2</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+Styling check</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+Color Schemeには[Gruvbox](https://github.com/morhetz/gruvbox)を利用しています.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+==highlight==</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+**Custom Blocks**</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+> This is a blockquote</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+::: tip</span>
+<span class="token inserted">+This is a tip</span>
+<span class="token inserted">+:::</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+::: warning</span>
+<span class="token inserted">+This is a warning</span>
+<span class="token inserted">+:::</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+::: danger</span>
+<span class="token inserted">+This is a dangerous warning</span>
+<span class="token inserted">+:::</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+# An h1 header</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+## h2</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### h3</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+#### h4</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+Paragraphs are separated by a blank line.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+*Italic*, **bold**, and `monospace`. Itemized lists</span>
+<span class="token inserted">+look like:</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+  * this one</span>
+<span class="token inserted">+  * that one</span>
+<span class="token inserted">+  * the other one</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+Note that --- not considering the asterisk --- the actual text</span>
+<span class="token inserted">+content starts at 4-columns in.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+> Block quotes are</span>
+<span class="token inserted">+> written like so.  </span>
+<span class="token inserted">+> They can span multiple paragraphs,</span>
+<span class="token inserted">+> if you like.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all</span>
+<span class="token inserted">+in chapters 12--14"). Three dots ... will be converted to an ellipsis.</span>
+<span class="token inserted">+Unicode is supported. ☺</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+Here's a numbered list:</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ 1. first item</span>
+<span class="token inserted">+ 2. second item</span>
+<span class="token inserted">+ 3. third item</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+Note again how the actual text starts at 4 columns in (4 characters</span>
+<span class="token inserted">+from the left side). Here's a code sample:</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+    # Let me re-iterate ...</span>
+<span class="token inserted">+    for i in 1 .. 10 { do-something(i) }</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+As you probably guessed, indented 4 spaces. By the way, instead of</span>
+<span class="token inserted">+indenting the block, you can use delimited blocks, if you like:</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+~~~python </span>
+<span class="token inserted">+define foobar() {</span>
+<span class="token inserted">+    print "Welcome to flavor country!";</span>
+<span class="token inserted">+}</span>
+<span class="token inserted">+~~~</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+(which makes copying &#x26; pasting easier). You can optionally mark the</span>
+<span class="token inserted">+delimited block for Pandoc to syntax highlight it:</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+~~~python sample.py</span>
+<span class="token inserted">+import time</span>
+<span class="token inserted">+# Quick, count to ten!</span>
+<span class="token inserted">+for i in range(10):</span>
+<span class="token inserted">+    # (but not *too* quick)</span>
+<span class="token inserted">+    time.sleep(0.5)</span>
+<span class="token inserted">+    print i</span>
+<span class="token inserted">+~~~</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### An h3 header ###</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+Now a nested list:</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ 1. First, get these ingredients:</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+      * carrots</span>
+<span class="token inserted">+      * celery</span>
+<span class="token inserted">+      * lentils</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ 2. Boil some water.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ 3. Dump everything in the pot and follow</span>
+<span class="token inserted">+    this algorithm:</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+     ```python[data-file="python"]</span>
+<span class="token inserted">+    find wooden spoon</span>
+<span class="token inserted">+    uncover pot</span>
+<span class="token inserted">+    stir</span>
+<span class="token inserted">+    cover pot</span>
+<span class="token inserted">+    balance wooden spoon precariously on pot handle</span>
+<span class="token inserted">+    wait 10 minutes</span>
+<span class="token inserted">+    goto first step (or shut off burner when done)</span>
+<span class="token inserted">+     ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+    Do not bump wooden spoon or it will fall.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+Notice again how text always lines up on 4-space indents (including</span>
+<span class="token inserted">+that last line which continues item 3 above).</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+Here's a link to [a website](http://foo.bar), and to a [section heading in the current</span>
+<span class="token inserted">+doc](#an-h2-header). Here's a footnote [^1].</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+[^1]: Footnote text goes here.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+Tables can look like this:</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+| Tables        | Are           | Cool  |</span>
+<span class="token inserted">+| ------------- |:-------------:| -----:|</span>
+<span class="token inserted">+| col 3 is      | right-aligned | $1600 |</span>
+<span class="token inserted">+| col 2 is      | centered      |   $12 |</span>
+<span class="token inserted">+| zebra stripes | are neat      |    $1 |</span>
+<span class="token inserted">+A horizontal rule follows.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+:tada:</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+:thinking_face:</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+***</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+## A2 2nd</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+[[toc]]</span>
+<span class="token inserted">+## A2 3rd</span>
+<span class="token inserted">+[[toc]]</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+## A2 2nd</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+[[toc]]</span>
+<span class="token inserted">+## A2 2nd</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+[[toc]]</span>
+<span class="token inserted">+## A2 2nd</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+[[toc]]</span>
+<span class="token inserted">+## A2 2nd</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+[[toc]]</span>
+<span class="token inserted">+## A2 2nd</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+[[toc]]</span>
+<span class="token inserted">+## A2 2nd</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+[[toc]]</span>
+</code></pre></div></p></details></div></div><aside class="slug_aside__1vC-U"><nav class="Toc_toc__nav__2o5GC" role="navigation"><ul class="Toc_toc__3i1gg"></ul></nav></aside></div></main><footer class="Footer_footer__cAlbN"><small>Code snippets licensed under MIT, unless otherwise noted.</small></footer></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"post":{"slug":"2021-04-11-styling-test","title":"Styling Test","categories":["Design"],"ogImage":"https://koka831.github.io/img/icon.png","tags":["Design"],"content":"\u003cdiv class=\"remark-highlight\"\u003e\u003cpre data-file=\"btree.rs\" data-line=\"2\" class=\"language-diff-rust  diff-highlight line-numbers\"\u003e\u003ccode class=\"language-diff-rust\"\u003e\u003cspan class=\"token coord\"\u003e@@ -111,6 +114,9 @@\u003c/span\u003e\n\u003cspan class=\"token unchanged language-rust\"\u003e\u003cspan class=\"token prefix unchanged\"\u003e \u003c/span\u003e        nasty_btree_map\u003cspan class=\"token punctuation\"\u003e.\u003c/span\u003e\u003cspan class=\"token function\"\u003einsert\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003ei\u003cspan class=\"token punctuation\"\u003e,\u003c/span\u003e \u003cspan class=\"token class-name\"\u003eMyLeafNode\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003ei\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e;\u003c/span\u003e\n\u003cspan class=\"token prefix unchanged\"\u003e \u003c/span\u003e    \u003cspan class=\"token punctuation\"\u003e}\u003c/span\u003e\n\u003c/span\u003e\u003cspan class=\"token deleted-sign deleted language-rust\"\u003e\u003cspan class=\"token prefix deleted\"\u003e-\u003c/span\u003e    \u003cspan class=\"token keyword\"\u003elet\u003c/span\u003e \u003cspan class=\"token keyword\"\u003emut\u003c/span\u003e st_btree_map\u003cspan class=\"token punctuation\"\u003e:\u003c/span\u003e \u003cspan class=\"token class-name\"\u003eBtreeMap\u003c/span\u003e\u003cspan class=\"token operator\"\u003e\u0026#x3C;\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e,\u003c/span\u003e \u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token operator\"\u003e\u003e\u003c/span\u003e \u003cspan class=\"token operator\"\u003e=\u003c/span\u003e \u003cspan class=\"token class-name\"\u003eBTreeMap\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e::\u003c/span\u003e\u003cspan class=\"token function\"\u003enew\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e;\u003c/span\u003e\n\u003c/span\u003e\u003cspan class=\"token inserted-sign inserted language-rust\"\u003e\u003cspan class=\"token prefix inserted\"\u003e+\u003c/span\u003e    \u003cspan class=\"token keyword\"\u003elet\u003c/span\u003e \u003cspan class=\"token keyword\"\u003emut\u003c/span\u003e zst_btree_map\u003cspan class=\"token punctuation\"\u003e:\u003c/span\u003e \u003cspan class=\"token class-name\"\u003eBTreeMap\u003c/span\u003e\u003cspan class=\"token operator\"\u003e\u0026#x3C;\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e,\u003c/span\u003e \u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token operator\"\u003e\u003e\u003c/span\u003e \u003cspan class=\"token operator\"\u003e=\u003c/span\u003e \u003cspan class=\"token class-name\"\u003eBTreeMap\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e::\u003c/span\u003e\u003cspan class=\"token function\"\u003enew\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e;\u003c/span\u003e\n\u003cspan class=\"token prefix inserted\"\u003e+\u003c/span\u003e    zst_btree_map\u003cspan class=\"token punctuation\"\u003e.\u003c/span\u003e\u003cspan class=\"token function\"\u003einsert\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e,\u003c/span\u003e \u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e;\u003c/span\u003e\n\u003cspan class=\"token prefix inserted\"\u003e+\u003c/span\u003e\n\u003c/span\u003e\u003cspan class=\"token unchanged language-rust\"\u003e\u003cspan class=\"token prefix unchanged\"\u003e \u003c/span\u003e    \u003cspan class=\"token comment\"\u003e// VecDeque\u003c/span\u003e\n\u003cspan class=\"token prefix unchanged\"\u003e \u003c/span\u003e    \u003cspan class=\"token keyword\"\u003elet\u003c/span\u003e \u003cspan class=\"token keyword\"\u003emut\u003c/span\u003e vec_deque \u003cspan class=\"token operator\"\u003e=\u003c/span\u003e \u003cspan class=\"token class-name\"\u003eVecDeque\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e::\u003c/span\u003e\u003cspan class=\"token function\"\u003enew\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e;\u003c/span\u003e\n\u003cspan class=\"token prefix unchanged\"\u003e \u003c/span\u003e    vec_deque\u003cspan class=\"token punctuation\"\u003e.\u003c/span\u003e\u003cspan class=\"token function\"\u003epush_back\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token number\"\u003e5\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e;\u003c/span\u003e\u003c/span\u003e\u003cspan aria-hidden=\"true\" class=\"line-numbers-rows\"\u003e\u003cspan class=\"\"\u003e\u003c/span\u003e\u003cspan class=\"\"\u003e\u003c/span\u003e\u003cspan class=\"\"\u003e\u003c/span\u003e\u003cspan class=\"\"\u003e\u003c/span\u003e\u003cspan class=\"\"\u003e\u003c/span\u003e\u003cspan class=\"\"\u003e\u003c/span\u003e\u003cspan class=\"\"\u003e\u003c/span\u003e\u003cspan class=\"\"\u003e\u003c/span\u003e\u003cspan class=\"\"\u003e\u003c/span\u003e\u003cspan class=\"\"\u003e\u003c/span\u003e\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003cp\u003e[[warn | my title]]\n| content\n| content2\u003c/p\u003e\n\u003cp\u003eStyling check\u003c/p\u003e\n\u003cp\u003eColor Schemeには\u003ca href=\"https://github.com/morhetz/gruvbox\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003eGruvbox\u003c/a\u003eを利用しています.\u003c/p\u003e\n\u003cp\u003e==highlight==\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eCustom Blocks\u003c/strong\u003e\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003eThis is a blockquote\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003e::: tip\nThis is a tip\n:::\u003c/p\u003e\n\u003cp\u003e::: warning\nThis is a warning\n:::\u003c/p\u003e\n\u003cp\u003e::: danger\nThis is a dangerous warning\n:::\u003c/p\u003e\n\u003ch1 id=\"an-h1-header\"\u003e\u003ca href=\"#an-h1-header\"\u003eAn h1 header\u003c/a\u003e\u003c/h1\u003e\n\u003ch2 id=\"h2\"\u003e\u003ca href=\"#h2\"\u003eh2\u003c/a\u003e\u003c/h2\u003e\n\u003ch3 id=\"h3\"\u003e\u003ca href=\"#h3\"\u003eh3\u003c/a\u003e\u003c/h3\u003e\n\u003ch4 id=\"h4\"\u003e\u003ca href=\"#h4\"\u003eh4\u003c/a\u003e\u003c/h4\u003e\n\u003cp\u003eParagraphs are separated by a blank line.\u003c/p\u003e\n\u003cp\u003e\u003cem\u003eItalic\u003c/em\u003e, \u003cstrong\u003ebold\u003c/strong\u003e, and \u003ccode class=\"language-unknown\"\u003emonospace\u003c/code\u003e. Itemized lists\nlook like:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ethis one\u003c/li\u003e\n\u003cli\u003ethat one\u003c/li\u003e\n\u003cli\u003ethe other one\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eNote that --- not considering the asterisk --- the actual text\ncontent starts at 4-columns in.\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003eBlock quotes are\nwritten like so.\u003cbr\u003e\nThey can span multiple paragraphs,\nif you like.\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003eUse 3 dashes for an em-dash. Use 2 dashes for ranges (ex., \"it's all\nin chapters 12--14\"). Three dots ... will be converted to an ellipsis.\nUnicode is supported. ☺\u003c/p\u003e\n\u003cp\u003eHere's a numbered list:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003efirst item\u003c/li\u003e\n\u003cli\u003esecond item\u003c/li\u003e\n\u003cli\u003ethird item\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eNote again how the actual text starts at 4 columns in (4 characters\nfrom the left side). Here's a code sample:\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-unknown\"\u003e\u003ccode class=\"language-unknown\"\u003e# Let me re-iterate ...\nfor i in 1 .. 10 { do-something(i) }\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003cp\u003eAs you probably guessed, indented 4 spaces. By the way, instead of\nindenting the block, you can use delimited blocks, if you like:\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-python\"\u003e\u003ccode class=\"language-python\"\u003edefine foobar\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e \u003cspan class=\"token punctuation\"\u003e{\u003c/span\u003e\n    \u003cspan class=\"token keyword\"\u003eprint\u003c/span\u003e \u003cspan class=\"token string\"\u003e\"Welcome to flavor country!\"\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e;\u003c/span\u003e\n\u003cspan class=\"token punctuation\"\u003e}\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003cp\u003e(which makes copying \u0026#x26; pasting easier). You can optionally mark the\ndelimited block for Pandoc to syntax highlight it:\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-python\"\u003e\u003ccode class=\"language-python\"\u003e\u003cspan class=\"token keyword\"\u003eimport\u003c/span\u003e time\n\u003cspan class=\"token comment\"\u003e# Quick, count to ten!\u003c/span\u003e\n\u003cspan class=\"token keyword\"\u003efor\u003c/span\u003e i \u003cspan class=\"token keyword\"\u003ein\u003c/span\u003e \u003cspan class=\"token builtin\"\u003erange\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token number\"\u003e10\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e:\u003c/span\u003e\n    \u003cspan class=\"token comment\"\u003e# (but not *too* quick)\u003c/span\u003e\n    time\u003cspan class=\"token punctuation\"\u003e.\u003c/span\u003esleep\u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token number\"\u003e0.5\u003c/span\u003e\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\n    \u003cspan class=\"token keyword\"\u003eprint\u003c/span\u003e i\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3 id=\"an-h3-header\"\u003e\u003ca href=\"#an-h3-header\"\u003eAn h3 header\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003eNow a nested list:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e\n\u003cp\u003eFirst, get these ingredients:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ecarrots\u003c/li\u003e\n\u003cli\u003ecelery\u003c/li\u003e\n\u003cli\u003elentils\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003eBoil some water.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003eDump everything in the pot and follow\nthis algorithm:\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre data-file=\"python\" class=\"language-python\"\u003e\u003ccode class=\"language-python\"\u003efind wooden spoon\nuncover pot\nstir\ncover pot\nbalance wooden spoon precariously on pot handle\nwait \u003cspan class=\"token number\"\u003e10\u003c/span\u003e minutes\ngoto first step \u003cspan class=\"token punctuation\"\u003e(\u003c/span\u003e\u003cspan class=\"token keyword\"\u003eor\u003c/span\u003e shut off burner when done\u003cspan class=\"token punctuation\"\u003e)\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003cp\u003eDo not bump wooden spoon or it will fall.\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eNotice again how text always lines up on 4-space indents (including\nthat last line which continues item 3 above).\u003c/p\u003e\n\u003cp\u003eHere's a link to \u003ca href=\"http://foo.bar\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003ea website\u003c/a\u003e, and to a \u003ca href=\"#an-h2-header\"\u003esection heading in the current\ndoc\u003c/a\u003e. Here's a footnote \u003csup id=\"fnref-1\"\u003e\u003ca href=\"#fn-1\" class=\"footnote-ref\"\u003e1\u003c/a\u003e\u003c/sup\u003e.\u003c/p\u003e\n\u003cp\u003eTables can look like this:\u003c/p\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eTables\u003c/th\u003e\n\u003cth align=\"center\"\u003eAre\u003c/th\u003e\n\u003cth align=\"right\"\u003eCool\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003ecol 3 is\u003c/td\u003e\n\u003ctd align=\"center\"\u003eright-aligned\u003c/td\u003e\n\u003ctd align=\"right\"\u003e$1600\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003ecol 2 is\u003c/td\u003e\n\u003ctd align=\"center\"\u003ecentered\u003c/td\u003e\n\u003ctd align=\"right\"\u003e$12\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003ezebra stripes\u003c/td\u003e\n\u003ctd align=\"center\"\u003eare neat\u003c/td\u003e\n\u003ctd align=\"right\"\u003e$1\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eA horizontal rule follows.\u003c/td\u003e\n\u003ctd align=\"center\"\u003e\u003c/td\u003e\n\u003ctd align=\"right\"\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003e🎉\u003c/p\u003e\n\u003cp\u003e🤔\u003c/p\u003e\n\u003chr\u003e\n\u003ch2 id=\"a2-2nd\"\u003e\u003ca href=\"#a2-2nd\"\u003eA2 2nd\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e[[toc]]\u003c/p\u003e\n\u003ch2 id=\"a2-3rd\"\u003e\u003ca href=\"#a2-3rd\"\u003eA2 3rd\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e[[toc]]\u003c/p\u003e\n\u003ch2 id=\"a2-2nd-1\"\u003e\u003ca href=\"#a2-2nd-1\"\u003eA2 2nd\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e[[toc]]\u003c/p\u003e\n\u003ch2 id=\"a2-2nd-2\"\u003e\u003ca href=\"#a2-2nd-2\"\u003eA2 2nd\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e[[toc]]\u003c/p\u003e\n\u003ch2 id=\"a2-2nd-3\"\u003e\u003ca href=\"#a2-2nd-3\"\u003eA2 2nd\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e[[toc]]\u003c/p\u003e\n\u003ch2 id=\"a2-2nd-4\"\u003e\u003ca href=\"#a2-2nd-4\"\u003eA2 2nd\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e[[toc]]\u003c/p\u003e\n\u003ch2 id=\"a2-2nd-5\"\u003e\u003ca href=\"#a2-2nd-5\"\u003eA2 2nd\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e[[toc]]\u003c/p\u003e\n\u003ch2 id=\"a2-2nd-6\"\u003e\u003ca href=\"#a2-2nd-6\"\u003eA2 2nd\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e[[toc]]\u003c/p\u003e\n\u003cdiv class=\"footnotes\"\u003e\n\u003chr\u003e\n\u003col\u003e\n\u003cli id=\"fn-1\"\u003eFootnote text goes here.\u003ca href=\"#fnref-1\" class=\"footnote-backref\"\u003e↩\u003c/a\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e","description":"Styling Test","commits":[{"title":"fix","date":"  Thu Apr 22 00:55:54 2021","hash":"e3fbaa17","diff":"\u003cdiv class=\"remark-highlight\"\u003e\u003cpre data-file=\"e3fbaa17.patch\" class=\"language-git  language-diff\"\u003e\u003ccode class=\"language-git\"\u003e\u003cspan class=\"token commit-sha1\"\u003ecommit e3fbaa17c115a1c6534cb3bcd8046413e7ec291e\u003c/span\u003e\nAuthor: koka \u0026#x3C;\u003ca href=\"mailto:koka.code@gmail.com\" class=\"token email-link\"\u003ekoka.code@gmail.com\u003c/a\u003e\u003e\nDate:   Thu Apr 22 00:55:54 2021 +0900\n\n  fix\n\ndiff --git a/_posts/2021-04-11-styling-test.md b/_posts/2021-04-11-styling-test.md\nnew file mode 100644\nindex 0000000..bc5d2e1\n\u003cspan class=\"token deleted\"\u003e--- /dev/null\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+++ b/_posts/2021-04-11-styling-test.md\u003c/span\u003e\n\u003cspan class=\"token coord\"\u003e@@ -0,0 +1,188 @@\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+---\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+title: Styling Test\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+date: 2021-04-11\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+categories:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+- Design\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+tags:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+- Design\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+description: Styling Test\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+---\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```diff-rust{1,2}[class=\"diff-highlight\"][class=\"line-numbers\"][data-file=\"btree.rs\"][data-line=\"2\"]\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+@@ -111,6 +114,9 @@\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+         nasty_btree_map.insert(i, MyLeafNode(i));\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+     }\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+-    let mut st_btree_map: BtreeMap\u0026#x3C;(), ()\u003e = BTreeMap::new();\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e++    let mut zst_btree_map: BTreeMap\u0026#x3C;(), ()\u003e = BTreeMap::new();\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e++    zst_btree_map.insert((), ());\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e++\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+     // VecDeque\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+     let mut vec_deque = VecDeque::new();\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+     vec_deque.push_back(5);\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[[warn | my title]]\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+| content\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+| content2\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Styling check\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Color Schemeには[Gruvbox](https://github.com/morhetz/gruvbox)を利用しています.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+==highlight==\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+**Custom Blocks**\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003e This is a blockquote\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+::: tip\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+This is a tip\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+:::\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+::: warning\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+This is a warning\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+:::\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+::: danger\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+This is a dangerous warning\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+:::\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+# An h1 header\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## h2\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### h3\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+#### h4\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Paragraphs are separated by a blank line.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+*Italic*, **bold**, and `monospace`. Itemized lists\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+look like:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+  * this one\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+  * that one\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+  * the other one\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Note that --- not considering the asterisk --- the actual text\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+content starts at 4-columns in.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003e Block quotes are\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003e written like so.  \u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003e They can span multiple paragraphs,\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003e if you like.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., \"it's all\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+in chapters 12--14\"). Three dots ... will be converted to an ellipsis.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Unicode is supported. ☺\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Here's a numbered list:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ 1. first item\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ 2. second item\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ 3. third item\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Note again how the actual text starts at 4 columns in (4 characters\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+from the left side). Here's a code sample:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    # Let me re-iterate ...\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    for i in 1 .. 10 { do-something(i) }\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+As you probably guessed, indented 4 spaces. By the way, instead of\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+indenting the block, you can use delimited blocks, if you like:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+~~~python \u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+define foobar() {\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    print \"Welcome to flavor country!\";\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+}\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+~~~\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+(which makes copying \u0026#x26; pasting easier). You can optionally mark the\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+delimited block for Pandoc to syntax highlight it:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+~~~python sample.py\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+import time\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+# Quick, count to ten!\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+for i in range(10):\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    # (but not *too* quick)\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    time.sleep(0.5)\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    print i\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+~~~\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### An h3 header ###\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Now a nested list:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ 1. First, get these ingredients:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+      * carrots\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+      * celery\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+      * lentils\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ 2. Boil some water.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ 3. Dump everything in the pot and follow\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    this algorithm:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+     ```python[data-file=\"python\"]\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    find wooden spoon\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    uncover pot\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    stir\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    cover pot\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    balance wooden spoon precariously on pot handle\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    wait 10 minutes\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    goto first step (or shut off burner when done)\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+     ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    Do not bump wooden spoon or it will fall.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Notice again how text always lines up on 4-space indents (including\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+that last line which continues item 3 above).\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Here's a link to [a website](http://foo.bar), and to a [section heading in the current\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+doc](#an-h2-header). Here's a footnote [^1].\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[^1]: Footnote text goes here.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Tables can look like this:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+| Tables        | Are           | Cool  |\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+| ------------- |:-------------:| -----:|\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+| col 3 is      | right-aligned | $1600 |\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+| col 2 is      | centered      |   $12 |\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+| zebra stripes | are neat      |    $1 |\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+A horizontal rule follows.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+:tada:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+:thinking_face:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+***\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## A2 2nd\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[[toc]]\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## A2 3rd\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[[toc]]\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## A2 2nd\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[[toc]]\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## A2 2nd\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[[toc]]\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## A2 2nd\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[[toc]]\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## A2 2nd\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[[toc]]\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## A2 2nd\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[[toc]]\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## A2 2nd\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[[toc]]\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e"}],"publishedAt":"Sun Apr 11 2021","updatedAt":"Thu Apr 22 2021"}},"__N_SSG":true},"page":"/archives/[slug]","query":{"slug":"2021-04-11-styling-test"},"buildId":"NktdDRM3u-i3F5OyOIh-g","assetPrefix":"/blog","isFallback":false,"gsp":true}</script><script nomodule="" src="/blog/_next/static/chunks/polyfills-8683bd742a84c1edd48c.js"></script><script src="/blog/_next/static/chunks/webpack-8ee5b8048e17a76f4173.js" async=""></script><script src="/blog/_next/static/chunks/framework-fa084fb9440caadd7405.js" async=""></script><script src="/blog/_next/static/chunks/commons-67afd69f0438b864db32.js" async=""></script><script src="/blog/_next/static/chunks/main-6f040fcbb9831e40a9fd.js" async=""></script><script src="/blog/_next/static/chunks/pages/_app-5f44d4623abad7e89937.js" async=""></script><script src="/blog/_next/static/chunks/148-666076dd1d6135e3d14f.js" async=""></script><script src="/blog/_next/static/chunks/pages/archives/%5Bslug%5D-88d5fadb35297e43b6c3.js" async=""></script><script src="/blog/_next/static/NktdDRM3u-i3F5OyOIh-g/_buildManifest.js" async=""></script><script src="/blog/_next/static/NktdDRM3u-i3F5OyOIh-g/_ssgManifest.js" async=""></script></body></html>

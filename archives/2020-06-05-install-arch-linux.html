@@ -1,0 +1,435 @@
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><meta name="description" content="my log"/><meta name="theme-color" content="#ddd4bb"/><meta property="og:type" content="website"/><meta property="og:url" content="https://koka.dev"/><meta property="og:description" content="my log"/><meta property="og:site_name" content="/var/log/koka"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="/var/log/koka"/><meta name="twitter:site" content="@k_0ka"/><meta name="twitter:description" content="my log"/><link rel="alternate" type="application/rss+xml" href="https://koka831.github.io/feed.xml" title="/var/log/koka RSS2.0"/><title>Install Arch Linux | /var/log/koka</title><meta property="title" content="Install Arch Linux"/><meta property="og:title" content="Install Arch Linux"/><meta property="og:image" content="https://koka831.github.io/img/icon.png"/><meta name="next-head-count" content="17"/><link rel="preload" href="/blog/_next/static/css/e36a84cff8eb786dd838.css" as="style"/><link rel="stylesheet" href="/blog/_next/static/css/e36a84cff8eb786dd838.css" data-n-g=""/><link rel="preload" href="/blog/_next/static/css/254f17c58cfd700a35b7.css" as="style"/><link rel="stylesheet" href="/blog/_next/static/css/254f17c58cfd700a35b7.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/blog/_next/static/chunks/webpack-8ee5b8048e17a76f4173.js" as="script"/><link rel="preload" href="/blog/_next/static/chunks/framework-fa084fb9440caadd7405.js" as="script"/><link rel="preload" href="/blog/_next/static/chunks/commons-67afd69f0438b864db32.js" as="script"/><link rel="preload" href="/blog/_next/static/chunks/main-6f040fcbb9831e40a9fd.js" as="script"/><link rel="preload" href="/blog/_next/static/chunks/pages/_app-5f44d4623abad7e89937.js" as="script"/><link rel="preload" href="/blog/_next/static/chunks/148-666076dd1d6135e3d14f.js" as="script"/><link rel="preload" href="/blog/_next/static/chunks/pages/archives/%5Bslug%5D-88d5fadb35297e43b6c3.js" as="script"/></head><body><div id="__next"><nav class="Header_navigation__container__3D5xg"><div class="Header_navigation__16lxy"><a href="/">/var/log/koka</a></div><div><a href="/archives">archive</a></div></nav><main class="Layout_container__QVNsN"><div class="slug_container__2Nysm"><div class="slug_main__1TLKU"><article class="slug_article__3n4cv" role="article"><header itemscope="" class="ArticleHeader_header__container__AO3KC"><h1 class="ArticleHeader_post__title__2ujta">Install Arch Linux</h1><div class="ArticleHeader_flex__36wQ5"><div><div class="ArticleHeader_post__tags__18geI"><p class="Tag_tag__FntIt">Linux</p></div></div><div class="ArticleHeader_post__dates__s80K2"><time dateTime="Fri Jun 05 2020" itemProp="datePublished" class="PublishDate_post__date__2Kcmg">published: <!-- -->Fri Jun 05 2020</time><time dateTime="Thu Apr 22 2021" itemProp="datePublished" class="PublishDate_post__date__2Kcmg">updated: Thu Apr 22 2021</time></div></div></header><div><h2 id="0-partition-table"><a href="#0-partition-table">0. Partition Table</a></h2>
+<p>インストール先のディスク名を調べる.</p>
+<div class="remark-highlight"><pre data-file="terminal" class="language-shell-session"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">$</span><span class="token bash language-bash"><span class="token function">fdisk</span> -l</span></span>
+<span class="token output">bar</span>
+</code></pre></div>
+<p>[[info | custom container]]
+| content
+| bar</p>
+<p>multi line</p>
+<h2 id="1-reset-partition"><a href="#1-reset-partition">1. Reset Partition</a></h2>
+<ul>
+<li>cgdisk/sgdiskを使う
+<ul>
+<li>cgdiskがcursesベースなので使いやすい</li>
+</ul>
+</li>
+</ul>
+<div class="remark-highlight"><pre class="language-shell-session"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">$</span><span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token variable">$EDITOR</span></span></span>
+<span class="token output">vim</span>
+<span class="token output"></span><span class="token command"><span class="token shell-symbol important">$</span><span class="token bash language-bash"><span class="token function">git</span> checkout master</span></span>
+<span class="token output">Switched to branch 'master'</span>
+<span class="token output">Your branch is up-to-date with 'origin/master'</span>
+<span class="token output"></span><span class="token command"><span class="token shell-symbol important">#</span><span class="token bash language-bash">foo</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span><span class="token bash language-bash"><span class="token function">git</span> push</span></span>
+<span class="token output">Everything up-to-date</span>
+<span class="token output">[sudo] password for koka:</span>
+<span class="token output"></span><span class="token command"><span class="token shell-symbol important">$</span><span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'All</span>
+<span class="token string">> done!'</span></span></span>
+<span class="token output">All</span>
+<span class="token output">done!</span>
+<span class="token output"></span><span class="token command"><span class="token shell-symbol important">$</span><span class="token bash language-bash">cgdisk /dev/nvme0n1</span></span>
+</code></pre></div>
+<div class="remark-highlight"><pre class="language-shell-session"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">ls</span> -la</span></span>
+</code></pre></div>
+<p>最低限必要なpartitionは以下の3つ.</p>
+<ul>
+<li>/boot/efi: EFI</li>
+<li>/boot    : Linux FS</li>
+<li>/ (root) : Linux FS</li>
+</ul>
+<p>ブートセクタの開始領域がEFIになっている必要があるので、上から順に設定していく.
+/boot/efiが/bootに入れ子になっているが, mount時に調整する.</p>
+<h3 id="efi-partition"><a href="#efi-partition">EFI partition</a></h3>
+<ul>
+<li>/boot/efi partition
+<ul>
+<li>First Sector: Enter(default)</li>
+<li>Size in sectors: 512M</li>
+<li>Hex code or GUID: ef00</li>
+<li>Enter new partition name: EFI System</li>
+</ul>
+</li>
+</ul>
+<h3 id="boot-partition"><a href="#boot-partition">boot partition</a></h3>
+<ul>
+<li>/boot
+<ul>
+<li>First Sector: Enter(default)</li>
+<li>Size: 512M</li>
+<li>Hex: 8300</li>
+<li>Enter new partition name: Linux filesystem</li>
+</ul>
+</li>
+</ul>
+<h3 id="root-partition"><a href="#root-partition">root partition</a></h3>
+<ul>
+<li>/
+<ul>
+<li>First Sector: Enter(default)</li>
+<li>Size: Enter(default=max)</li>
+<li>Hex: 8300</li>
+<li>Enter new partition name: Linux filesystem</li>
+</ul>
+</li>
+</ul>
+<h3 id="result-of-partitioning"><a href="#result-of-partitioning">Result of partitioning</a></h3>
+<ul>
+<li>512G SSDを対象に行うと以下のようになる.</li>
+</ul>
+<div class="remark-highlight"><pre class="language-sh"><code class="language-sh">$ fdisk -l
+Device          Start   End             Sectors Size    Type
+/dev/nvme0n1p1  2048    1050623         1048576 512M    Efi system
+/dev/nvme0n1p2 1050624  2099199         1048576 512M    Linux filesystem
+/dev/nvme0n1p3  2099200 1000215182    998115983 476G    Linux filesystem</code></pre></div>
+<h2 id="2-disk-format"><a href="#2-disk-format">2. Disk Format</a></h2>
+<p>mkfsを用いて各partitionをフォーマットする.<br>
+efi領域はFAT32指定、その他Linux filesystemの領域はext4等好みのファイルシステムを用いる.</p>
+<div class="remark-highlight"><pre class="language-sh"><code class="language-sh">mkfs.fat -F32 /dev/nvme0n1p1
+mkfs.ext4 /dev/nvme0n1p2
+mkfs.ext4 /dev/nvme0n1p3</code></pre></div>
+<h2 id="3-mount-volume"><a href="#3-mount-volume">3. Mount Volume</a></h2>
+<p>1, 2で作成したpartitionをboot USBからアクセスできるようにマウントする.
+1.で行ったパーティショニングとマウントの順番が異なるので注意(1敗).</p>
+<div class="remark-highlight"><pre class="language-shell-session"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">#</span> <span class="token bash language-bash">/root</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">mount</span> /dev/nvme0n1p3 /mnt</span></span>
+
+<span class="token command"><span class="token shell-symbol important">#</span> <span class="token bash language-bash">/boot</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">mkdir</span> /mnt/boot</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">mount</span> /dev/nvme0n1p2 /mnt/boot</span></span>
+
+<span class="token command"><span class="token shell-symbol important">#</span> <span class="token bash language-bash">/boot/efi</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">mkdir</span> /mnt/boot/efi</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">mount</span> /dev/nvme0n1p1 /mnt/boot/efi</span></span>
+</code></pre></div>
+<h2 id="4-install-linux-system"><a href="#4-install-linux-system">4. Install Linux system</a></h2>
+<h3 id="setup-repository-mirror"><a href="#setup-repository-mirror">Setup repository mirror</a></h3>
+<p><code class="language-unknown">/etc/pacman.d/mirrorlist</code>を編集し現在位置から距離の近いミラーを一番上にもってくる.</p>
+<div class="remark-highlight"><pre class="language-shell-session"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">vim</span> /etc/pacman.d/mirrorlist</span></span>
+<span class="token command"><span class="token shell-symbol important">#</span> <span class="token bash language-bash">use mirror <span class="token keyword">in</span> Japan</span></span>
+</code></pre></div>
+<h3 id="install-base-system"><a href="#install-base-system">Install base system</a></h3>
+<p>マウントした<code class="language-unknown">/root</code>に対してLinuxやその後の作業に必要な諸々をインストールする.
+後述する5.1でマウント領域に<code class="language-unknown">chroot</code>したあとはboot USB内のデフォルトツール類が使えなくなるので, エディタはここでインストールしておく.</p>
+<div class="remark-highlight"><pre class="language-shell-session"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">#</span> <span class="token bash language-bash">linux base system</span></span>
+<span class="token output">pacstrap /mnt base linux linux-firmware</span>
+<span class="token output"></span><span class="token command"><span class="token shell-symbol important">#</span> <span class="token bash language-bash"><span class="token keyword">for</span> wifi</span></span>
+<span class="token output">pacstrap /mnt base-devel grub efibootmgr dosfstools netctl iw wpa_supplicant networkmanager dialog vim</span>
+</code></pre></div>
+<h3 id="generate-fstab-file"><a href="#generate-fstab-file">generate fstab file</a></h3>
+<div class="remark-highlight"><pre class="language-sh"><code class="language-sh">genfstab -U /mnt &#x26;gt;&#x26;gt; /mnt/etc/fstab</code></pre></div>
+<h3 id="check-filesystem"><a href="#check-filesystem">check filesystem</a></h3>
+<div class="remark-highlight"><pre class="language-shell-session"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">cat</span> /mnt/etc/fstab</span></span>
+<span class="token output">/dev/nvme0n1p3 /         ext4 rw,relatime 0 1</span>
+<span class="token output">/dev/nvme0n1p2 /boot     ext4 rw,relatime 0 2</span>
+<span class="token output">/dev/nvme0n1p1 /boot/efi vfat rw,relatime,fmask=0022,codepage=... 0 2</span>
+</code></pre></div>
+<h2 id="5-enter-arch"><a href="#5-enter-arch">5 enter arch!</a></h2>
+<div class="remark-highlight"><pre class="language-shell-session"><code class="language-shell-session"><span class="token output">arch-chroot /mnt /bin/bash</span>
+</code></pre></div>
+<h3 id="setup-localetimezone"><a href="#setup-localetimezone">Setup locale/timezone</a></h3>
+<div class="remark-highlight"><pre class="language-shell-session"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">#</span> <span class="token bash language-bash">locale</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">vim</span> /etc/locale.gen</span></span>
+<span class="token command"><span class="token shell-symbol important">#</span> <span class="token bash language-bash">uncomment en_US.UTF-8 and ja_JP.UTF-8</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">locale-gen</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"LANG=en_US.UTF-8"</span> <span class="token operator">></span> /etc/locale.conf</span></span>
+
+<span class="token command"><span class="token shell-symbol important">#</span> <span class="token bash language-bash">timezone</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">tzselect <span class="token number">4</span>, <span class="token number">19</span>, <span class="token number">1</span></span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">hwclock --systohc --utc</span></span>
+</code></pre></div>
+<h3 id="setup-bootloader"><a href="#setup-bootloader">Setup bootloader</a></h3>
+<p>bootloaderの作成.</p>
+<div class="remark-highlight"><pre class="language-shell-session"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">mkinitcpio -p linux</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">grub-install --target<span class="token operator">=</span>x86_64-efi --efi-directory<span class="token operator">=</span>/boot/efi --bootloader-id<span class="token operator">=</span>arch --boot-directory<span class="token operator">=</span>/boot/efi/EFI --recheck</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">grub-mkconfig</span> -o /boot/efi/EFI/grub/grub.cfg</span></span>
+</code></pre></div>
+<h3 id="change-root-password--add-user"><a href="#change-root-password--add-user">Change Root password &#x26; add User</a></h3>
+<p>5.4にてリブートする前にユーザを作成しておく(1敗).</p>
+<div class="remark-highlight"><pre class="language-shell-session"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">passwd</span></span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">useradd</span> -m -g <span class="token function">users</span> -G wheel -s /bin/bash koka</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">passwd</span> koka</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">visudo <span class="token comment"># and uncomment %Wheel all=(all) all</span></span></span>
+</code></pre></div>
+<h3 id="reboot--eject-usb"><a href="#reboot--eject-usb">Reboot &#x26; eject USB</a></h3>
+<p>シャットダウンしてbootUSBを取り外し再起動する</p>
+<h2 id="6-setup-arch-linux"><a href="#6-setup-arch-linux">6. Setup Arch Linux</a></h2>
+<h3 id="network"><a href="#network">network</a></h3>
+<p>wifiの設定.
+<code class="language-unknown">nmtui</code>が好きなのでNetworkManagerを用いた.
+セットアップ後の開発において<code class="language-unknown">systemd-nspawn</code>を使う場合, ネットワークアダプタは<code class="language-unknown">systemd-networkd</code>なのでそっちの場合は<code class="language-unknown">systemd</code>に統一しといたほうが後々楽.</p>
+<div class="remark-highlight"><pre class="language-shell-session"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">systemctl start NetworkManager</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">systemctl <span class="token builtin class-name">enable</span> NetworkManager</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">nmtui</span></span>
+</code></pre></div>
+<h3 id="setup-x-window-system"><a href="#setup-x-window-system">Setup X Window System</a></h3>
+<p><a href="https://wiki.archlinux.jp/index.php/Xorg" target="_blank" rel="nofollow noopener noreferrer">ref</a>
+CUIからGUIへ.</p>
+<div class="remark-highlight"><pre class="language-shell-session"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">lspci <span class="token operator">|</span> <span class="token function">grep</span> -e VGA -e 3D</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token comment"># XとDMとしてlight DM(とログイン画面)をインストール</span></span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">pacman -S xf86-video-intel xorg-server xorg-xrdb lightdm lightdm-gtk-greeter</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token comment"># terminal emulatorも入ってないので何かしらいれとく(1敗)</span></span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">pacman -S rxvt-unicode</span></span>
+
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">systemctl <span class="token builtin class-name">enable</span> lightdm</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token comment"># WMをインストール</span></span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">pacman -S i3-gaps i3status dmenu</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token comment"># tlp/バッテリ最適化モジュール</span></span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">pacman -S tlp</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token comment"># フォント</span></span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token comment"># ブラウザやアプリはデフォだとシステム設定のフォント読まずに表示が汚くなるので、</span></span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token comment"># デフォ指定に含まれているttf-dejavuを入れとく(Ubuntuのデフォフォント).</span></span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">pacman -S ttf-fira-code oft-ipamjfont ttf-dejavu</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">pacman -S xorg-xbacklight <span class="token comment"># 画面の明るさ</span></span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">pacman -S pulseaudio-alsa alsa-utils alsa-plugins <span class="token comment"># 音量</span></span></span>
+</code></pre></div></div></article><div class="CommitLogs_commit_logs__2xJyI" role="log"><h2>Commits</h2><details><summary><span class="CommitLogs_commit__date__Vg5RN">  Thu Apr 22 00:55:54 2021</span><span class="CommitLogs_commit__hash__2k3a3">e3fbaa17</span><span class="CommitLogs_commit__message__nS85e">fix</span></summary><p><div class="remark-highlight"><pre data-file="e3fbaa17.patch" class="language-git  language-diff"><code class="language-git"><span class="token commit-sha1">commit e3fbaa17c115a1c6534cb3bcd8046413e7ec291e</span>
+Author: koka &#x3C;<a href="mailto:koka.code@gmail.com" class="token email-link">koka.code@gmail.com</a>>
+Date:   Thu Apr 22 00:55:54 2021 +0900
+
+  fix
+
+diff --git a/_posts/2020-06-05-install-arch-linux.md b/_posts/2020-06-05-install-arch-linux.md
+new file mode 100644
+index 0000000..0bff7c6
+<span class="token deleted">--- /dev/null</span>
+<span class="token inserted">+++ b/_posts/2020-06-05-install-arch-linux.md</span>
+<span class="token coord">@@ -0,0 +1,238 @@</span>
+<span class="token inserted">+---</span>
+<span class="token inserted">+title: 'Install Arch Linux'</span>
+<span class="token inserted">+date: 2020-06-05</span>
+<span class="token inserted">+categories:</span>
+<span class="token inserted">+- Diary</span>
+<span class="token inserted">+tags:</span>
+<span class="token inserted">+- Linux</span>
+<span class="token inserted">+description: log</span>
+<span class="token inserted">+---</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+## 0. Partition Table</span>
+<span class="token inserted">+インストール先のディスク名を調べる.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session[data-file="terminal"]</span>
+<span class="token inserted">+$fdisk -l</span>
+<span class="token inserted">+bar</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+[[info | custom container]]</span>
+<span class="token inserted">+| content</span>
+<span class="token inserted">+| bar</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+multi line</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+## 1. Reset Partition</span>
+<span class="token inserted">+- cgdisk/sgdiskを使う</span>
+<span class="token inserted">+    - cgdiskがcursesベースなので使いやすい</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session</span>
+<span class="token inserted">+$echo $EDITOR</span>
+<span class="token inserted">+vim</span>
+<span class="token inserted">+$git checkout master</span>
+<span class="token inserted">+Switched to branch 'master'</span>
+<span class="token inserted">+Your branch is up-to-date with 'origin/master'</span>
+<span class="token inserted">+#foo</span>
+<span class="token inserted">+$git push</span>
+<span class="token inserted">+Everything up-to-date</span>
+<span class="token inserted">+[sudo] password for koka:</span>
+<span class="token inserted">+$echo 'All</span>
+<span class="token inserted">+> done!'</span>
+<span class="token inserted">+All</span>
+<span class="token inserted">+done!</span>
+<span class="token inserted">+$cgdisk /dev/nvme0n1</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session</span>
+<span class="token inserted">+$ ls -la</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+最低限必要なpartitionは以下の3つ. </span>
+<span class="token inserted">+</span>
+<span class="token inserted">+- /boot/efi: EFI</span>
+<span class="token inserted">+- /boot    : Linux FS</span>
+<span class="token inserted">+- / (root) : Linux FS</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ブートセクタの開始領域がEFIになっている必要があるので、上から順に設定していく.</span>
+<span class="token inserted">+/boot/efiが/bootに入れ子になっているが, mount時に調整する.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### EFI partition</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+- /boot/efi partition</span>
+<span class="token inserted">+    - First Sector: Enter(default)</span>
+<span class="token inserted">+    - Size in sectors: 512M</span>
+<span class="token inserted">+    - Hex code or GUID: ef00</span>
+<span class="token inserted">+    - Enter new partition name: EFI System</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### boot partition</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+- /boot</span>
+<span class="token inserted">+    - First Sector: Enter(default)</span>
+<span class="token inserted">+    - Size: 512M</span>
+<span class="token inserted">+    - Hex: 8300</span>
+<span class="token inserted">+    - Enter new partition name: Linux filesystem</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### root partition</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+- /</span>
+<span class="token inserted">+    - First Sector: Enter(default)</span>
+<span class="token inserted">+    - Size: Enter(default=max)</span>
+<span class="token inserted">+    - Hex: 8300</span>
+<span class="token inserted">+    - Enter new partition name: Linux filesystem</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### Result of partitioning</span>
+<span class="token inserted">+- 512G SSDを対象に行うと以下のようになる.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```sh</span>
+<span class="token inserted">+$ fdisk -l</span>
+<span class="token inserted">+Device          Start   End             Sectors Size    Type</span>
+<span class="token inserted">+/dev/nvme0n1p1  2048    1050623         1048576 512M    Efi system</span>
+<span class="token inserted">+/dev/nvme0n1p2 1050624  2099199         1048576 512M    Linux filesystem</span>
+<span class="token inserted">+/dev/nvme0n1p3  2099200 1000215182    998115983 476G    Linux filesystem</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+## 2. Disk Format</span>
+<span class="token inserted">+mkfsを用いて各partitionをフォーマットする.  </span>
+<span class="token inserted">+efi領域はFAT32指定、その他Linux filesystemの領域はext4等好みのファイルシステムを用いる.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```sh</span>
+<span class="token inserted">+mkfs.fat -F32 /dev/nvme0n1p1</span>
+<span class="token inserted">+mkfs.ext4 /dev/nvme0n1p2</span>
+<span class="token inserted">+mkfs.ext4 /dev/nvme0n1p3</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+## 3. Mount Volume</span>
+<span class="token inserted">+1, 2で作成したpartitionをboot USBからアクセスできるようにマウントする.</span>
+<span class="token inserted">+1.で行ったパーティショニングとマウントの順番が異なるので注意(1敗).</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session</span>
+<span class="token inserted">+# /root</span>
+<span class="token inserted">+$ mount /dev/nvme0n1p3 /mnt</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+# /boot</span>
+<span class="token inserted">+$ mkdir /mnt/boot</span>
+<span class="token inserted">+$ mount /dev/nvme0n1p2 /mnt/boot</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+# /boot/efi</span>
+<span class="token inserted">+$ mkdir /mnt/boot/efi</span>
+<span class="token inserted">+$ mount /dev/nvme0n1p1 /mnt/boot/efi</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+## 4. Install Linux system</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### Setup repository mirror</span>
+<span class="token inserted">+`/etc/pacman.d/mirrorlist`を編集し現在位置から距離の近いミラーを一番上にもってくる.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session</span>
+<span class="token inserted">+$ vim /etc/pacman.d/mirrorlist</span>
+<span class="token inserted">+# use mirror in Japan</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### Install base system</span>
+<span class="token inserted">+マウントした`/root`に対してLinuxやその後の作業に必要な諸々をインストールする.</span>
+<span class="token inserted">+後述する5.1でマウント領域に`chroot`したあとはboot USB内のデフォルトツール類が使えなくなるので, エディタはここでインストールしておく.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session</span>
+<span class="token inserted">+# linux base system</span>
+<span class="token inserted">+pacstrap /mnt base linux linux-firmware</span>
+<span class="token inserted">+# for wifi</span>
+<span class="token inserted">+pacstrap /mnt base-devel grub efibootmgr dosfstools netctl iw wpa_supplicant networkmanager dialog vim</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### generate fstab file</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```sh</span>
+<span class="token inserted">+genfstab -U /mnt >> /mnt/etc/fstab</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### check filesystem</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session</span>
+<span class="token inserted">+$ cat /mnt/etc/fstab</span>
+<span class="token inserted">+/dev/nvme0n1p3 /         ext4 rw,relatime 0 1</span>
+<span class="token inserted">+/dev/nvme0n1p2 /boot     ext4 rw,relatime 0 2</span>
+<span class="token inserted">+/dev/nvme0n1p1 /boot/efi vfat rw,relatime,fmask=0022,codepage=... 0 2</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+## 5 enter arch!</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session</span>
+<span class="token inserted">+arch-chroot /mnt /bin/bash</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### Setup locale/timezone</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session</span>
+<span class="token inserted">+# locale</span>
+<span class="token inserted">+$ vim /etc/locale.gen</span>
+<span class="token inserted">+# uncomment en_US.UTF-8 and ja_JP.UTF-8</span>
+<span class="token inserted">+$ locale-gen</span>
+<span class="token inserted">+$ echo "LANG=en_US.UTF-8" > /etc/locale.conf</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+# timezone</span>
+<span class="token inserted">+$ tzselect 4, 19, 1</span>
+<span class="token inserted">+$ hwclock --systohc --utc</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### Setup bootloader</span>
+<span class="token inserted">+bootloaderの作成.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session</span>
+<span class="token inserted">+$ mkinitcpio -p linux</span>
+<span class="token inserted">+$ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch --boot-directory=/boot/efi/EFI --recheck</span>
+<span class="token inserted">+$ grub-mkconfig -o /boot/efi/EFI/grub/grub.cfg</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### Change Root password &#x26; add User</span>
+<span class="token inserted">+5.4にてリブートする前にユーザを作成しておく(1敗).</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session</span>
+<span class="token inserted">+$ passwd</span>
+<span class="token inserted">+$ useradd -m -g users -G wheel -s /bin/bash koka</span>
+<span class="token inserted">+$ passwd koka</span>
+<span class="token inserted">+$ visudo # and uncomment %Wheel all=(all) all</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+### Reboot &#x26; eject USB</span>
+<span class="token inserted">+シャットダウンしてbootUSBを取り外し再起動する</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+## 6. Setup Arch Linux</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### network</span>
+<span class="token inserted">+wifiの設定.</span>
+<span class="token inserted">+`nmtui`が好きなのでNetworkManagerを用いた.</span>
+<span class="token inserted">+セットアップ後の開発において`systemd-nspawn`を使う場合, ネットワークアダプタは`systemd-networkd`なのでそっちの場合は`systemd`に統一しといたほうが後々楽.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session</span>
+<span class="token inserted">+$ systemctl start NetworkManager</span>
+<span class="token inserted">+$ systemctl enable NetworkManager</span>
+<span class="token inserted">+$ nmtui</span>
+<span class="token inserted">+ ```</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+### Setup X Window System</span>
+<span class="token inserted">+[ref](https://wiki.archlinux.jp/index.php/Xorg)</span>
+<span class="token inserted">+CUIからGUIへ.</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+ ```shell-session</span>
+<span class="token inserted">+$ lspci | grep -e VGA -e 3D</span>
+<span class="token inserted">+$ # XとDMとしてlight DM(とログイン画面)をインストール</span>
+<span class="token inserted">+$ pacman -S xf86-video-intel xorg-server xorg-xrdb lightdm lightdm-gtk-greeter</span>
+<span class="token inserted">+$ # terminal emulatorも入ってないので何かしらいれとく(1敗)</span>
+<span class="token inserted">+$ pacman -S rxvt-unicode</span>
+<span class="token inserted">+</span>
+<span class="token inserted">+$ systemctl enable lightdm</span>
+<span class="token inserted">+$ # WMをインストール</span>
+<span class="token inserted">+$ pacman -S i3-gaps i3status dmenu</span>
+<span class="token inserted">+$ # tlp/バッテリ最適化モジュール</span>
+<span class="token inserted">+$ pacman -S tlp</span>
+<span class="token inserted">+$ # フォント</span>
+<span class="token inserted">+$ # ブラウザやアプリはデフォだとシステム設定のフォント読まずに表示が汚くなるので、</span>
+<span class="token inserted">+$ # デフォ指定に含まれているttf-dejavuを入れとく(Ubuntuのデフォフォント).</span>
+<span class="token inserted">+$ pacman -S ttf-fira-code oft-ipamjfont ttf-dejavu</span>
+<span class="token inserted">+$ pacman -S xorg-xbacklight # 画面の明るさ</span>
+<span class="token inserted">+$ pacman -S pulseaudio-alsa alsa-utils alsa-plugins # 音量</span>
+<span class="token inserted">+ ```</span>
+</code></pre></div></p></details></div></div><aside class="slug_aside__1vC-U"><nav class="Toc_toc__nav__2o5GC" role="navigation"><ul class="Toc_toc__3i1gg"></ul></nav></aside></div></main><footer class="Footer_footer__cAlbN"><small>Code snippets licensed under MIT, unless otherwise noted.</small></footer></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"post":{"slug":"2020-06-05-install-arch-linux","title":"Install Arch Linux","categories":["Diary"],"ogImage":"https://koka831.github.io/img/icon.png","tags":["Linux"],"content":"\u003ch2 id=\"0-partition-table\"\u003e\u003ca href=\"#0-partition-table\"\u003e0. Partition Table\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003eインストール先のディスク名を調べる.\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre data-file=\"terminal\" class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e\u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003efdisk\u003c/span\u003e -l\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token output\"\u003ebar\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003cp\u003e[[info | custom container]]\n| content\n| bar\u003c/p\u003e\n\u003cp\u003emulti line\u003c/p\u003e\n\u003ch2 id=\"1-reset-partition\"\u003e\u003ca href=\"#1-reset-partition\"\u003e1. Reset Partition\u003c/a\u003e\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003ecgdisk/sgdiskを使う\n\u003cul\u003e\n\u003cli\u003ecgdiskがcursesベースなので使いやすい\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e\u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token builtin class-name\"\u003eecho\u003c/span\u003e \u003cspan class=\"token variable\"\u003e$EDITOR\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token output\"\u003evim\u003c/span\u003e\n\u003cspan class=\"token output\"\u003e\u003c/span\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e\u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003egit\u003c/span\u003e checkout master\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token output\"\u003eSwitched to branch 'master'\u003c/span\u003e\n\u003cspan class=\"token output\"\u003eYour branch is up-to-date with 'origin/master'\u003c/span\u003e\n\u003cspan class=\"token output\"\u003e\u003c/span\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e#\u003c/span\u003e\u003cspan class=\"token bash language-bash\"\u003efoo\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e\u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003egit\u003c/span\u003e push\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token output\"\u003eEverything up-to-date\u003c/span\u003e\n\u003cspan class=\"token output\"\u003e[sudo] password for koka:\u003c/span\u003e\n\u003cspan class=\"token output\"\u003e\u003c/span\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e\u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token builtin class-name\"\u003eecho\u003c/span\u003e \u003cspan class=\"token string\"\u003e'All\u003c/span\u003e\n\u003cspan class=\"token string\"\u003e\u003e done!'\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token output\"\u003eAll\u003c/span\u003e\n\u003cspan class=\"token output\"\u003edone!\u003c/span\u003e\n\u003cspan class=\"token output\"\u003e\u003c/span\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e\u003cspan class=\"token bash language-bash\"\u003ecgdisk /dev/nvme0n1\u003c/span\u003e\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003els\u003c/span\u003e -la\u003c/span\u003e\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003cp\u003e最低限必要なpartitionは以下の3つ.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e/boot/efi: EFI\u003c/li\u003e\n\u003cli\u003e/boot    : Linux FS\u003c/li\u003e\n\u003cli\u003e/ (root) : Linux FS\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eブートセクタの開始領域がEFIになっている必要があるので、上から順に設定していく.\n/boot/efiが/bootに入れ子になっているが, mount時に調整する.\u003c/p\u003e\n\u003ch3 id=\"efi-partition\"\u003e\u003ca href=\"#efi-partition\"\u003eEFI partition\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e/boot/efi partition\n\u003cul\u003e\n\u003cli\u003eFirst Sector: Enter(default)\u003c/li\u003e\n\u003cli\u003eSize in sectors: 512M\u003c/li\u003e\n\u003cli\u003eHex code or GUID: ef00\u003c/li\u003e\n\u003cli\u003eEnter new partition name: EFI System\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"boot-partition\"\u003e\u003ca href=\"#boot-partition\"\u003eboot partition\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e/boot\n\u003cul\u003e\n\u003cli\u003eFirst Sector: Enter(default)\u003c/li\u003e\n\u003cli\u003eSize: 512M\u003c/li\u003e\n\u003cli\u003eHex: 8300\u003c/li\u003e\n\u003cli\u003eEnter new partition name: Linux filesystem\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"root-partition\"\u003e\u003ca href=\"#root-partition\"\u003eroot partition\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e/\n\u003cul\u003e\n\u003cli\u003eFirst Sector: Enter(default)\u003c/li\u003e\n\u003cli\u003eSize: Enter(default=max)\u003c/li\u003e\n\u003cli\u003eHex: 8300\u003c/li\u003e\n\u003cli\u003eEnter new partition name: Linux filesystem\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"result-of-partitioning\"\u003e\u003ca href=\"#result-of-partitioning\"\u003eResult of partitioning\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e512G SSDを対象に行うと以下のようになる.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-sh\"\u003e\u003ccode class=\"language-sh\"\u003e$ fdisk -l\nDevice          Start   End             Sectors Size    Type\n/dev/nvme0n1p1  2048    1050623         1048576 512M    Efi system\n/dev/nvme0n1p2 1050624  2099199         1048576 512M    Linux filesystem\n/dev/nvme0n1p3  2099200 1000215182    998115983 476G    Linux filesystem\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch2 id=\"2-disk-format\"\u003e\u003ca href=\"#2-disk-format\"\u003e2. Disk Format\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003emkfsを用いて各partitionをフォーマットする.\u003cbr\u003e\nefi領域はFAT32指定、その他Linux filesystemの領域はext4等好みのファイルシステムを用いる.\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-sh\"\u003e\u003ccode class=\"language-sh\"\u003emkfs.fat -F32 /dev/nvme0n1p1\nmkfs.ext4 /dev/nvme0n1p2\nmkfs.ext4 /dev/nvme0n1p3\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch2 id=\"3-mount-volume\"\u003e\u003ca href=\"#3-mount-volume\"\u003e3. Mount Volume\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e1, 2で作成したpartitionをboot USBからアクセスできるようにマウントする.\n1.で行ったパーティショニングとマウントの順番が異なるので注意(1敗).\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e#\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e/root\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003emount\u003c/span\u003e /dev/nvme0n1p3 /mnt\u003c/span\u003e\u003c/span\u003e\n\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e#\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e/boot\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003emkdir\u003c/span\u003e /mnt/boot\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003emount\u003c/span\u003e /dev/nvme0n1p2 /mnt/boot\u003c/span\u003e\u003c/span\u003e\n\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e#\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e/boot/efi\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003emkdir\u003c/span\u003e /mnt/boot/efi\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003emount\u003c/span\u003e /dev/nvme0n1p1 /mnt/boot/efi\u003c/span\u003e\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch2 id=\"4-install-linux-system\"\u003e\u003ca href=\"#4-install-linux-system\"\u003e4. Install Linux system\u003c/a\u003e\u003c/h2\u003e\n\u003ch3 id=\"setup-repository-mirror\"\u003e\u003ca href=\"#setup-repository-mirror\"\u003eSetup repository mirror\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e\u003ccode class=\"language-unknown\"\u003e/etc/pacman.d/mirrorlist\u003c/code\u003eを編集し現在位置から距離の近いミラーを一番上にもってくる.\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003evim\u003c/span\u003e /etc/pacman.d/mirrorlist\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e#\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003euse mirror \u003cspan class=\"token keyword\"\u003ein\u003c/span\u003e Japan\u003c/span\u003e\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3 id=\"install-base-system\"\u003e\u003ca href=\"#install-base-system\"\u003eInstall base system\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003eマウントした\u003ccode class=\"language-unknown\"\u003e/root\u003c/code\u003eに対してLinuxやその後の作業に必要な諸々をインストールする.\n後述する5.1でマウント領域に\u003ccode class=\"language-unknown\"\u003echroot\u003c/code\u003eしたあとはboot USB内のデフォルトツール類が使えなくなるので, エディタはここでインストールしておく.\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e#\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003elinux base system\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token output\"\u003epacstrap /mnt base linux linux-firmware\u003c/span\u003e\n\u003cspan class=\"token output\"\u003e\u003c/span\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e#\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token keyword\"\u003efor\u003c/span\u003e wifi\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token output\"\u003epacstrap /mnt base-devel grub efibootmgr dosfstools netctl iw wpa_supplicant networkmanager dialog vim\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3 id=\"generate-fstab-file\"\u003e\u003ca href=\"#generate-fstab-file\"\u003egenerate fstab file\u003c/a\u003e\u003c/h3\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-sh\"\u003e\u003ccode class=\"language-sh\"\u003egenfstab -U /mnt \u0026#x26;gt;\u0026#x26;gt; /mnt/etc/fstab\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3 id=\"check-filesystem\"\u003e\u003ca href=\"#check-filesystem\"\u003echeck filesystem\u003c/a\u003e\u003c/h3\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003ecat\u003c/span\u003e /mnt/etc/fstab\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token output\"\u003e/dev/nvme0n1p3 /         ext4 rw,relatime 0 1\u003c/span\u003e\n\u003cspan class=\"token output\"\u003e/dev/nvme0n1p2 /boot     ext4 rw,relatime 0 2\u003c/span\u003e\n\u003cspan class=\"token output\"\u003e/dev/nvme0n1p1 /boot/efi vfat rw,relatime,fmask=0022,codepage=... 0 2\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch2 id=\"5-enter-arch\"\u003e\u003ca href=\"#5-enter-arch\"\u003e5 enter arch!\u003c/a\u003e\u003c/h2\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token output\"\u003earch-chroot /mnt /bin/bash\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3 id=\"setup-localetimezone\"\u003e\u003ca href=\"#setup-localetimezone\"\u003eSetup locale/timezone\u003c/a\u003e\u003c/h3\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e#\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003elocale\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003evim\u003c/span\u003e /etc/locale.gen\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e#\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003euncomment en_US.UTF-8 and ja_JP.UTF-8\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003elocale-gen\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token builtin class-name\"\u003eecho\u003c/span\u003e \u003cspan class=\"token string\"\u003e\"LANG=en_US.UTF-8\"\u003c/span\u003e \u003cspan class=\"token operator\"\u003e\u003e\u003c/span\u003e /etc/locale.conf\u003c/span\u003e\u003c/span\u003e\n\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e#\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003etimezone\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003etzselect \u003cspan class=\"token number\"\u003e4\u003c/span\u003e, \u003cspan class=\"token number\"\u003e19\u003c/span\u003e, \u003cspan class=\"token number\"\u003e1\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003ehwclock --systohc --utc\u003c/span\u003e\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3 id=\"setup-bootloader\"\u003e\u003ca href=\"#setup-bootloader\"\u003eSetup bootloader\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003ebootloaderの作成.\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003emkinitcpio -p linux\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003egrub-install --target\u003cspan class=\"token operator\"\u003e=\u003c/span\u003ex86_64-efi --efi-directory\u003cspan class=\"token operator\"\u003e=\u003c/span\u003e/boot/efi --bootloader-id\u003cspan class=\"token operator\"\u003e=\u003c/span\u003earch --boot-directory\u003cspan class=\"token operator\"\u003e=\u003c/span\u003e/boot/efi/EFI --recheck\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003egrub-mkconfig\u003c/span\u003e -o /boot/efi/EFI/grub/grub.cfg\u003c/span\u003e\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3 id=\"change-root-password--add-user\"\u003e\u003ca href=\"#change-root-password--add-user\"\u003eChange Root password \u0026#x26; add User\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e5.4にてリブートする前にユーザを作成しておく(1敗).\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003epasswd\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003euseradd\u003c/span\u003e -m -g \u003cspan class=\"token function\"\u003eusers\u003c/span\u003e -G wheel -s /bin/bash koka\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token function\"\u003epasswd\u003c/span\u003e koka\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003evisudo \u003cspan class=\"token comment\"\u003e# and uncomment %Wheel all=(all) all\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3 id=\"reboot--eject-usb\"\u003e\u003ca href=\"#reboot--eject-usb\"\u003eReboot \u0026#x26; eject USB\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003eシャットダウンしてbootUSBを取り外し再起動する\u003c/p\u003e\n\u003ch2 id=\"6-setup-arch-linux\"\u003e\u003ca href=\"#6-setup-arch-linux\"\u003e6. Setup Arch Linux\u003c/a\u003e\u003c/h2\u003e\n\u003ch3 id=\"network\"\u003e\u003ca href=\"#network\"\u003enetwork\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003ewifiの設定.\n\u003ccode class=\"language-unknown\"\u003enmtui\u003c/code\u003eが好きなのでNetworkManagerを用いた.\nセットアップ後の開発において\u003ccode class=\"language-unknown\"\u003esystemd-nspawn\u003c/code\u003eを使う場合, ネットワークアダプタは\u003ccode class=\"language-unknown\"\u003esystemd-networkd\u003c/code\u003eなのでそっちの場合は\u003ccode class=\"language-unknown\"\u003esystemd\u003c/code\u003eに統一しといたほうが後々楽.\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003esystemctl start NetworkManager\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003esystemctl \u003cspan class=\"token builtin class-name\"\u003eenable\u003c/span\u003e NetworkManager\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003enmtui\u003c/span\u003e\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3 id=\"setup-x-window-system\"\u003e\u003ca href=\"#setup-x-window-system\"\u003eSetup X Window System\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e\u003ca href=\"https://wiki.archlinux.jp/index.php/Xorg\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003eref\u003c/a\u003e\nCUIからGUIへ.\u003c/p\u003e\n\u003cdiv class=\"remark-highlight\"\u003e\u003cpre class=\"language-shell-session\"\u003e\u003ccode class=\"language-shell-session\"\u003e\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003elspci \u003cspan class=\"token operator\"\u003e|\u003c/span\u003e \u003cspan class=\"token function\"\u003egrep\u003c/span\u003e -e VGA -e 3D\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token comment\"\u003e# XとDMとしてlight DM(とログイン画面)をインストール\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003epacman -S xf86-video-intel xorg-server xorg-xrdb lightdm lightdm-gtk-greeter\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token comment\"\u003e# terminal emulatorも入ってないので何かしらいれとく(1敗)\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003epacman -S rxvt-unicode\u003c/span\u003e\u003c/span\u003e\n\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003esystemctl \u003cspan class=\"token builtin class-name\"\u003eenable\u003c/span\u003e lightdm\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token comment\"\u003e# WMをインストール\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003epacman -S i3-gaps i3status dmenu\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token comment\"\u003e# tlp/バッテリ最適化モジュール\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003epacman -S tlp\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token comment\"\u003e# フォント\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token comment\"\u003e# ブラウザやアプリはデフォだとシステム設定のフォント読まずに表示が汚くなるので、\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003e\u003cspan class=\"token comment\"\u003e# デフォ指定に含まれているttf-dejavuを入れとく(Ubuntuのデフォフォント).\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003epacman -S ttf-fira-code oft-ipamjfont ttf-dejavu\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003epacman -S xorg-xbacklight \u003cspan class=\"token comment\"\u003e# 画面の明るさ\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\"token command\"\u003e\u003cspan class=\"token shell-symbol important\"\u003e$\u003c/span\u003e \u003cspan class=\"token bash language-bash\"\u003epacman -S pulseaudio-alsa alsa-utils alsa-plugins \u003cspan class=\"token comment\"\u003e# 音量\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e","description":"log","commits":[{"title":"fix","date":"  Thu Apr 22 00:55:54 2021","hash":"e3fbaa17","diff":"\u003cdiv class=\"remark-highlight\"\u003e\u003cpre data-file=\"e3fbaa17.patch\" class=\"language-git  language-diff\"\u003e\u003ccode class=\"language-git\"\u003e\u003cspan class=\"token commit-sha1\"\u003ecommit e3fbaa17c115a1c6534cb3bcd8046413e7ec291e\u003c/span\u003e\nAuthor: koka \u0026#x3C;\u003ca href=\"mailto:koka.code@gmail.com\" class=\"token email-link\"\u003ekoka.code@gmail.com\u003c/a\u003e\u003e\nDate:   Thu Apr 22 00:55:54 2021 +0900\n\n  fix\n\ndiff --git a/_posts/2020-06-05-install-arch-linux.md b/_posts/2020-06-05-install-arch-linux.md\nnew file mode 100644\nindex 0000000..0bff7c6\n\u003cspan class=\"token deleted\"\u003e--- /dev/null\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+++ b/_posts/2020-06-05-install-arch-linux.md\u003c/span\u003e\n\u003cspan class=\"token coord\"\u003e@@ -0,0 +1,238 @@\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+---\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+title: 'Install Arch Linux'\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+date: 2020-06-05\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+categories:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+- Diary\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+tags:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+- Linux\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+description: log\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+---\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## 0. Partition Table\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+インストール先のディスク名を調べる.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session[data-file=\"terminal\"]\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$fdisk -l\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+bar\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[[info | custom container]]\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+| content\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+| bar\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+multi line\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## 1. Reset Partition\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+- cgdisk/sgdiskを使う\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - cgdiskがcursesベースなので使いやすい\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$echo $EDITOR\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+vim\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$git checkout master\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Switched to branch 'master'\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Your branch is up-to-date with 'origin/master'\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+#foo\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$git push\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Everything up-to-date\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[sudo] password for koka:\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$echo 'All\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003e done!'\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+All\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+done!\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$cgdisk /dev/nvme0n1\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ ls -la\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+最低限必要なpartitionは以下の3つ. \u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+- /boot/efi: EFI\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+- /boot    : Linux FS\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+- / (root) : Linux FS\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ブートセクタの開始領域がEFIになっている必要があるので、上から順に設定していく.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+/boot/efiが/bootに入れ子になっているが, mount時に調整する.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### EFI partition\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+- /boot/efi partition\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - First Sector: Enter(default)\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - Size in sectors: 512M\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - Hex code or GUID: ef00\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - Enter new partition name: EFI System\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### boot partition\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+- /boot\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - First Sector: Enter(default)\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - Size: 512M\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - Hex: 8300\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - Enter new partition name: Linux filesystem\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### root partition\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+- /\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - First Sector: Enter(default)\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - Size: Enter(default=max)\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - Hex: 8300\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+    - Enter new partition name: Linux filesystem\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### Result of partitioning\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+- 512G SSDを対象に行うと以下のようになる.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```sh\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ fdisk -l\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+Device          Start   End             Sectors Size    Type\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+/dev/nvme0n1p1  2048    1050623         1048576 512M    Efi system\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+/dev/nvme0n1p2 1050624  2099199         1048576 512M    Linux filesystem\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+/dev/nvme0n1p3  2099200 1000215182    998115983 476G    Linux filesystem\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## 2. Disk Format\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+mkfsを用いて各partitionをフォーマットする.  \u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+efi領域はFAT32指定、その他Linux filesystemの領域はext4等好みのファイルシステムを用いる.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```sh\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+mkfs.fat -F32 /dev/nvme0n1p1\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+mkfs.ext4 /dev/nvme0n1p2\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+mkfs.ext4 /dev/nvme0n1p3\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## 3. Mount Volume\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+1, 2で作成したpartitionをboot USBからアクセスできるようにマウントする.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+1.で行ったパーティショニングとマウントの順番が異なるので注意(1敗).\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+# /root\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ mount /dev/nvme0n1p3 /mnt\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+# /boot\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ mkdir /mnt/boot\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ mount /dev/nvme0n1p2 /mnt/boot\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+# /boot/efi\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ mkdir /mnt/boot/efi\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ mount /dev/nvme0n1p1 /mnt/boot/efi\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## 4. Install Linux system\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### Setup repository mirror\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+`/etc/pacman.d/mirrorlist`を編集し現在位置から距離の近いミラーを一番上にもってくる.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ vim /etc/pacman.d/mirrorlist\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+# use mirror in Japan\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### Install base system\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+マウントした`/root`に対してLinuxやその後の作業に必要な諸々をインストールする.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+後述する5.1でマウント領域に`chroot`したあとはboot USB内のデフォルトツール類が使えなくなるので, エディタはここでインストールしておく.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+# linux base system\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+pacstrap /mnt base linux linux-firmware\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+# for wifi\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+pacstrap /mnt base-devel grub efibootmgr dosfstools netctl iw wpa_supplicant networkmanager dialog vim\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### generate fstab file\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```sh\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+genfstab -U /mnt \u003e\u003e /mnt/etc/fstab\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### check filesystem\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ cat /mnt/etc/fstab\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+/dev/nvme0n1p3 /         ext4 rw,relatime 0 1\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+/dev/nvme0n1p2 /boot     ext4 rw,relatime 0 2\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+/dev/nvme0n1p1 /boot/efi vfat rw,relatime,fmask=0022,codepage=... 0 2\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## 5 enter arch!\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+arch-chroot /mnt /bin/bash\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### Setup locale/timezone\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+# locale\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ vim /etc/locale.gen\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+# uncomment en_US.UTF-8 and ja_JP.UTF-8\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ locale-gen\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ echo \"LANG=en_US.UTF-8\" \u003e /etc/locale.conf\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+# timezone\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ tzselect 4, 19, 1\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ hwclock --systohc --utc\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### Setup bootloader\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+bootloaderの作成.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ mkinitcpio -p linux\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch --boot-directory=/boot/efi/EFI --recheck\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ grub-mkconfig -o /boot/efi/EFI/grub/grub.cfg\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### Change Root password \u0026#x26; add User\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+5.4にてリブートする前にユーザを作成しておく(1敗).\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ passwd\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ useradd -m -g users -G wheel -s /bin/bash koka\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ passwd koka\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ visudo # and uncomment %Wheel all=(all) all\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### Reboot \u0026#x26; eject USB\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+シャットダウンしてbootUSBを取り外し再起動する\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+## 6. Setup Arch Linux\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### network\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+wifiの設定.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+`nmtui`が好きなのでNetworkManagerを用いた.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+セットアップ後の開発において`systemd-nspawn`を使う場合, ネットワークアダプタは`systemd-networkd`なのでそっちの場合は`systemd`に統一しといたほうが後々楽.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ systemctl start NetworkManager\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ systemctl enable NetworkManager\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ nmtui\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+### Setup X Window System\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+[ref](https://wiki.archlinux.jp/index.php/Xorg)\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+CUIからGUIへ.\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```shell-session\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ lspci | grep -e VGA -e 3D\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ # XとDMとしてlight DM(とログイン画面)をインストール\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ pacman -S xf86-video-intel xorg-server xorg-xrdb lightdm lightdm-gtk-greeter\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ # terminal emulatorも入ってないので何かしらいれとく(1敗)\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ pacman -S rxvt-unicode\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ systemctl enable lightdm\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ # WMをインストール\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ pacman -S i3-gaps i3status dmenu\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ # tlp/バッテリ最適化モジュール\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ pacman -S tlp\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ # フォント\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ # ブラウザやアプリはデフォだとシステム設定のフォント読まずに表示が汚くなるので、\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ # デフォ指定に含まれているttf-dejavuを入れとく(Ubuntuのデフォフォント).\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ pacman -S ttf-fira-code oft-ipamjfont ttf-dejavu\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ pacman -S xorg-xbacklight # 画面の明るさ\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+$ pacman -S pulseaudio-alsa alsa-utils alsa-plugins # 音量\u003c/span\u003e\n\u003cspan class=\"token inserted\"\u003e+ ```\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e"}],"publishedAt":"Fri Jun 05 2020","updatedAt":"Thu Apr 22 2021"}},"__N_SSG":true},"page":"/archives/[slug]","query":{"slug":"2020-06-05-install-arch-linux"},"buildId":"NktdDRM3u-i3F5OyOIh-g","assetPrefix":"/blog","isFallback":false,"gsp":true}</script><script nomodule="" src="/blog/_next/static/chunks/polyfills-8683bd742a84c1edd48c.js"></script><script src="/blog/_next/static/chunks/webpack-8ee5b8048e17a76f4173.js" async=""></script><script src="/blog/_next/static/chunks/framework-fa084fb9440caadd7405.js" async=""></script><script src="/blog/_next/static/chunks/commons-67afd69f0438b864db32.js" async=""></script><script src="/blog/_next/static/chunks/main-6f040fcbb9831e40a9fd.js" async=""></script><script src="/blog/_next/static/chunks/pages/_app-5f44d4623abad7e89937.js" async=""></script><script src="/blog/_next/static/chunks/148-666076dd1d6135e3d14f.js" async=""></script><script src="/blog/_next/static/chunks/pages/archives/%5Bslug%5D-88d5fadb35297e43b6c3.js" async=""></script><script src="/blog/_next/static/NktdDRM3u-i3F5OyOIh-g/_buildManifest.js" async=""></script><script src="/blog/_next/static/NktdDRM3u-i3F5OyOIh-g/_ssgManifest.js" async=""></script></body></html>
