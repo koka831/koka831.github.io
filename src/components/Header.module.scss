@@ -1,6 +1,7 @@
 @import "../styles/config.scss";
 @import "../styles/color.scss";
 @import "../styles/mixin.scss";
+@import "../styles/animation.scss";
 
 .navigation__container {
   @include centering($max-width);
@@ -15,6 +16,11 @@
 
   a:hover {
     color: $orange;
+
+    &::after {
+      content: '_';
+      animation: cursor 1s infinite;
+    }
   }
 }
 
