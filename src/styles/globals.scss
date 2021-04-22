@@ -26,17 +26,10 @@ body {
     sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  html,
-  body {
-    background: $bg;
-    color: $white;
-  }
-}
-
 a {
   color: inherit;
   text-decoration: none;
+  word-wrap: break-word;
 }
 
 ul {
@@ -107,5 +100,12 @@ table {
   th,
   td {
     padding: 0.25rem 1rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background: $bg;
   }
 }
