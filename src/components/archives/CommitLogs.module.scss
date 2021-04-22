@@ -65,6 +65,8 @@
 
 @media (max-width: $break-tablet) {
   .commit_logs {
+    margin-top: 20px;
+
     summary {
       display: static;
       grid-template-columns: 1fr;
