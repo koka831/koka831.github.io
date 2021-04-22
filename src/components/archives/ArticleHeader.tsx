@@ -14,10 +14,8 @@ const PostHeader: React.VFC<Props> = ({ title, tags, publishedAt, updatedAt }: P
     <header itemScope className={styles.header__container}>
       <h1 className={styles.post__title}>{title}</h1>
       <div className={styles.flex}>
-        <div>
-          <div className={styles.post__tags}>
-            {tags.map((tag) => <Tag key={tag} name={tag}/>) }
-          </div>
+        <div className={styles.post__tags}>
+          {tags.map((tag) => <Tag key={tag} name={tag}/>) }
         </div>
         <div className={styles.post__dates}>
           <PublishDate date={publishedAt}>published: {publishedAt}</PublishDate>
