@@ -40,13 +40,19 @@ const getCommitLogs = async (fname: string): Promise<CommitLog[]> => {
 };
 
 const diffToHtml = async (title: string, text: string): Promise<string> => {
-  // add space before codeblock to avoid rendering codeblock in codeblock
-  const escaped = text.replace(/```/gi, " ```");
+  // add backslash before codeblock to avoid rendering codeblock in codeblock
+  const escaped = text
+    .replace(/```/g, "\\```")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
   const markdown = `
   \`\`\`git[class="language-diff"][data-file="${title}.patch"]
   ${escaped}
   \`\`\`
   `;
+
+  console.log(markdown);
 
   // TODO into react component instead of dangerouslyInnerHtml
   return await markdownToHtml(markdown);
