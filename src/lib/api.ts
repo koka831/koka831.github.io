@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { Post } from "../types";
 import interpreter from "./interpreter";
 import getCommitLogs from "./commit-log";
+import Moment from "./moment";
 
 const POST_EXT = ".md";
 
@@ -48,9 +49,9 @@ const getMarkdownContent = async (fname: string): Promise<Post> => {
     description: data.description || `${content.slice(0, 100)}...`,
     commits,
     // NOTE `Date` object cannot be serialized in `getStaticProps`
-    publishedAt: new Date(data.date)?.toDateString() || "-",
+    publishedAt: new Moment(data.date)?.getYMD() || "-",
     // extract latest edit date from commit history
-    updatedAt: new Date(commits[0].date)?.toDateString() || "-",
+    updatedAt: new Moment(commits[0].date)?.getYMD() || "-",
   };
 
   return post;

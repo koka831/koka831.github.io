@@ -5,6 +5,7 @@ import { exec as sync_exec } from "child_process";
 import { CommitLog } from "../types";
 import { postsDir } from "./api";
 import markdownToHtml from "./interpreter";
+import Moment from "./moment";
 
 const exec = util.promisify(sync_exec);
 
@@ -26,10 +27,11 @@ const getCommitLogs = async (fname: string): Promise<CommitLog[]> => {
     const [hash, _author, date, _empty, title] = commit.split("\n");
     /* eslint-enable @typescript-eslint/no-unused-vars */
     const readableHash = hash.replace("commit ", "").substring(0, 8);
+    const formatDate = new Moment(date.slice(6, -6))?.toString() || date.slice(6, -6);
 
     const log = {
       title: title?.trim() || "commit",
-      date: date.slice(6, -6),
+      date: formatDate,
       hash: readableHash,
       diff: await diffToHtml(readableHash, commit.trim()),
     } as CommitLog;
