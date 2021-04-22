@@ -52,8 +52,6 @@ const diffToHtml = async (title: string, text: string): Promise<string> => {
   \`\`\`
   `;
 
-  console.log(markdown);
-
   // TODO into react component instead of dangerouslyInnerHtml
   return await markdownToHtml(markdown);
 };
