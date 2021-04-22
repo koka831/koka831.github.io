@@ -7,6 +7,8 @@ import interpreter from "./interpreter";
 import getCommitLogs from "./commit-log";
 import Moment from "./moment";
 
+import * as CONST from "./const";
+
 const POST_EXT = ".md";
 
 export const postsDir = path.join(process.cwd(), "_posts");
@@ -42,7 +44,7 @@ const getMarkdownContent = async (fname: string): Promise<Post> => {
     slug: fname.replace(RegExp(`${POST_EXT}$`), ""),
     title: data.title,
     categories: data.categories || [],
-    image: data.image || "https://koka831.github.io/img/icon.png",
+    image: `${CONST.PUBLIC_IMAGE_DIR}/${data.image}` || CONST.DEFAULT_OGP_IMAGE,
     tags: data.tags || [],
     content: html,
     // create excerpt from the beginning of the content

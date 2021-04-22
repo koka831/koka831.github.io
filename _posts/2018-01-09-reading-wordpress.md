@@ -3,7 +3,7 @@ title: reading wordpress
 date: 2018-01-09
 categories:
 - Code Reading
-image: /img/2018-01-10-thumb.png
+image: 2018-01-10-thumb.png
 tags:
   - Wordpress
 description: How to read source code with an example
