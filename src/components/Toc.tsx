@@ -59,7 +59,7 @@ const TableOfContent: React.VFC = () => {
       <ul className={styles.toc}>
         {headings.titles.map(({ title, depth }, index) => (
           <TocTitle
-            key={title?.replace(/ /g, "_")}
+            key={`${title?.replace(/ /g, "_")}_${depth}`}
             title={title}
             depth={depth}
             active={active === index}
