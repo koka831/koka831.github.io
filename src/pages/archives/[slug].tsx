@@ -1,8 +1,6 @@
 import React from "react";
 import { GetStaticPaths } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
 
 import type { Post } from "../../types";
 import { getSlugs, getPostBySlug } from "../../lib/api";
@@ -16,11 +14,6 @@ type Props = {
 }
 
 const Page: React.VFC<Props> = ({ post }: Props) => {
-  const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
-
   return (
     <Layout>
       <Head>
