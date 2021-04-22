@@ -16,11 +16,6 @@
 
   a:hover {
     color: $orange;
-
-    &::after {
-      content: '_';
-      animation: cursor 1s infinite;
-    }
   }
 }
 
