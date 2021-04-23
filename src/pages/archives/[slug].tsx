@@ -6,7 +6,7 @@ import type { Post } from "../../types";
 import { getSlugs, getPostBySlug } from "../../lib/api";
 
 import { Layout, TableOfContent } from "../../components";
-import { ArticleHeader, CommitLogs } from "../../components/archives";
+import { ArticleHeader, Comments, CommitLogs } from "../../components/archives";
 import styles from "./slug.module.scss";
 
 type Props = {
@@ -38,6 +38,7 @@ const Page: React.VFC<Props> = ({ post }: Props) => {
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
           <CommitLogs logs={post.commits} />
+          <Comments />
         </div>
         <aside className={styles.aside}>
           <TableOfContent />

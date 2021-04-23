@@ -1,0 +1,21 @@
+@import "../../styles/color.scss";
+@import "../../styles/mixin.scss";
+
+.comment {
+  @include centering($max-width);
+
+  margin-top: 40px;
+  padding: 20px 40px;
+  background-color: $mos;
+
+  .title {
+    color: $beige;
+  }
+}
+
+
+@media (max-width: $break-tablet) {
+  .comment {
+    padding: 10px 20px;
+  }
+}
