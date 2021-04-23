@@ -32,6 +32,7 @@ const Profile: React.VFC = () => {
       </div>
       <div itemProp="fn" className={styles.profile__main}>
         <h2 itemProp="n">Koka</h2>
+        <p>I solve problems.</p>
         <p itemProp="role">Software Engineer</p>
         <p>Bachelor of Engineering @<a target="_blank" rel="noopener noreferrer" href="https://www.ynu.ac.jp/">YNU</a></p>
       </div>
