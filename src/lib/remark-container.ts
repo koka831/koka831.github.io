@@ -28,12 +28,8 @@ function plugin(this: Processor<Settings>, options?: Settings): Transformer {
         type: "container",
         children: [
           {
-            type: "paragraph",
+            type: "text",
             value: (title || type).trim(),
-            children: [{
-              type: "text",
-              value: (title || type).trim(),
-            }],
             data: {
               hName: "div",
               hProperties: { className: [`${settings.className}__title`] },
