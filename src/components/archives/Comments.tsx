@@ -12,7 +12,7 @@ const Comments: React.VFC = () => {
     script.src = "https://utteranc.es/client.js";
     script.async = true;
     script.setAttribute("repo", "koka831/blog");
-    script.setAttribute("issue-term", "url");
+    script.setAttribute("issue-term", "title");
     script.setAttribute("theme", "github-dark-orange");
     script.setAttribute("label", "blog-comment");
 
