@@ -29,7 +29,7 @@ function plugin(this: Processor<Settings>, options?: Settings): Transformer {
         children.push({
           type: "container",
           children: [
-            { type: "text", value: title.trim(), },
+            { type: "text", value: title, },
           ],
           data: {
             hName: "div",
@@ -40,7 +40,7 @@ function plugin(this: Processor<Settings>, options?: Settings): Transformer {
 
       children.push({
         type: "text",
-        value: content.trim(),
+        value: content,
       });
 
       const container: Node = {
