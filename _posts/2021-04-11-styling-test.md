@@ -39,11 +39,16 @@ Color Schemeには[Gruvbox](https://github.com/morhetz/gruvbox)を利用して�
 This is a tip
 :::
 
-::: warning
-This is a warning
+::: info :dog: info
+This is a info
 :::
 
-::: danger
+::: warn :thinking-face: WARNING
+This is a warning
+Second line
+:::
+
+::: danger :thinking_face: DANGER
 This is a dangerous warning
 :::
 
@@ -161,28 +166,3 @@ A horizontal rule follows.
 :thinking_face:
 
 ***
-
-## A2 2nd
-
-[[toc]]
-## A2 3rd
-[[toc]]
-
-## A2 2nd
-
-[[toc]]
-## A2 2nd
-
-[[toc]]
-## A2 2nd
-
-[[toc]]
-## A2 2nd
-
-[[toc]]
-## A2 2nd
-
-[[toc]]
-## A2 2nd
-
-[[toc]]

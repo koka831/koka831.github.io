@@ -6,6 +6,7 @@ import * as CONST from "../lib/const";
 
 import "../../node_modules/modern-normalize/modern-normalize.css";
 import "../styles/globals.scss";
+import "../styles/custom-container.scss";
 import "../styles/prism-gruvbox.scss";
 
 const MyApp: React.VFC<AppProps> = ({ Component, pageProps }: AppProps) => {
