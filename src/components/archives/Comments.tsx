@@ -17,9 +17,9 @@ const Comments: React.VFC = () => {
     script.setAttribute("label", "blog-comment");
 
     comment.appendChild(script);
-    /* return () => { */
-    /*   comment.removeChild(script); */
-    /* }; */
+    return () => {
+      comment.removeChild(script);
+    };
   });
 
   return (
