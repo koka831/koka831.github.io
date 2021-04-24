@@ -31,7 +31,7 @@ describe("remark-container", () => {
   });
 
   it("REGEX_CUSTOM_CONTAINER matches with custom container with custom title", () => {
-    const input = "::: warn custom title\ncontainer body\n:::";
+    const input = "::: warn custom title\ncontainer body\nsecond line body\n:::";
     const match = input.match(REGEX_CUSTOM_CONTAINER);
     expect(match).not.toBeNull();
 
@@ -43,7 +43,7 @@ describe("remark-container", () => {
 
     expect(type).toBe("warn");
     expect(title).toBe("custom title");
-    expect(content).toBe("container body");
+    expect(content).toBe("container body\nsecond line body");
   });
 
   it("interprets custom container directives", async () => {

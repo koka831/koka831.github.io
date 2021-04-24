@@ -2,7 +2,7 @@ import type { Node, Parent } from "unist";
 import visit from "unist-util-visit";
 import { Settings, Processor, Transformer } from "unified";
 
-export const REGEX_CUSTOM_CONTAINER = /:::\s*(\w+)\s*(.*?)[\n\r](.*?)[\n\r]\s*:::/;
+export const REGEX_CUSTOM_CONTAINER = /:::\s*(\w+)\s*(.*?)[\n\r]([^]*)[\n\r]\s*:::/;
 const DEFAULT_SETTINGS: Settings = {
   className: "remark-container",
   containerTag: "div",
