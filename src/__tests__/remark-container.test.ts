@@ -15,8 +15,14 @@ const process = async (contents: VFileCompatible): Promise<VFileCompatible> => {
 
 describe("remark-container", () => {
   it("interprets custom container directives", async () => {
-    const input = "::: type title\ncontainer body\n:::";
-    const expected = "<p><div class=\"remark-container type\"><div class=\"remark-container__title\">title</div>container body</div></p>";
+    const input = "::: warn\ncontainer body\n:::";
+    const expected = "<p><div class=\"remark-container warn\"><div class=\"remark-container__title\"></div>container body</div></p>";
+    expect(await process(input)).toBe(expected);
+  });
+
+  it("interprets custom title after container directives", async () => {
+    const input = "::: info custom title\ncontainer body\n:::";
+    const expected = "<p><div class=\"remark-container info\"><div class=\"remark-container__title\">custom title</div>container body</div></p>";
     expect(await process(input)).toBe(expected);
   });
 });

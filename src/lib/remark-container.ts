@@ -13,8 +13,8 @@ function plugin(this: Processor<Settings>, options?: Settings): Transformer {
 
   const transformer: Transformer = (tree: Node): void => {
     visit(tree, (node: Node, index: number, parent: Parent | undefined): void => {
-      console.log(node);
       if (typeof node.value !== "string") return;
+      console.log(node);
 
       const match = node.value.match(REGEX_CUSTOM_CONTAINER);
       if (!match) return;
@@ -24,22 +24,31 @@ function plugin(this: Processor<Settings>, options?: Settings): Transformer {
       const [_input, type, title, content] = match;
       /* eslint-enable @typescript-eslint/no-unused-vars */
 
+      const children = [];
+
+      if (title) {
+        console.log(title);
+
+        children.push({
+          type: "container",
+          children: [
+            { type: "text", value: title.trim(), },
+          ],
+          data: {
+            hName: "div",
+            hProperties: { className: [`${settings.className}__title`] },
+          }
+        });
+      }
+
+      children.push({
+        type: "text",
+        value: content.trim(),
+      });
+
       const container: Node = {
         type: "container",
-        children: [
-          {
-            type: "text",
-            value: (title || type).trim(),
-            data: {
-              hName: "div",
-              hProperties: { className: [`${settings.className}__title`] },
-            }
-          },
-          {
-            type: "text",
-            value: content.trim(),
-          }
-        ],
+        children,
         data: {
           hName: settings.containerTag,
           hProperties: {
