@@ -2,7 +2,7 @@ import type { Node, Parent } from "unist";
 import visit from "unist-util-visit";
 import { Settings, Processor, Transformer } from "unified";
 
-const REGEX_CUSTOM_CONTAINER = /:::\s*(\w+)(.*?)[\n\r](.*?)[\n\r]\s*:::/;
+export const REGEX_CUSTOM_CONTAINER = /:::\s*(\w+)(.*?)[\n\r](.*?)[\n\r]\s*:::/;
 const DEFAULT_SETTINGS: Settings = {
   className: "remark-container",
   containerTag: "div",
@@ -14,7 +14,6 @@ function plugin(this: Processor<Settings>, options?: Settings): Transformer {
   const transformer: Transformer = (tree: Node): void => {
     visit(tree, (node: Node, index: number, parent: Parent | undefined): void => {
       if (typeof node.value !== "string") return;
-      console.log(node);
 
       const match = node.value.match(REGEX_CUSTOM_CONTAINER);
       if (!match) return;
@@ -26,9 +25,7 @@ function plugin(this: Processor<Settings>, options?: Settings): Transformer {
 
       const children = [];
 
-      if (title) {
-        console.log(title);
-
+      if (title.length > 0) {
         children.push({
           type: "container",
           children: [
