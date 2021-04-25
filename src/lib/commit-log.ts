@@ -26,8 +26,11 @@ const getCommitLogs = async (fname: string): Promise<CommitLog[]> => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const [hash, _author, date, _empty, title] = commit.split("\n");
     /* eslint-enable @typescript-eslint/no-unused-vars */
+
+    if (hash.trim().length === 0) continue;
+
     const readableHash = hash.replace("commit ", "").substring(0, 8);
-    const formatDate = new Moment(date.slice(6, -6))?.toString() || date.slice(6, -6);
+    const formatDate = new Moment(date?.slice(6, -6))?.toString() || date?.slice(6, -6);
 
     const log = {
       title: title?.trim() || "commit",
