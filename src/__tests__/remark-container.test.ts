@@ -20,10 +20,10 @@ describe("remark-container", () => {
     expect(match).not.toBeNull();
 
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+    /* eslint-disable @typescript-eslint/no-non-null-assertion */
     const [_input, type, title, content] = match!;
     /* eslint-enable @typescript-eslint/no-unused-vars */
-    /* eslint-enable-next-line @typescript-eslint/no-non-null-assertion */
+    /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
     expect(type).toBe("warn");
     expect(title).toBe("");
@@ -36,10 +36,10 @@ describe("remark-container", () => {
     expect(match).not.toBeNull();
 
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+    /* eslint-disable @typescript-eslint/no-non-null-assertion */
     const [_input, type, title, content] = match!;
     /* eslint-enable @typescript-eslint/no-unused-vars */
-    /* eslint-enable-next-line @typescript-eslint/no-non-null-assertion */
+    /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
     expect(type).toBe("warn");
     expect(title).toBe("custom title");
