@@ -1,6 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTags } from "@fortawesome/free-solid-svg-icons";
+
 import styles from "./ArticleHeader.module.scss";
 import { PublishDate, Tag } from ".";
 
@@ -22,6 +25,7 @@ const PostHeader: React.VFC<Props> = ({ title, description, slug, tags, publishe
       <p>{description}</p>
       <div className={styles.flex}>
         <div className={styles.post__tags}>
+          <FontAwesomeIcon icon={faTags} className={styles.tags__icon} />
           {tags.map((tag) => <Tag key={tag} name={tag}/>) }
         </div>
         <div className={styles.post__dates}>

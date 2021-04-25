@@ -7,9 +7,7 @@ type Props = {
 
 export const Tag: React.VFC<Props> = ({ name }: Props) => {
   return (
-    <>
-      <p className={styles.tag}>{name}</p>
-    </>
+    <p className={styles.tag}>{name}</p>
   );
 };
 

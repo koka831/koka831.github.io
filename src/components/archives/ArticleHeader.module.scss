@@ -7,7 +7,7 @@
 
 .flex {
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: space-between;
 }
 
@@ -15,7 +15,7 @@
   font-size: 1.8em;
   text-decoration: none !important;
   font-weight: 600;
-  line-height: 2em;
+  line-height: 1.2em;
 
   &:hover {
     color: $orange;
@@ -24,6 +24,15 @@
 
 .post__tags {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  align-self: flex-end;
+
+  .tags__icon {
+    width: 1em;
+    margin-right: 0.2em;
+    color: $green;
+  }
 }
 
 .post__dates {
@@ -33,5 +42,5 @@
 }
 
 .header__container + .header__container {
-  margin-top: 4px;
+  margin-top: 16px;
 }

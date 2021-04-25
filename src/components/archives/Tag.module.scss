@@ -1,28 +1,12 @@
 @import "../../styles/color.scss";
 
 .tag {
-  color: $white;
-  background-color: $orange;
-  padding: 0.2em 0.8em;
-  border-radius: 0.3em;
+  margin: 0;
+  color: $brown;
   font-size: 0.8em;
   font-weight: 600;
-
-  &:nth-child(1) {
-    background-color: $orange;
-  }
-
-  &:nth-child(2) {
-    background-color: $dark-red;
-  }
-
-  &:nth-child(3) {
-    background-color: $dark-cyan;
-  }
-
-  &:nth-child(4) {
-    background-color: $brown;
-  }
+  text-decoration: underline;
+  text-decoration-style: dotted;
 }
 
 .tag + .tag {
