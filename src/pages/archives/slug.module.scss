@@ -41,6 +41,10 @@
   }
 }
 
+.article__body {
+  padding-top: 20px;
+}
+
 @media (max-width: 1200px) {
   .aside { display: none; }
 }

@@ -30,7 +30,7 @@ const Page: React.VFC<Props> = ({ post }: Props) => {
         <div className={styles.main}>
           <article className={styles.article} role="article">
             <ArticleHeader {...post} />
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div className={styles.article__body} dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
           <CommitLogs logs={post.commits} />
           <Comments />
