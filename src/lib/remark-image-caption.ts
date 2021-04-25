@@ -4,9 +4,13 @@ import { Processor, Transformer } from "unified";
 
 function plugin(this: Processor): Transformer {
   const transformer: Transformer = (tree: Node): void => {
+    // for figure index
+    let count = 0;
     visit(tree, (node: Node, index: number, parent: Parent | undefined): void => {
       if (node.type !== "image") return;
       if (!parent) return;
+
+      count += 1;
 
       parent.children[index] = {
         type: "figure",
@@ -18,7 +22,7 @@ function plugin(this: Processor): Transformer {
             data: { hName: "figcaption" },
             children: [{
               type: "text",
-              value: node.title || node.alt
+              value: `img.${count} ${node.title || node.alt}`
             }]
           }
         ],

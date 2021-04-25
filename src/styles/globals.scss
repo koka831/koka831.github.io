@@ -47,6 +47,14 @@ img {
   margin: 0 auto;
 }
 
+figure {
+  figcaption {
+    padding-top: 0.5em;
+    text-align: center;
+    color: $brown;
+  }
+}
+
 blockquote {
   position: relative;
   margin: 0.1rem 0;
