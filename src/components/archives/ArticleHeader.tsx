@@ -31,7 +31,7 @@ const PostHeader: React.VFC<Props> = ({ title, description, slug, tags, publishe
         <div className={styles.post__dates}>
           <PublishDate date={publishedAt}>published: {publishedAt}</PublishDate>
           <PublishDate date={updatedAt}>
-            { updatedAt ? `updated: ${updatedAt}` : "" }
+            { updatedAt !== "-" && updatedAt !== publishedAt ? `updated: ${updatedAt}` : "" }
           </PublishDate>
         </div>
       </div>

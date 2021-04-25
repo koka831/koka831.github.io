@@ -59,7 +59,7 @@ const Skills: React.VFC = () => {
         </li>
         <li>
           <h3>JavaScript/TypeScript</h3>
-          previously I used to develop web-apps in Vue.js/Nuxt.js (and had contributed to Nuxt.js)<br />
+          previously I used to develop web-apps in Vue.js/Nuxt.js (and had contribution to Nuxt.js docs)<br />
           switched to React/Next.js for some reason;<br />
           - Hooks API<br />
           - has high affinity to TypeScript especially its data store like redux with it<br />
