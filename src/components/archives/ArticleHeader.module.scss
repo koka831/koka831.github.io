@@ -1,6 +1,7 @@
+@import "../../styles/color.scss";
+
 .header__container {
   padding-bottom: 10px;
-  margin-bottom: 40px;
   border-bottom: 1px solid;
 }
 
@@ -12,9 +13,13 @@
 
 .post__title {
   font-size: 1.8em;
-  line-height: 1.2em;
-  margin-top: 10px;
-  margin-bottom: 0.2em;
+  text-decoration: none !important;
+  font-weight: 600;
+  line-height: 2em;
+
+  &:hover {
+    color: $orange;
+  }
 }
 
 .post__tags {
@@ -25,4 +30,8 @@
   font-size: 0.9em;
   display: flex;
   flex-direction: column;
+}
+
+.header__container + .header__container {
+  margin-top: 4px;
 }

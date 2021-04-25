@@ -16,7 +16,13 @@
 .posts {
   @include centering($max-width);
 
+  padding: 40px;
   color: $black;
+
+  .posts__wrapper {
+    padding: 10px 20px;
+    background-color: $beige;
+  }
 }
 
 @media (max-width: $break-tablet) {
@@ -30,6 +36,6 @@
   }
 
   .posts {
-    padding: 0 15px;
+    padding: 25px 15px;
   }
 }

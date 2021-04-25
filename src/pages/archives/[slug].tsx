@@ -29,12 +29,7 @@ const Page: React.VFC<Props> = ({ post }: Props) => {
       <div className={styles.container}>
         <div className={styles.main}>
           <article className={styles.article} role="article">
-            <ArticleHeader
-              title={post.title}
-              tags={post.tags}
-              publishedAt={post.publishedAt}
-              updatedAt={post.updatedAt}
-            />
+            <ArticleHeader {...post} />
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
           <CommitLogs logs={post.commits} />

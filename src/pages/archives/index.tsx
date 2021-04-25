@@ -6,7 +6,7 @@ import type { Post } from "../../types";
 import { getPosts } from "../../lib/api";
 
 import { Layout } from "../../components";
-import { Article } from "../../components/archives";
+import { ArticleHeader } from "../../components/archives";
 import styles from "./index.module.scss";
 
 type Props = {
@@ -20,9 +20,10 @@ const Index: React.VFC<Props> = ({ posts }: Props) => {
         <meta key="title" property="title" content="Archives" />
         <title>Archives | /var/log/koka</title>
       </Head>
-      <h2 className={styles.title}>Archives</h2>
       <div className={styles.posts}>
-        {posts.map(post => <Article key={post.slug} post={post} />)}
+        <div className={styles.posts__wrapper}>
+          {posts.map(post => <ArticleHeader key={post.slug} {...post} />)}
+        </div>
       </div>
     </Layout>
   );
