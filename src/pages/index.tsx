@@ -1,8 +1,5 @@
 import React from "react";
 
-import { faTwitterSquare, faGithubSquare } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { Layout, Icon } from "../components";
 import styles from "./index.module.scss";
 
@@ -55,28 +52,38 @@ const Skills: React.VFC = () => {
         </li>
         <li>
           <h3>Ruby</h3>
-          have some experiences with Ruby on Rails, devise token auth and capistrano.<br />
-          I usually use Rails for APIs and provide them with token authentication by devise.
+          have some experiences with Ruby on Rails(RoR), devise token auth.<br />
+          deploy it with capistrano and ECS/ECR.<br />
+          I usually develop an API with RoR and serve it with token authentication with <a target="_blank" rel="noreferrer noopener" href="https://github.com/lynndylanhurley/devise_token_auth">devise_token_auth</a>.<br />
+
         </li>
         <li>
-          <h3>TypeScript</h3>
-          - React<br />
-          - Next.js<br />
-          - redux-toolkit<br />
-          - (<a href="https://www.prisma.io/">Prisma</a>)
+          <h3>JavaScript/TypeScript</h3>
+          previously I used to develop web-apps in Vue.js/Nuxt.js (and had contributed to Nuxt.js)<br />
+          switched to React/Next.js for some reason;<br />
+          - Hooks API<br />
+          - has high affinity to TypeScript especially its data store like redux with it<br />
+
+          <br />
+          I usually develop an web-app with Next.js even if it does not require SSR/SSG because;<br />
+          - directory structure convention<br />
+          - easy to switch using SSR/SSG; productions change continuously<br />
+          <br />
+
+          <a href="https://koka831.github.io">This Blog</a> is built with Next.js.
         </li>
         <li>
           <h3>Python</h3>
+          I was researching text summarization methods using machine learning at university.<br />
           - NLP, Self-Attention model + Encoder-Decoder<br />
           - time-series data analysis<br />
-          - wrote some contents for <a target="_blank" rel="noreferrer noopener" href="https://tracks.run/">track</a><br />
+
+          <br />
+          wrote some contents for <a target="_blank" rel="noreferrer noopener" href="https://tracks.run/">track</a> and <a target="_blank" rel="noreferrer noopener" href="https://codeprep.jp/">CODEPREP</a>.<br />
         </li>
         <li>
-          <h3>Tools</h3>
+          <h3>Environment</h3>
           - Arch Linux + i3wm + tmux + zsh + Neovim<br />
-          - AWS: ALB + EC2, S3, ECS + ECR, SES, SNS, CloudWatch<br />
-          - Swagger<br />
-          - Terraform<br />
         </li>
         <li>
           <h3>Interests</h3>
@@ -94,7 +101,7 @@ const Projects: React.VFC = () => {
       <h2>Side Projects</h2>
       <ul>
         <li>
-          <h3>Automatic-control system for UAV(Unmanned Aerial Vehicle, a.k.a Drone)</h3>
+          <h3>Automatic-control system for UAV(Unmanned Aerial Vehicle, a.k.a Drone)/archived</h3>
           - written in C(+ inline asm)<br />
           - in-time object recognition in movies from UAVs<br />
         </li>
@@ -109,41 +116,22 @@ const Projects: React.VFC = () => {
           - accepts keyboard input<br />
           - supports 64bits mode and multi-boot<br />
           - recovers from at most double fault<br />
-          - <a href="https://github.com/koka831/runix">GitHub</a>
+          - <a target="_blank" rel="noopener noreferrer" href="https://github.com/koka831/runix">GitHub</a><br />
         </li>
         <li>
           <h3>Marmoset, a Toy Interpreter in Rust</h3>
-          - write a tiny interpreter referring <a href="https://interpreterbook.com/">Writing An Interpreter In Go</a>
+          - write a tiny interpreter referring <a href="https://interpreterbook.com/">Writing An Interpreter In Go</a><br />
+          - <a target="_blank" rel="noreferrer noopener" href="https://github.com/koka831/marmoset">GitHub</a><br />
         </li>
         <li>
-          <h3>Blog using Static Props with Next.js</h3>
-          - build a static blog system with Next.js<br />
-          - generate edit histories for each posts from <code className="language-unknown">git log --follow</code><br />
+          <h3>Blog with Next.js</h3>
+          - build a blog system with Next.js<br />
+          - without UI library; just for fun<br />
+          - retrieve edit histories for each posts from <code className="language-unknown">git log --follow</code><br />
+          - comment using github issue with <a target="_blank" rel="noopener noreferrer" href="https://github.com/utterance/utterances">utterances</a><br />
         </li>
       </ul>
     </section>
-  );
-};
-
-export const Links: React.VFC = () => {
-  return (
-    <nav className={styles.links_container}>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://github.com/koka831"
-        className="github"
-      >
-        <FontAwesomeIcon icon={faGithubSquare} size="2x" color="#504945" />
-      </a>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://twitter.com/k_0ka"
-      >
-        <FontAwesomeIcon icon={faTwitterSquare} size="2x" color="#458588" />
-      </a>
-    </nav>
   );
 };
 
@@ -158,7 +146,6 @@ const Contact: React.VFC = () => {
         <li>GitHub: <a target="_blank" rel="noopener noreferrer" href="https://github.com/koka831">koka831</a></li>
         <li>Qiita: <a target="_blank" rel="noopener noreferrer" href="https://qiita.com/koka" className="qiita">koka</a></li>
       </ul>
-      {/* <Links /> */}
     </section>
   );
 };

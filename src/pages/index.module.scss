@@ -3,6 +3,7 @@
 
 .container {
   color: $black;
+  margin-top: 40px;
 }
 
 .flex {
@@ -21,6 +22,14 @@
 .contact_container {
   padding: 40px;
   padding-top: 20px;
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      color: $orange;
+    }
+  }
 }
 
 .profile_container {
@@ -35,14 +44,6 @@
   p,
   h2 {
     margin-top: 0;
-  }
-
-  a {
-    text-decoration: underline;
-
-    &:hover {
-      color: $orange;
-    }
   }
 }
 
@@ -66,20 +67,16 @@
 .skills {
   line-height: 1.5em;
 
-  a {
-    text-decoration: underline;
-
-    &:hover {
-      color: $orange;
-    }
-  }
-
   li + li {
     margin-top: 1em;
   }
 }
 
 @media (max-width: $break-tablet) {
+  .container {
+    margin-top: 25px;
+  }
+
   .profile_container,
   .skills_container,
   .projects_container,

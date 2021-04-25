@@ -7,7 +7,6 @@
   @include centering($max-width);
 
   display: flex;
-  margin-bottom: 40px;
   padding: 10px;
   color: $black;
   font-size: 1.5em;
@@ -27,6 +26,5 @@
   .navigation__container {
     font-size: 1.3em;
     padding: 10px 20px;
-    margin-bottom: 0;
   }
 }
