@@ -156,13 +156,13 @@ pre[class*="language-"] > code[class*="language-"] {
 pre[class*="language-diff-"] .inserted-sign.inserted {
   width: 100%;
   display: table;
-  background-color: rgba(0, 255, 128, 0.1);
+  background-color: rgba($green, 0.2);
 }
 
 pre[class*="language-diff-"] .deleted-sign.deleted {
   width: 100%;
   display: table;
-  background-color: rgba(255, 0, 0, 0.1);
+  background-color: rgba($red, 0.2);
 }
 
 pre[data-file] {
