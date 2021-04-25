@@ -21,13 +21,11 @@ description: Styling Test
      vec_deque.push_back(5);
 ```
 
-[[warn | my title]]
-| content
-| content2
-
-Styling check
+## Styling check
 
 Color Schemeには[Gruvbox](https://github.com/morhetz/gruvbox)を利用しています.
+
+![alt text of image](/img/icon.png)
 
 ==highlight==
 
@@ -166,3 +164,6 @@ A horizontal rule follows.
 :thinking_face:
 
 ***
+
+
+![alt text of image](/img/icon.png)

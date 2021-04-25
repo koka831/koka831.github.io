@@ -10,7 +10,9 @@ import remark from "remark";
 import remark2rehype from "remark-rehype";
 import slug from "remark-slug";
 import stringify from "rehype-stringify";
+
 import container from "./remark-container";
+import caption from "./remark-image-caption";
 
 const prismPlugins = [
   "autolinker",
@@ -25,6 +27,7 @@ const markdownToHtml = async (markdown: string): Promise<string> => {
     .use(math)
     .use(emoji)
     .use(container)
+    .use(caption)
     .use(prism, { plugins: prismPlugins, transformInlineCode: true })
     .use(externalLink)
     .use(slug)
