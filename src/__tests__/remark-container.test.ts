@@ -57,4 +57,22 @@ describe("remark-container", () => {
     const expected = "<p><div class=\"remark-container info\"><div class=\"remark-container__title\">custom title</div>container body</div></p>";
     expect(await process(input)).toBe(expected);
   });
+
+  // TODO
+  xit("interprets custom container with multi-line contents", async () => {
+    const input = "::: tip TODO\n" +
+      "basic ([Bridge/ABC075](https://atcoder.jp/contests/abc075/tasks/abc075_c))\n" +
+      "weighted(Potential) Union-Find ([People on a line/ABC087](https://atcoder.jp/contests/abc087/tasks/arc090_b))\n" +
+      "永続UF ([Stamp Rally/AGC002](https://agc002.contest.atcoder.jp/tasks/agc002_d))\n" +
+      "わからん ([Nuske vs Phantom Thnook/AGC015](https://agc015.contest.atcoder.jp/tasks/agc015_c))\n" +
+      ":::";
+
+    const expected = "<p>" +
+      "<div class=\"remark-contaner tip\">" +
+      "<div class=\"remark-container__title\">tip</div>" +
+      "" +
+      "</div></p>";
+
+    expect(await process(input)).toBe(expected);
+  });
 });

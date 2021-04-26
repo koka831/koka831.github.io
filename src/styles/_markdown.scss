@@ -1,6 +1,6 @@
-a.footnote-ref {
-  color: $orange;
+@import "./color";
 
+a.footnote-ref {
   &:hover {
     color: $dark-red;
   }
