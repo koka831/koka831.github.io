@@ -55,11 +55,9 @@ const getMarkdownContent = async (fname: string): Promise<Post> => {
     updatedAt: "-",
   };
 
-  if (commits[0]?.date) {
-    console.log(commits[0]);
+  if (commits.length > 0) {
     // extract latest edit date from commit history
     post.updatedAt = new Moment(commits[0].date)?.getYMD();
-
   }
 
   return post;
