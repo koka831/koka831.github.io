@@ -16,6 +16,7 @@ description: scratch new blog with Next.js; switched from VuePress
 
 - [VuePress][vuepress]のアルファ版を使っていて，メンテが辛くなった
 - [Next.js][next] + [remark][remark]でMarkdown->HTMLのSSGを構築した
+- [できたもの](https://github.com/koka831/koka831.github.io)
 
 ## About
 
