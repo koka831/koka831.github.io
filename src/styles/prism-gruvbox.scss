@@ -167,14 +167,20 @@ pre[class*="language-diff-"] .deleted-sign.deleted {
 
 pre[data-file] {
   position: relative;
-}
 
-pre[data-file]::before {
-  content: attr(data-file);
-  position: absolute;
-  color: $lightGray;
-  top: 0;
-  right: 4px;
+  &::before {
+    content: attr(data-file);
+    position: absolute;
+    color: $lightGray;
+    top: 0;
+    right: 4px;
+    opacity: 1;
+  }
+
+  &:hover::before {
+    transition: 0.4s;
+    opacity: 0;
+  }
 }
 
 .line-highlight {
@@ -247,4 +253,14 @@ pre[class*="language-shell-session"] {
       color: $lightGray;
     }
   }
+}
+
+.remark-highlight + p > strong {
+  // use it as figcaption
+  margin: 0;
+  display: block;
+  color: $gray;
+  text-align: center;
+  font-weight: normal;
+  font-size: 0.8em;
 }

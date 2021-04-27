@@ -13,7 +13,7 @@ function plugin(this: Processor<Settings>, options?: Settings): Transformer {
 
   const transformer: Transformer = (tree: Node): void => {
     visit(tree, (node: Node, index: number, parent: Parent | undefined): void => {
-      if (typeof node.value !== "string") return;
+      if (typeof node.value !== "string" || node.type !== "text") return;
 
       const match = node.value.match(REGEX_CUSTOM_CONTAINER);
       if (!match) return;
