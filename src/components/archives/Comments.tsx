@@ -11,7 +11,7 @@ const Comments: React.VFC = () => {
     const script = document.createElement("script");
     script.src = "https://utteranc.es/client.js";
     script.async = true;
-    script.setAttribute("repo", "koka831/blog");
+    script.setAttribute("repo", "koka831/koka831.github.io");
     script.setAttribute("issue-term", "title");
     script.setAttribute("theme", "github-dark-orange");
     script.setAttribute("label", "blog-comment");
