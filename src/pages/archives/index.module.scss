@@ -16,7 +16,7 @@
 .posts {
   @include centering($max-width);
 
-  padding: 40px;
+  padding: 40px 0;
   color: $black;
 
   .posts__wrapper {
