@@ -40,7 +40,7 @@
     "gray-matter": "^4.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
-    "postcss": "^8.2.4",
+    "postcss": "^8.3.0",
     "postcss-flexbugs-fixes": "^5.0.2",
     "rehype-katex": "^4.0.0",
     "rehype-stringify": "^8.0.0",
