@@ -23,7 +23,7 @@
     "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.5",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.12.2",
