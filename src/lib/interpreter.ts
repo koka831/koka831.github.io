@@ -11,7 +11,7 @@ import remark2rehype from "remark-rehype";
 import slug from "remark-slug";
 import stringify from "rehype-stringify";
 
-import container from "./remark-container";
+import container from "remark-custom-container";
 import caption from "./remark-image-caption";
 
 const prismPlugins = [
