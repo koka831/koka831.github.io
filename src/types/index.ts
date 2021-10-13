@@ -1,7 +1,4 @@
 import Post from "./post";
 import CommitLog from "./git";
 
-export type {
-  Post,
-  CommitLog
-};
+export type { Post, CommitLog };

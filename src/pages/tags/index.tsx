@@ -7,12 +7,14 @@ import { Layout } from "../../components";
 
 type Props = {
   tags: string[];
-}
+};
 
 const Index: React.FC<Props> = ({ tags }: Props): JSX.Element => {
   return (
     <Layout>
-      {tags.map(t => <p key={t}>{t}</p>)}
+      {tags.map((t) => (
+        <p key={t}>{t}</p>
+      ))}
     </Layout>
   );
 };
@@ -21,8 +23,8 @@ export const getStaticProps: GetStaticProps = async () => {
   const posts = await getPosts();
   return {
     props: {
-      tags: posts.map(p => p.tags).flat()
-    }
+      tags: posts.map((p) => p.tags).flat(),
+    },
   };
 };
 

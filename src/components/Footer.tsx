@@ -3,9 +3,7 @@ import styles from "./Footer.module.scss";
 
 const Footer: React.VFC = () => (
   <footer className={styles.footer}>
-    <small>
-      Code snippets licensed under MIT, unless otherwise noted.
-    </small>
+    <small>Code snippets licensed under MIT, unless otherwise noted.</small>
   </footer>
 );
 

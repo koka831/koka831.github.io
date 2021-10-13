@@ -6,9 +6,7 @@ const NotFound: React.VFC = () => {
   return (
     <Layout>
       <div className={styles.container}>
-        <h2 className={styles.message}>
-          404/Not Found
-        </h2>
+        <h2 className={styles.message}>404/Not Found</h2>
       </div>
     </Layout>
   );

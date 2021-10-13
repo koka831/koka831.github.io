@@ -4,10 +4,4 @@ import CommitLogs from "./CommitLogs";
 import PublishDate from "./PublishDate";
 import Tag from "./Tag";
 
-export {
-  ArticleHeader,
-  Comments,
-  CommitLogs,
-  PublishDate,
-  Tag,
-};
+export { ArticleHeader, Comments, CommitLogs, PublishDate, Tag };

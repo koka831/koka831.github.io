@@ -3,6 +3,6 @@ type CommitLog = {
   hash: string;
   date: string;
   diff: string;
-}
+};
 
 export default CommitLog;

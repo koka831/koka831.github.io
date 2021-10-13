@@ -11,7 +11,7 @@ import styles from "./index.module.scss";
 
 type Props = {
   posts: Post[];
-}
+};
 
 const Index: React.VFC<Props> = ({ posts }: Props) => {
   return (
@@ -22,7 +22,9 @@ const Index: React.VFC<Props> = ({ posts }: Props) => {
       </Head>
       <div className={styles.posts}>
         <div className={styles.posts__wrapper}>
-          {posts.map(post => <ArticleHeader key={post.slug} {...post} />)}
+          {posts.map((post) => (
+            <ArticleHeader key={post.slug} {...post} />
+          ))}
         </div>
       </div>
     </Layout>
@@ -32,7 +34,7 @@ const Index: React.VFC<Props> = ({ posts }: Props) => {
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const posts = await getPosts();
   return {
-    props: { posts }
+    props: { posts },
   };
 };
 

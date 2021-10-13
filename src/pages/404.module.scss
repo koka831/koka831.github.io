@@ -12,7 +12,7 @@
   color: $mos;
 
   &::after {
-    content: '_';
+    content: "_";
     animation: cursor 1s infinite;
   }
 }

@@ -5,7 +5,7 @@ import styles from "./CommitLogs.module.scss";
 
 type Props = {
   logs: CommitLog[];
-}
+};
 
 export const CommitLogs: React.VFC<Props> = ({ logs }: Props) => {
   return (
@@ -19,7 +19,7 @@ export const CommitLogs: React.VFC<Props> = ({ logs }: Props) => {
               <span className={styles.commit__hash}>{log.hash}</span>
               <span className={styles.commit__message}>{log.title}</span>
             </summary>
-            <div dangerouslySetInnerHTML={{__html: log.diff}} />
+            <div dangerouslySetInnerHTML={{ __html: log.diff }} />
           </details>
         );
       })}

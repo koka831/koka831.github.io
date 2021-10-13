@@ -46,7 +46,9 @@
 }
 
 @media (max-width: 1200px) {
-  .aside { display: none; }
+  .aside {
+    display: none;
+  }
 }
 
 @media (max-width: $break-tablet) {

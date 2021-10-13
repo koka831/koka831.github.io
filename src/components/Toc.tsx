@@ -16,13 +16,17 @@ const accumulateOffset = (e: ElementLikeObject | null) => {
 };
 
 type Headings = {
-  titles: { title: string, depth: number }[];
+  titles: { title: string; depth: number }[];
   nodes: HTMLElement[];
   minDepth: number;
-}
+};
 
 const TableOfContent: React.VFC = () => {
-  const [headings, setHeadings] = useState<Headings>({ titles: [], nodes: [], minDepth: 0 });
+  const [headings, setHeadings] = useState<Headings>({
+    titles: [],
+    nodes: [],
+    minDepth: 0,
+  });
   const [active, setActive] = useState<number>();
 
   const onClickHeading = (ev: React.MouseEvent, index: number) => {
@@ -32,13 +36,15 @@ const TableOfContent: React.VFC = () => {
 
   useEffect(() => {
     const selector = ["h1", "h2", "h3", "h4"].join(",");
-    const nodes: HTMLElement[] = Array.from(document.querySelectorAll(selector));
+    const nodes: HTMLElement[] = Array.from(
+      document.querySelectorAll(selector)
+    );
     const titles = nodes.map((n) => ({
       title: n.innerText,
-      depth: Number(n.nodeName[1])
+      depth: Number(n.nodeName[1]),
     }));
 
-    const minDepth = Math.min(...titles.map(h => h.depth));
+    const minDepth = Math.min(...titles.map((h) => h.depth));
     setHeadings({ titles, nodes, minDepth });
   }, []);
 
@@ -46,7 +52,9 @@ const TableOfContent: React.VFC = () => {
     const scrollHandler = throttle(() => {
       const { titles, nodes } = headings;
       const offsets = nodes.map((e) => accumulateOffset(e));
-      const activeIndex = offsets.findIndex(offset => offset > window.scrollY);
+      const activeIndex = offsets.findIndex(
+        (offset) => offset > window.scrollY
+      );
       setActive(activeIndex === -1 ? titles.length - 1 : activeIndex - 1);
     });
 
@@ -63,7 +71,7 @@ const TableOfContent: React.VFC = () => {
             title={title}
             depth={depth}
             active={active === index}
-            onClick={ev => onClickHeading(ev, index)}
+            onClick={(ev) => onClickHeading(ev, index)}
           />
         ))}
       </ul>
@@ -76,9 +84,14 @@ type TocProps = {
   depth: number;
   active: boolean;
   onClick: React.MouseEventHandler;
-}
+};
 
-const TocTitle: React.VFC<TocProps> = ({ title, depth, active, onClick }: TocProps) => {
+const TocTitle: React.VFC<TocProps> = ({
+  title,
+  depth,
+  active,
+  onClick,
+}: TocProps) => {
   const head = `toc__h${depth}`;
   return (
     <li
@@ -86,7 +99,8 @@ const TocTitle: React.VFC<TocProps> = ({ title, depth, active, onClick }: TocPro
       className={`
         ${active ? styles.toc__active : ""}
         ${styles[head]}
-        `}>
+        `}
+    >
       {title}
     </li>
   );

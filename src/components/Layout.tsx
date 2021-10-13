@@ -5,14 +5,12 @@ import styles from "./Layout.module.scss";
 
 type Props = {
   children: React.ReactNode;
-}
+};
 
 const Layout: React.VFC<Props> = ({ children }: Props) => (
   <>
     <Header />
-    <main className={styles.container}>
-      {children}
-    </main>
+    <main className={styles.container}>{children}</main>
     <Footer />
   </>
 );

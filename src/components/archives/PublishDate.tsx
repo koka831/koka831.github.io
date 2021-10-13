@@ -4,7 +4,7 @@ import styles from "./PublishDate.module.scss";
 type Props = {
   date?: string;
   children: React.ReactNode;
-}
+};
 
 export const PublishDate: React.VFC<Props> = ({ date, children }: Props) => {
   return (

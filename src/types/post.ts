@@ -11,6 +11,6 @@ type Post = {
   commits: CommitLog[];
   publishedAt: string;
   updatedAt: string;
-}
+};
 
 export default Post;
