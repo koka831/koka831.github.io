@@ -21,20 +21,7 @@ bar
     - cgdiskがcursesベースなので使いやすい
 
 ```shell-session
-$echo $EDITOR
-vim
-$git checkout master
-Switched to branch 'master'
-Your branch is up-to-date with 'origin/master'
-#foo
-$git push
-Everything up-to-date
-[sudo] password for koka:
-$echo 'All
-> done!'
-All
-done!
-$cgdisk /dev/nvme0n1
+$ cgdisk /dev/nvme0n1
 ```
 
 ```shell-session
@@ -78,7 +65,7 @@ $ ls -la
 ### Result of partitioning
 - 512G SSDを対象に行うと以下のようになる.
 
-```sh
+```shell-session
 $ fdisk -l
 Device          Start   End             Sectors Size    Type
 /dev/nvme0n1p1  2048    1050623         1048576 512M    Efi system
@@ -90,10 +77,10 @@ Device          Start   End             Sectors Size    Type
 mkfsを用いて各partitionをフォーマットする.  
 efi領域はFAT32指定、その他Linux filesystemの領域はext4等好みのファイルシステムを用いる.
 
-```sh
-mkfs.fat -F32 /dev/nvme0n1p1
-mkfs.ext4 /dev/nvme0n1p2
-mkfs.ext4 /dev/nvme0n1p3
+```shell-session
+$ mkfs.fat -F32 /dev/nvme0n1p1
+$ mkfs.ext4 /dev/nvme0n1p2
+$ mkfs.ext4 /dev/nvme0n1p3
 ```
 
 ## 3. Mount Volume
