@@ -15,7 +15,9 @@ export const postsDir = path.join(process.cwd(), "_posts");
 
 export const getPosts = async (): Promise<Post[]> => {
   const files = await fs.readdir(postsDir);
-  const posts = await Promise.all(files.map(async (file) => await getMarkdownContent(file)));
+  const posts = await Promise.all(
+    files.map(async (file) => await getMarkdownContent(file))
+  );
 
   // order by latest
   return posts.reverse();
@@ -44,7 +46,9 @@ const getMarkdownContent = async (fname: string): Promise<Post> => {
     slug: fname.replace(RegExp(`${POST_EXT}$`), ""),
     title: data.title,
     categories: data.categories || [],
-    image: data.image ? `${CONST.PUBLIC_IMAGE_DIR}/${data.image}` : CONST.DEFAULT_OGP_IMAGE,
+    image: data.image
+      ? `${CONST.PUBLIC_IMAGE_DIR}/${data.image}`
+      : CONST.DEFAULT_OGP_IMAGE,
     tags: data.tags || [],
     content: html,
     // create excerpt from the beginning of the content

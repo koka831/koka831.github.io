@@ -6,28 +6,33 @@ function plugin(this: Processor): Transformer {
   const transformer: Transformer = (tree: Node): void => {
     // for figure index
     let count = 0;
-    visit(tree, (node: Node, index: number, parent: Parent | undefined): void => {
-      if (node.type !== "image") return;
-      if (!parent) return;
+    visit(
+      tree,
+      (node: Node, index: number, parent: Parent | undefined): void => {
+        if (node.type !== "image") return;
+        if (!parent) return;
 
-      count += 1;
+        count += 1;
 
-      parent.children[index] = {
-        type: "figure",
-        data: { hName: "figure" },
-        children: [
-          { ...node },
-          {
-            type: "figcaption",
-            data: { hName: "figcaption" },
-            children: [{
-              type: "text",
-              value: `img.${count} ${node.title || node.alt}`
-            }]
-          }
-        ],
-      };
-    });
+        parent.children[index] = {
+          type: "figure",
+          data: { hName: "figure" },
+          children: [
+            { ...node },
+            {
+              type: "figcaption",
+              data: { hName: "figcaption" },
+              children: [
+                {
+                  type: "text",
+                  value: `img.${count} ${node.title || node.alt}`,
+                },
+              ],
+            },
+          ],
+        };
+      }
+    );
   };
 
   return transformer;

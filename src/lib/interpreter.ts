@@ -18,7 +18,7 @@ const prismPlugins = [
   "autolinker",
   "command-line",
   "diff-highlight",
-  "line-numbers"
+  "line-numbers",
 ];
 
 const markdownToHtml = async (markdown: string): Promise<string> => {

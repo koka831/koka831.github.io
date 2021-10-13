@@ -1,14 +1,16 @@
 const throttle = <T extends []>(
   cb: (..._: T) => void,
   wait = 500 /* ms */
-): (..._: T) => void => {
+): ((..._: T) => void) => {
   let queued: boolean;
 
   const invoke = (...args: T) => {
     if (!queued) {
       queued = true;
       cb(...args);
-      setTimeout(() => { queued = false; }, wait);
+      setTimeout(() => {
+        queued = false;
+      }, wait);
     }
   };
 
