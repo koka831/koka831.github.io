@@ -33,9 +33,9 @@ const markdownToHtml = async (markdown: string): Promise<string> => {
     .use(slug)
     .use(headings, { behavior: "wrap" })
     .use(footnotes)
-    .use(remark2rehype)
+    .use(remark2rehype, { allowDangerousHtml: true })
     .use(katex)
-    .use(stringify)
+    .use(stringify, { allowDangerousHtml: true })
     .process(markdown);
 
   return result.toString();
