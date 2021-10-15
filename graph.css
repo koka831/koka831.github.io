@@ -1,0 +1,84 @@
+.graph-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.graph-wrapper.label  {
+text-align center
+font-size 1.4rem
+}
+
+.graph
+  margin 2rem 0
+  font-size 0.8rem
+  display flex
+  justify-content center
+  .edge
+    position relative
+    z-index 0
+    background $green0
+    width 2.5rem
+    height 2.5rem
+    border-radius 50%
+    text-align center
+    line-height 2.5rem
+
+    &.vertical
+      z-index -1
+      &::before
+        position absolute
+        top -2rem
+        content ''
+        height 2rem
+        border-left 1.5px solid $gray
+
+    &.cross
+      z-index -1
+      &::after
+        position absolute
+        top -3rem
+        left -1rem
+        content ''
+        height 4rem
+        border-right 1.5px solid $gray
+        transform rotate(-45deg)
+
+    &.piece::before
+      position absolute
+      left 0.8rem
+      top -1.4rem
+      font-family 'Font Awesome 5 Free'
+      font-size 1.5rem
+      font-weight 900
+      content '\f443'
+
+  .node
+    position relative
+    width 2rem
+    height 1.2rem
+    border-bottom 1.5px solid $gray
+    text-align center
+
+    &.none
+      border 0
+
+    &.cut::before
+      content: ''
+      width 1.4rem
+      border-bottom 2px solid $red1
+      color $yellow0
+      position absolute
+      left 0.3rem
+      top 1rem
+      transform rotate(45deg)
+
+    &.cut::after
+      content: ''
+      width 1.4rem
+      border-bottom 2px solid $red1
+      color $yellow0
+      position absolute
+      left 0.3rem
+      top 1rem
+      transform rotate(-45deg)
