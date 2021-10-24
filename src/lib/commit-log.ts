@@ -3,14 +3,15 @@ import path from "path";
 import { exec as sync_exec } from "child_process";
 
 import { CommitLog } from "../types";
-import { postsDir } from "./api";
-import markdownToHtml from "./interpreter";
+import { markdownToHtml } from "./interpreter";
 import Moment from "./moment";
+
+import * as CONST from "./const";
 
 const exec = util.promisify(sync_exec);
 
 const execGitLogFollow = async (fname: string): Promise<string> => {
-  const fullpath = path.join(postsDir, fname);
+  const fullpath = path.join(CONST.POSTS_DIR, fname);
   const relative = path.relative(process.cwd(), fullpath);
   const { stdout, stderr } = await exec(`git log --follow -p ${relative}`);
   if (stderr) throw new Error(`failed to exec git log: ${stderr}`);

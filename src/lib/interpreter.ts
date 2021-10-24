@@ -21,14 +21,14 @@ const prismPlugins = [
   "line-numbers",
 ];
 
-const markdownToHtml = async (markdown: string): Promise<string> => {
+export const markdownToHtml = async (markdown: string): Promise<string> => {
   const result = await remark()
     .use(gfm)
     .use(math)
     .use(emoji)
     .use(container)
     .use(caption)
-    .use(prism, { plugins: prismPlugins, transformInlineCode: true })
+    .use(prism, { plugins: prismPlugins })
     .use(externalLink)
     .use(slug)
     .use(headings, { behavior: "wrap" })
@@ -40,5 +40,3 @@ const markdownToHtml = async (markdown: string): Promise<string> => {
 
   return result.toString();
 };
-
-export default markdownToHtml;

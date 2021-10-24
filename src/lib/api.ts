@@ -3,18 +3,14 @@ import path from "path";
 import matter from "gray-matter";
 
 import { Post } from "../types";
-import interpreter from "./interpreter";
+import { markdownToHtml } from "./interpreter";
 import getCommitLogs from "./commit-log";
 import Moment from "./moment";
 
 import * as CONST from "./const";
 
-const POST_EXT = ".md";
-
-export const postsDir = path.join(process.cwd(), "_posts");
-
 export const getPosts = async (): Promise<Post[]> => {
-  const files = await fs.readdir(postsDir);
+  const files = await fs.readdir(CONST.POSTS_DIR);
   const posts = await Promise.all(
     files.map(async (file) => await getMarkdownContent(file))
   );
@@ -24,26 +20,31 @@ export const getPosts = async (): Promise<Post[]> => {
 };
 
 export const getSlugs = async (): Promise<string[]> => {
-  const files = await fs.readdir(postsDir);
-  const slugs = files.map((fname) => fname.replace(RegExp(`${POST_EXT}$`), ""));
+  const files = await fs.readdir(CONST.POSTS_DIR);
+  const slugs = files.map((fname) =>
+    fname.replace(RegExp(`${CONST.POST_EXT}$`), "")
+  );
 
   return slugs.reverse();
 };
 
 export const getPostBySlug = async (slug: string): Promise<Post> => {
-  const post = await getMarkdownContent(`${slug}${POST_EXT}`);
+  const post = await getMarkdownContent(`${slug}${CONST.POST_EXT}`);
 
   return post;
 };
 
 const getMarkdownContent = async (fname: string): Promise<Post> => {
-  const rawContent = await fs.readFile(path.join(postsDir, fname), "utf8");
+  const rawContent = await fs.readFile(
+    path.join(CONST.POSTS_DIR, fname),
+    "utf8"
+  );
   const { content, data } = matter(rawContent);
-  const html = await interpreter(content);
+  const html = await markdownToHtml(content);
   const commits = await getCommitLogs(fname);
 
   const post: Post = {
-    slug: fname.replace(RegExp(`${POST_EXT}$`), ""),
+    slug: fname.replace(RegExp(`${CONST.POST_EXT}$`), ""),
     title: data.title,
     categories: data.categories || [],
     image: data.image
