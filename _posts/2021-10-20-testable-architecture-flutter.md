@@ -1,6 +1,6 @@
 ---
 title: テスト容易性を考慮したFlutterのアーキテクチャ考察
-date: 2021-10-20
+date: 2021-10-25
 categories:
 - Programming
 tags:
