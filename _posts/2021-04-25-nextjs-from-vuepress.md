@@ -15,7 +15,7 @@ description: scratch new blog with Next.js; switched from VuePress
 ## TL;DR
 
 - [VuePress][vuepress]のアルファ版を使っていて，メンテが辛くなった
-- [Next.js][next] + [remark][remark]でMarkdown->HTMLのSSGを構築した
+- [Next.js][next] + [remark][remark]でMarkdown->HTMLのSGを構築した
 - [できたもの](https://github.com/koka831/koka831.github.io)
 
 ## About
@@ -54,12 +54,12 @@ Run `npm audit` for details.
 
 [Gatsby.js][gatsby]はReact.jsをベースにしたリッチなCMSフレームワーク.バックエンドとはGraphQLで連携し，コンテンツの取得は[contentful][contentful]+Markdownだったりと選定の自由度が高い.
 
-SSGのプロセスについてもAPIの呼び出し回数は全ページに対して1回で済む(ようなquery buildをする必要はある)ようなので，productionでの利用をするならGatsby.jsを選ぶと思う.
+SGのプロセスについてもAPIの呼び出し回数は全ページに対して1回で済む(ようなquery buildをする必要はある)ようなので，productionでの利用をするならGatsby.jsを選ぶと思う.
 
 ### Next.js
 
 [Next.js][next]はGatsby.jsと比べると薄いフレームワークで，ビルドやルーティング等ベースとなる機能の提供がメインになっている.
-Server-Side Generationの仕組みはあるが，Gatsby.jsほどの最適化は行われていない感じ.
+Static Generationの仕組みはあるが，Gatsby.jsほどの最適化は行われていない感じ.
 
 したがってCMSとして使うためにはそれ相当の機能の実装が必要となるため，~コストは高い~面白そう.
 
@@ -69,7 +69,7 @@ Server-Side Generationの仕組みはあるが，Gatsby.jsほどの最適化は�
 
 ### Architecture
 
-Next.jsの[`getStaticProps`][getStaticProps]と[`getStaticPaths`][getStaticPaths]を用いて一覧・詳細ページをSSG.
+Next.jsの[`getStaticProps`][getStaticProps]と[`getStaticPaths`][getStaticPaths]を用いて一覧・詳細ページをSG.
 コンテンツはMarkdownで記述し，[remark][remark]を用いてHTMLを生成している．
 Next.js側でも[MDX][mdx](Markdown+React Component)を描画できる仕組みがあったけど，内部で呼ばれているコンパイラに手を加えるのに難儀したため，情報の多いremarkを選んだ.
 
