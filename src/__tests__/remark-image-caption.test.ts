@@ -1,4 +1,4 @@
-import remark from "remark";
+import { remark } from "remark";
 import { Processor } from "unified";
 import type { VFileCompatible } from "vfile";
 import gfm from "remark-gfm";
@@ -14,16 +14,16 @@ const compiler: Processor = remark()
   .use(stringify);
 
 const process = async (contents: VFileCompatible): Promise<VFileCompatible> => {
-  return compiler.process(contents).then((file) => file.contents);
+  return compiler.process(contents).then((file) => file.value);
 };
 
 describe("remark-container", () => {
   it("interprets image with title", async () => {
-    const input = '![image alt](/img/icon.png "caption text of image")';
+    const input = "![image alt](/img/icon.png \"caption text of image\")";
     const expected =
       "<p>" +
       "<figure>" +
-      '<img src="/img/icon.png" alt="image alt" title="caption text of image">' +
+      "<img src=\"/img/icon.png\" alt=\"image alt\" title=\"caption text of image\">" +
       "<figcaption>img.1 caption text of image</figcaption>" +
       "</figure>" +
       "</p>";
@@ -33,7 +33,7 @@ describe("remark-container", () => {
   it("interprets image without title", async () => {
     const input = "![image alt](/img/icon.png)";
     const expected =
-      '<p><figure><img src="/img/icon.png" alt="image alt"><figcaption>img.1 image alt</figcaption></figure></p>';
+      "<p><figure><img src=\"/img/icon.png\" alt=\"image alt\"><figcaption>img.1 image alt</figcaption></figure></p>";
     expect(await process(input)).toBe(expected);
   });
 
@@ -41,11 +41,11 @@ describe("remark-container", () => {
     const input = "![alt1](image.png)\n![alt2](image2.png)";
     const expected =
       "<p>" +
-      '<figure><img src="image.png" alt="alt1">' +
+      "<figure><img src=\"image.png\" alt=\"alt1\">" +
       "<figcaption>img.1 alt1</figcaption>" +
       "</figure>\n" +
       "<figure>" +
-      '<img src="image2.png" alt="alt2">' +
+      "<img src=\"image2.png\" alt=\"alt2\">" +
       "<figcaption>img.2 alt2</figcaption>" +
       "</figure>" +
       "</p>";

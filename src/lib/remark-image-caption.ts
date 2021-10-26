@@ -1,5 +1,5 @@
 import type { Node, Parent } from "unist";
-import visit from "unist-util-visit";
+import { visit } from "unist-util-visit";
 import { Processor, Transformer } from "unified";
 
 function plugin(this: Processor): Transformer {
@@ -8,9 +8,10 @@ function plugin(this: Processor): Transformer {
     let count = 0;
     visit(
       tree,
-      (node: Node, index: number, parent: Parent | undefined): void => {
+      (node: Node, index: number | null, parent: Parent | undefined): void => {
         if (node.type !== "image") return;
         if (!parent) return;
+        if (!index) return;
 
         count += 1;
 
