@@ -326,7 +326,7 @@ ViewModelがViewを参照しない・してはならないことからもわか�
 ```dart[data-file="view_model.dart"]
 final fooViewModelProvider = StateNotifierProvider.autoDispose<FooViewModel, FooState>(
   (ref) => WaitingListViewModel(
-    insuranceRepository: ref.read(insuranceRepositoryProvider),
+    fooRepository: ref.read(fooRepositoryProvider),
   ),
 );
 ```
