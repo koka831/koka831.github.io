@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/en/configuration.html
  */
 
-export default {
+const config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -58,10 +58,11 @@ export default {
 
   // A path to a module which exports an async function that is triggered once after all test suites
   // globalTeardown: undefined,
-
+  extensionsToTreatAsEsm: [".ts"],
   // A set of global variables that need to be available in all test environments
   globals: {
     "ts-jest": {
+      useEsm: true,
       tsconfig: {
         jsx: "react",
       },
@@ -89,6 +90,7 @@ export default {
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
     "\\.(css|scss)$": "identity-obj-proxy",
+    "^(\\.{1,2}/.*)\\.js$": "$1",
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -198,3 +200,5 @@ export default {
   // Whether to use watchman for file crawling
   // watchman: true,
 };
+
+export default config;
