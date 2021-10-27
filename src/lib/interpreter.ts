@@ -6,7 +6,7 @@ import headings from "remark-autolink-headings";
 import katex from "rehype-katex";
 import math from "remark-math";
 import prism from "remark-prism";
-import remark from "remark";
+import { remark } from "remark";
 import remark2rehype from "remark-rehype";
 import slug from "remark-slug";
 import stringify from "rehype-stringify";
