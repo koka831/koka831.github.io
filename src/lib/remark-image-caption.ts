@@ -11,11 +11,10 @@ function plugin(this: Processor): Transformer {
       (node: Node, index: number | null, parent: Parent | undefined): void => {
         if (node.type !== "image") return;
         if (!parent) return;
-        if (!index) return;
 
         count += 1;
 
-        parent.children[index] = {
+        parent.children[index ?? 0] = {
           type: "figure",
           data: { hName: "figure" },
           children: [
