@@ -39,7 +39,7 @@
     "@typescript-eslint/parser": "^4.28.2",
     "autoprefixer": "^10.2.3",
     "eslint": "^7.32.0",
-    "eslint-config-next": "^11.1.2",
+    "eslint-config-next": "^12.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.26.1",
     "gray-matter": "^4.0.3",
