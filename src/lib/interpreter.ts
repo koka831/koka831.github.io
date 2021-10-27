@@ -26,7 +26,7 @@ export const markdownToHtml = async (markdown: string): Promise<string> => {
     .use(gfm)
     .use(math)
     .use(emoji)
-    // .use(container)
+    .use(container)
     .use(caption)
     .use(prism, { plugins: prismPlugins })
     .use(externalLink)
