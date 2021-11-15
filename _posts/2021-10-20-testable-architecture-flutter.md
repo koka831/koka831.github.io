@@ -182,7 +182,7 @@ Repositoryインスタンスには[riverpod][riverpod]の提供する`Provider`�
 
 ```dart[data-file="foo_repository.dart"]
 final fooRepositoryProvider = Provider<FooRepository>(
-  (ref) => FooRepository._(ref.read(httpClientProvider)),
+  (ref) => FooRepository._(ref.read),
 );
 ```
 
@@ -195,7 +195,8 @@ final fooRepositoryProvider = Provider<FooRepository>(
 
 ```dart[data-file="foo_repository.dart"]
 class FooRepository {
-  FooRepository._(this._httpClient);
+  // @see https://pub.dev/documentation/riverpod/latest/riverpod/Ref/read.html
+  FooRepository._(Reader read) : _httpClient = read(httpClientProvider);
 
   final HttpClient _httpClient;
   List<Foo>? _cache;
@@ -244,10 +245,6 @@ Aではネットワーク先，BではAPIクライアントの振る舞いをそ
 APIクライアントクラスが利用する`HttpClient`をモックすることで，APIクライアントのネットワークリクエスト処理のみをスタブすることができます．  
 APIクライアントクラスが`HttpClient`を利用する処理はmixinとして実装を与えてあるため，個々のAPIクライアントクラスの振る舞いには左右されず修正に強いテストが期待できます．
 またBと比較してもDIする対象が1つで済むため適切であると言えます．
-
-::: warn FooRepositoryのコンストラクタについて
-FooRepository内部で直接ProviderをService Locatorとして利用することを避けるために，HttpClientをコンストラクタの引数として渡すような設計になっています．
-:::
 
 テストコードで`HttpClient`をProviderから受け取るには`ProviderContainer`を利用します．  
 `ProviderContainer`の引数にDIプロバイダのオーバーライド設定を指定することで，テスト内では`mockHttpClient`を利用するRepositoryクラスを利用することができます．
@@ -325,9 +322,7 @@ ViewModelがViewを参照しない・してはならないことからもわか�
 
 ```dart[data-file="view_model.dart"]
 final fooViewModelProvider = StateNotifierProvider.autoDispose<FooViewModel, FooState>(
-  (ref) => WaitingListViewModel(
-    fooRepository: ref.read(fooRepositoryProvider),
-  ),
+  (ref) => WaitingListViewModel(ref.read),
 );
 ```
 
@@ -357,8 +352,8 @@ class FooState with _$FooState {
 
 ```dart[data-file="view_model.dart"]
 class FooViewModel extends StateNotifier<FooState> {
-  FooViewModel({required FooRepository fooRepository})
-      : _repository = fooRepository,
+  FooViewModel(Reader read)
+      : _repository = read(fooRepositoryProvider),
         super(const FooState._(foos: AsyncValue.loading())) {
     // construct時に初期化処理`onInit`を実行
     onInit();
@@ -493,6 +488,52 @@ Dartの型システムは比較的緩いので，そういった言語特性も�
   半年とか経ったら振り返りをしようと考えています．  
 </small>
 
+---
+
+### 2021-11-15 追記:
+
+ご指摘をいただき，`xxxProvider`内で`ref.read`を呼ぶ代わりに`ref.read`を渡すように修正しました．  
+元々の設計意図はDIフレームワークを各レイヤの実装内部に持ち込みたくなかったというのがあります．
+Riverpodでは以下のように記述することで(後述するパフォーマンスの問題を除けば)Provider内部で別のProviderの値を取得することが可能です．  
+
+```dart
+// bad
+final fooViewModelProvider = StateNotifierProvider<...>(
+  (ref) => FooViewModel(repository: ref.read(fooRepositoryProvider)),
+);
+```
+
+`fooViewModelProvider`を`FooViewModel`と`fooRepositoryProvider`の糊付けとして用いることで，`FooViewModel`の実装内部にRiverpodを持ち込まなくて済みます．
+
+```dart
+class FooViewModel {
+  // 修正前は`fooViewModelProvider`を糊付けとして利用して`FooViewModel`にRiverpodのコードを入れないようにしていた.
+  FooViewModel({required FooRepository repository});
+}
+```
+
+ただ[こちら][provider_read]にもあるように`ref.read`をProvider内部で呼ぶことは不要なリビルドを招くため，次のように`Reader`関数を渡すように修正しました．
+
+個人的には`Reader`を引数にとるのはService Locatorパターンだと考えているので，`Reader`をメンバとして保持しないようにコンストラクタで取得後破棄するようにしています．
+
+```dart
+// good
+final fooViewModelProvider = StateNotifierProvider<...>(
+  (ref) => FooViewModel(ref.read)
+);
+
+class FooViewModel {
+  // `ref.read`を受取り，コンストラクタで`read`する
+  FooViewModel(Reader reader) : _repository = read(fooRepositoryProvider);
+
+  final FooRepository _repository;
+}
+```
+
+正直修正後もベストかどうか自信がないので，引き続き試行錯誤していこうと思います．
+
+改めてご指摘頂いた方々には感謝しています．ありがとうございます．
+
 [praha_test]: https://www.praha-inc.com/lab/posts/testability
 [testability]: https://www.satisfice.com/download/heuristics-of-software-testability
 [shared_preferences]: https://pub.dev/packages/shared_preferences
@@ -514,6 +555,7 @@ Dartの型システムは比較的緩いので，そういった言語特性も�
 
 [aaa]: https://docs.microsoft.com/en-us/visualstudio/test/unit-test-basics?view=vs-2019#write-your-tests
 [srp]: https://en.wikipedia.org/wiki/Single-responsibility_principle
+[provider_read]: https://riverpod.dev/docs/concepts/combining_providers/#can-i-read-a-provider-without-listening-to-it
 
 
 [^1]: [Dependency Injection principles, Manning][di_principles]. volatile dependency/static dependency
