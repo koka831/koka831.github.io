@@ -51,7 +51,7 @@
     "prettier": "^2.4.1",
     "rehype-katex": "^6.0.1",
     "rehype-stringify": "^9.0.2",
-    "remark": "^14.0.0",
+    "remark": "^14.0.2",
     "remark-autolink-headings": "^7.0.1",
     "remark-custom-container": "^1.0.1",
     "remark-emoji": "^3.0.1",
