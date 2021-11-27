@@ -54,7 +54,7 @@
     "remark": "^14.0.2",
     "remark-autolink-headings": "^7.0.1",
     "remark-custom-container": "^1.0.1",
-    "remark-emoji": "^3.0.1",
+    "remark-emoji": "^3.0.2",
     "remark-external-links": "^9.0.1",
     "remark-footnotes": "^4.0.1",
     "remark-gfm": "^3.0.0",
