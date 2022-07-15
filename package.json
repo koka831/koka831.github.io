@@ -36,7 +36,7 @@
     "@types/testing-library__jest-dom": "^5.14.3",
     "@types/unist": "^2.0.3",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@typescript-eslint/parser": "^5.17.0",
+    "@typescript-eslint/parser": "^5.30.5",
     "autoprefixer": "^10.4.4",
     "eslint": "^8.11.0",
     "eslint-config-next": "^12.1.0",
@@ -69,6 +69,6 @@
     "ts-node": "^10.7.0",
     "typescript": "4.6.2",
     "unified": "^10.1.2",
-    "vfile": "^5.3.2"
+    "vfile": "^5.3.4"
   }
 }
