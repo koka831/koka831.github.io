@@ -128,13 +128,17 @@ const markdownToHtml = async (markdown: string): Promise<string> => {
 
 ```markdown[data-file="custom-container.md"]
 ::: info Custom Title
+
 Custom Container Body
+
 :::
 ```
 **fig.3 これがこうじゃ**
 
 ::: info Custom Title
+
 Custom Container Body
+
 :::
 
 remark版を探すといくつか見つかったけど，どれも動かなかったので作ることにした.

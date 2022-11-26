@@ -54,7 +54,7 @@
     "rehype-slug": "^5.1.0",
     "rehype-stringify": "^9.0.3",
     "remark": "^14.0.2",
-    "remark-custom-container": "^1.1.2",
+    "remark-custom-container": "^1.2.0",
     "remark-emoji": "^3.0.2",
     "remark-external-links": "^9.0.1",
     "remark-footnotes": "^4.0.1",

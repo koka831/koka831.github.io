@@ -102,8 +102,10 @@ Union-Findでは要素を統合することはできても分割操作は行え�
 
 が, Union-Findで集合の要素数を持つケースを初めて見たのでやや手間取った. 本番では構造体に要素数`siz`を`Vec`で保持させて$unite$時に更新してなんとかなった.
 
-::: tip 追記
+::: info 追記
+
 この辺が存在した場合の連結する頂点数を考えると, $n * (n - 1) / 2$なのでここから引いてくと楽.
+
 :::
 
 <details>
@@ -153,11 +155,13 @@ unite by rankとunite by sizeは本質的には同じなので落ち着いて対
 
 またrankに符号付き整数を用いて, 正負でsize or rankを表すテクもあることを知った.
 
-::: tip TODO
+::: info TODO
+
 basic ([Bridge/ABC075](https://atcoder.jp/contests/abc075/tasks/abc075_c))  
 weighted(Potential) Union-Find ([People on a line/ABC087](https://atcoder.jp/contests/abc087/tasks/arc090_b))  
 永続UF ([Stamp Rally/AGC002](https://agc002.contest.atcoder.jp/tasks/agc002_d))  
 わからん ([Nuske vs Phantom Thnook/AGC015](https://agc015.contest.atcoder.jp/tasks/agc015_c))
+
 :::
 
 [^1]: $\alpha^{-1}(n) = Ackerman(n, n)$. 経路圧縮とrankどちらかのみの場合はならし計算量$O(log n)$.

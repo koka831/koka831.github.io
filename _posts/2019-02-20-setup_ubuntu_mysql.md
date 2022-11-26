@@ -24,7 +24,9 @@ sudo mysql_secure_installation
 create a database and a user for the database with minimum permission.
 
 ::: tip
+
 Note: set charset to `UTF8mb4` to store emoji
+
 :::
 
 ```sql
