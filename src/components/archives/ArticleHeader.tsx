@@ -26,8 +26,8 @@ const PostHeader: React.VFC<Props> = ({
 }: Props) => {
   return (
     <div itemScope className={styles.header__container}>
-      <Link as={`/archives/${slug}`} href="/archives/[slug]">
-        <a className={styles.post__title}>{title}</a>
+      <Link as={`/archives/${slug}`} className={styles.post__title} href="/archives/[slug]">
+        {title}
       </Link>
       <p>{description}</p>
       <div className={styles.flex}>
