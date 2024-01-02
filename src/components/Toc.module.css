@@ -1,0 +1,27 @@
+.toc__nav {
+  font-size: 0.9em;
+  width: 100%;
+  color: var(--gray);
+  word-wrap: break-word;
+}
+
+.toc {
+  list-style-type: none;
+}
+
+.toc__active {
+  color: var(--black);
+}
+
+.toc__h2 {
+    margin-left: 1em;
+}
+
+.toc__h3 {
+    margin-left: 2em;
+}
+
+.toc__h1:hover,.toc__h2:hover,.toc__h3:hover {
+    color: var(--orange);
+    cursor: pointer;
+}

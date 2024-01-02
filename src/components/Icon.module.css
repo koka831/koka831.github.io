@@ -1,0 +1,17 @@
+.icon__container {
+  display: inline-block;
+}
+
+ul.icon {
+  display: flex;
+}
+
+ul.icon li {
+  margin: 0;
+  width: 15px;
+  height: 15px;
+}
+
+ul.icon li.green {
+  background-color: var(--orange);
+}

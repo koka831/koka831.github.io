@@ -1,0 +1,80 @@
+.commit_logs {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+
+  color: var(--black);
+  background-color: var(--gray);
+  margin-top: 40px;
+  padding: 20px 40px;
+}
+
+.summary {
+  display: grid;
+  position: relative;
+  padding: 4px 12px;
+  list-style: none;
+  cursor: pointer;
+  grid-template-columns: 3 2 8;
+  grid-template-areas: "timestamp hash message";
+  grid-auto-rows: max-content;
+}
+
+.summary.commit__message {
+  grid-area: message;
+}
+
+.commit_hash {
+  grid-area: hash;
+}
+
+.commit_date {
+  grid-area: timestamp;
+}
+
+.summary::after {
+  content: "+";
+  opacity: 0;
+  position: absolute;
+  top: 45%;
+  right: 30px;
+  transform: translateY(-50%);
+  transition: opacity 0.2s, transform 0.5s;
+  font-size: 24px;
+}
+
+.summary:hover::after {
+  opacity: 1;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] > .summary::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.summary:hover,
+details[open] .summary {
+  background-color: var(--mos);
+  color: var(--white);
+}
+
+@media (max-width: 900px) {
+  .commit_logs {
+    margin-top: 20px;
+    padding: 10px 20px;
+
+    .summary {
+      display: static;
+      grid-template-columns: 1;
+      grid-template-areas: "message";
+
+      .commit__date,
+      .commit__hash {
+        display: none;
+      }
+    }
+  }
+}

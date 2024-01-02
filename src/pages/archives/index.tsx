@@ -7,7 +7,7 @@ import { getPosts } from "../../lib/api";
 
 import { Layout } from "../../components";
 import { ArticleHeader } from "../../components/archives";
-import styles from "./index.module.scss";
+import styles from "./index.module.css";
 
 type Props = {
   posts: Post[];

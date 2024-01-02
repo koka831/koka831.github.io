@@ -1,0 +1,31 @@
+.navigation__container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+
+  display: flex;
+  padding: 10px;
+  color: var(--black);
+  font-size: 1.5em;
+  font-weight: 600;
+  border-bottom: 1px solid var(--black);
+}
+
+
+.navigation__container a:hover {
+  color: var(--orange);
+}
+
+
+.navigation {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .navigation__container {
+    font-size: 1.3em;
+    padding: 10px 20px;
+  }
+}

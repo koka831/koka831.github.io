@@ -1,0 +1,19 @@
+.comment {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+
+  margin-top: 40px;
+  padding: 20px 40px;
+  background-color: var(--mos);
+
+  .title {
+    color: var(--beige);
+  }
+}
+
+@media (max-width: 900px) {
+  .comment {
+    padding: 10px 20px;
+  }
+}

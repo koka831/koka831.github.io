@@ -5,11 +5,12 @@ import { AppProps } from "next/app";
 import * as CONST from "../lib/const";
 
 import "../../node_modules/modern-normalize/modern-normalize.css";
-import "../styles/globals.scss";
-import "../styles/custom-container.scss";
-import "../styles/prism-gruvbox.scss";
+import "../styles/variable.css";
+import "../styles/style.css";
+import "prismjs/plugins/command-line/prism-command-line.css";
+import "../styles/prism-gruvbox.css";
 
-const MyApp: React.VFC<AppProps> = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   const url = CONST.HOMEPAGE_URL;
   const title = CONST.HOMEPAGE_TITLE;
   const description = CONST.HOMEPAGE_DESCRIPTION;

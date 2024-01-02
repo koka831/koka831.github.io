@@ -1,0 +1,107 @@
+.container {
+  color: var(--black);
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.flex {
+  display: flex;
+}
+
+.links_container {
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile_container,
+.skills_container,
+.projects_container,
+.contact_container {
+  padding: 40px;
+  padding-top: 20px;
+}
+
+.profile_container a,
+.skills_container a,
+.projects_container a,
+.contact_container a {
+  text-decoration: underline;
+}
+
+.profile_container a:hover,
+.skills_container a:hover,
+.projects_container a:hover,
+.contact_container a:hover {
+  color: var(--orange);
+}
+.profile_container {
+  display: flex;
+  background-color: var(--beige);
+  padding-top: 40px;
+}
+
+.profile__main {
+  padding: 0 40px;
+}
+
+.profile__main p,
+.profile__main h2 {
+  margin-top: 0;
+}
+
+.skills_container {
+  margin-top: 40px;
+  background: var(--gray);
+}
+
+.projects_container {
+  margin-top: 40px;
+  background: var(--beige);
+}
+
+.contact_container {
+  margin-top: 40px;
+  color: var(--white);
+  background: var(--mos);
+}
+
+.contact,
+.skills {
+  line-height: 1.5em;
+}
+
+.contact li + .contact li,
+.skills li + .skills li {
+  margin-top: 1em;
+}
+
+@media (max-width: 900px) {
+  .container {
+    margin-top: 25px;
+  }
+
+  .profile_container,
+  .skills_container,
+  .projects_container,
+  .contact_container {
+    margin: 15px;
+    padding: 25px 15px;
+  }
+
+  .profile_container h1,
+  .skills_container h1,
+  .projects_container h1,
+  .contact_container h1 {
+    margin-top: 0;
+  }
+
+  .profile_container h2,
+  .skills_container h2,
+  .projects_container h2,
+  .contact_container h2 {
+    margin-top: 0;
+  }
+}

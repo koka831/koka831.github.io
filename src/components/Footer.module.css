@@ -1,0 +1,19 @@
+.footer {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 20px auto;
+
+  color: var(--black);
+  display: block;
+  border-top: 1px solid var(--black);
+  font-size: 1rem;
+  line-height: 4rem;
+}
+
+@media (max-width: 900px) {
+  .footer {
+    margin-top: 10px;
+    padding: 10px 20px;
+    line-height: 1.3rem;
+  }
+}

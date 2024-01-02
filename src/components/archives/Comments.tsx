@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import styles from "./Comments.module.scss";
+import styles from "./Comments.module.css";
 
 const Comments: React.VFC = () => {
   useEffect(() => {

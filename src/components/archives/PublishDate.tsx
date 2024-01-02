@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./PublishDate.module.scss";
+import styles from "./PublishDate.module.css";
 
 type Props = {
   date?: string;

@@ -1,0 +1,34 @@
+:root {
+  --max-width: 900px;
+
+  --black: #19191a;
+  --white: #ebdbb2;
+  --creamy: #fcf7ec;
+
+  --bg: var(--creamy);
+  --beige: #ddd4bb;
+  --gray: #adaa9b;
+  --mocha: #a89984;
+  --green: #98971a;
+  --mos: #3f4638;
+  --brown: #7c6f64;
+  --orange: #d79921;
+  --dark-cyan: #006a65;
+  --cyan: #458588;
+  --dark-red: #b1513b;
+
+  /* code block highlight */
+  --code-black: #282828;
+  --code-white: #ebdbb2;
+  --code-bg: #fcf7ec;
+  --code-fg2: #d5c4a1;
+  --code-bg2: #7c6f64;
+  --code-gray: #3c3836;
+  --code-light-gray: #a89984;
+  --code-red: #fb4934;
+  --code-green: #b8bb26;
+  --code-blue: #83a598;
+  --code-aqua: #8ec07c;
+  --code-yellow: #fabd2f;
+  --code-orange: #fe8019;
+}

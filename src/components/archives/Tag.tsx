@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Tag.module.scss";
+import styles from "./Tag.module.css";
 
 type Props = {
   name: string;

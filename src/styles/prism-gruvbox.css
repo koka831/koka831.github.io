@@ -1,21 +1,6 @@
-// does not equal to colors defined in _colors.scss
-$black: #282828;
-$white: #ebdbb2;
-$bg: #fcf7ec;
-$fg2: #d5c4a1;
-$bg2: #7c6f64;
-$gray: #3c3836;
-$lightGray: #a89984;
-$red: #fb4934;
-$green: #b8bb26;
-$blue: #83a598;
-$aqua: #8ec07c;
-$yellow: #fabd2f;
-$orange: #fe8019;
-
 pre[class*="language-"],
 code[class*="language-"] {
-  color: $white;
+  color: var(--code-white);
   font-size: 13px;
   text-shadow: none;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
@@ -32,7 +17,7 @@ code[class*="language-"] {
 pre[class*="language-"]::selection,
 code[class*="language-"]::selection {
   text-shadow: none;
-  background: $yellow;
+  background: var(--code-yellow);
 }
 
 @media print {
@@ -46,7 +31,7 @@ pre[class*="language-"] {
   padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
-  background: $black;
+  background: var(--code-black);
 }
 
 :not(pre) > code {
@@ -65,11 +50,11 @@ pre[class*="language-"] {
 .token.cdata,
 .token.coord,
 .token.punctuation {
-  color: $lightGray;
+  color: var(--code-light-gray);
 }
 
 .token.namespace {
-  color: $orange;
+  color: var(--code-orange);
 }
 
 .token.property,
@@ -77,7 +62,7 @@ pre[class*="language-"] {
 .token.boolean,
 .token.number,
 .token.symbol {
-  color: $green;
+  color: var(--code-green);
 }
 
 .token.selector,
@@ -85,7 +70,7 @@ pre[class*="language-"] {
 .token.string,
 .token.char,
 .token.builtin {
-  color: $blue;
+  color: var(--code-blue);
 }
 
 .token.operator,
@@ -93,19 +78,19 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: $fg2;
+  color: var(--code-fg2);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword,
 .token.deleted {
-  color: $red;
+  color: var(--code-red);
 }
 
 .token.class-name,
 .token.constant {
-  color: $yellow;
+  color: var(--code-yellow);
 }
 
 .token.regex,
@@ -113,11 +98,11 @@ pre[class*="language-"] {
 .token.function,
 .token.variable,
 .token.inserted {
-  color: $green;
+  color: var(--code-green);
 }
 
 .token.macro.property {
-  color: $aqua;
+  color: var(--code-aqua);
 }
 
 .token.important,
@@ -140,7 +125,7 @@ pre[class*="language-"] {
 // git diff highlight
 pre.language-git {
   .token.string {
-    color: $white;
+    color: var(--code-white);
   }
 }
 
@@ -156,13 +141,13 @@ pre[class*="language-"] > code[class*="language-"] {
 pre[class*="language-diff-"] .inserted-sign.inserted {
   width: 100%;
   display: table;
-  background-color: rgba($green, 0.2);
+  background-color: rgba(var(--code-green), 0.2);
 }
 
 pre[class*="language-diff-"] .deleted-sign.deleted {
   width: 100%;
   display: table;
-  background-color: rgba($red, 0.2);
+  background-color: rgba(var(--code-red), 0.2);
 }
 
 pre[data-file] {
@@ -171,7 +156,7 @@ pre[data-file] {
   &::before {
     content: attr(data-file);
     position: absolute;
-    color: $lightGray;
+    color: var(--code-light-gray);
     top: 0;
     right: 4px;
     opacity: 1;
@@ -190,7 +175,7 @@ pre[data-file] {
   padding: inherit 0;
   margin-top: 1em;
   background: #665c54;
-  box-shadow: inset 5px 0 0 $orange;
+  box-shadow: inset 5px 0 0 var(--code-orange);
   z-index: 0;
   pointer-events: none;
   line-height: inherit;
@@ -216,7 +201,7 @@ pre[class*="language-"].line-numbers > code {
   left: -3.8em;
   width: 3em; /* works for line-numbers below 1000 lines */
   letter-spacing: -1px;
-  border-right: 1px solid $gray;
+  border-right: 1px solid var(--code-gray);
   user-select: none;
 }
 
@@ -227,7 +212,7 @@ pre[class*="language-"].line-numbers > code {
 
 .line-numbers-rows > span::before {
   content: counter(linenumber);
-  color: $bg2;
+  color: var(--code-bg2);
   display: block;
   padding-right: 0.8em;
   text-align: right;
@@ -239,7 +224,7 @@ pre[class*="language-shell-session"] {
   &::before {
     content: "terminal";
     position: absolute;
-    color: $lightGray;
+    color: var(--code-light-gray);
     top: 0;
     right: 4px;
   }
@@ -250,16 +235,16 @@ pre[class*="language-shell-session"] {
     &::before {
       font-weight: normal;
       content: "koka@blog:~";
-      color: $lightGray;
+      color: var(--code-light-gray);
     }
   }
 }
 
 .remark-highlight + p > strong {
-  // use it as figcaption
+  /* use it as figcaption */
   margin: 0;
   display: block;
-  color: $gray;
+  color: var(--code-gray);
   text-align: center;
   font-weight: normal;
   font-size: 0.8em;

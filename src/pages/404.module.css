@@ -1,0 +1,27 @@
+.container {
+  min-height: 60vh;
+  padding: 40px;
+  padding-top: 20px;
+  background-color: var(--beige);
+}
+
+.message {
+  color: var(--mos);
+}
+
+.message::after {
+  content: "_";
+  animation: cursor 1s infinite;
+}
+
+@keyframes cursor {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

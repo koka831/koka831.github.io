@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Layout, Icon } from "../components";
-import styles from "./index.module.scss";
+import styles from "./index.module.css";
 
 const Index: React.VFC = () => {
   return (

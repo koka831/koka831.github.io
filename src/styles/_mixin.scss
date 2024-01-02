@@ -1,7 +1,0 @@
-@import "./config";
-
-@mixin centering($max-width) {
-  max-width: $max-width;
-  width: 100%;
-  margin: 0 auto;
-}

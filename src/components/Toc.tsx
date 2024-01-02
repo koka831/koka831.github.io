@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import throttle from "../lib/throttle";
 
-import styles from "./Toc.module.scss";
-import "./Toc.module.scss";
+import styles from "./Toc.module.css";
+import "./Toc.module.css";
 
 type ElementLikeObject = HTMLElement | Element;
 

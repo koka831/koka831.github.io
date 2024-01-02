@@ -1,8 +1,6 @@
-@import "../../styles/color.scss";
-
 .tag {
   margin: 0;
-  color: $brown;
+  color: var(--brown);
   font-size: 0.8em;
   font-weight: 600;
   text-decoration: underline;

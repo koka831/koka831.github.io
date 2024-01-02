@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styles from "./Header.module.scss";
+import styles from "./Header.module.css";
 
 const Header: React.VFC = () => (
   <nav className={styles.navigation__container}>

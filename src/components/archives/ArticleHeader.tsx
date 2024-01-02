@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTags } from "@fortawesome/free-solid-svg-icons";
 
-import styles from "./ArticleHeader.module.scss";
+import styles from "./ArticleHeader.module.css";
 import { PublishDate, Tag } from ".";
 
 type Props = {

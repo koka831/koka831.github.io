@@ -7,7 +7,8 @@ import { getSlugs, getPostBySlug } from "../../lib/api";
 
 import { Layout, TableOfContent } from "../../components";
 import { ArticleHeader, Comments, CommitLogs } from "../../components/archives";
-import styles from "./slug.module.scss";
+import styles from "./slug.module.css";
+import "./slug.module.css";
 
 type Props = {
   post: Post;
