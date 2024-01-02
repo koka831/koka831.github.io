@@ -33,10 +33,10 @@
     "@types/react-dom": "^18.2.18",
     "@types/rss": "^0.0.32",
     "@types/unist": "^2.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.62.0",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.56.0",
+    "eslint": "^8.32.0",
     "eslint-config-next": "^14.0.4",
     "eslint-config-prettier": "^9.1.0",
     "gray-matter": "^4.0.3",
@@ -64,7 +64,7 @@
     "stylelint-config-standard": "^36.0.0",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3",
+    "typescript": "^5.1",
     "unified": "^10.1.2",
     "vfile": "^5.3.6"
   }

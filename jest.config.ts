@@ -5,23 +5,23 @@
 import { Config } from "jest";
 
 const config: Config = {
-    roots: ["<rootDir>/src"],
-    preset: "ts-jest/presets/js-with-ts-esm",
-    setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
-    testEnvironment: "node",
-    transform: { "\\.ts$": "ts-jest" },
-    globals: {
-        "ts-jest": {
-            useESM: true,
-            tsconfig: {
-                jsx: "react",
-            },
-        },
+  roots: ["<rootDir>/src"],
+  preset: "ts-jest/presets/js-with-ts-esm",
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  testEnvironment: "node",
+  transform: { "\\.ts$": "ts-jest" },
+  globals: {
+    "ts-jest": {
+      useESM: true,
+      tsconfig: {
+        jsx: "react",
+      },
     },
-    moduleNameMapper: {
-        "\\.(css|scss)$": "identity-obj-proxy",
-        "^(\\.{1,2}/.*)\\.js$": "$1",
-    },
+  },
+  moduleNameMapper: {
+    "\\.(css|scss)$": "identity-obj-proxy",
+    "^(\\.{1,2}/.*)\\.js$": "$1",
+  },
 };
 
 export default config;

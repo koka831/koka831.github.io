@@ -6,7 +6,7 @@ import headings from "rehype-autolink-headings";
 import katex from "rehype-katex";
 import math from "remark-math";
 import prism from "remark-prism";
-import {remark} from "remark";
+import { remark } from "remark";
 import remark2rehype from "remark-rehype";
 import slug from "rehype-slug";
 import stringify from "rehype-stringify";
@@ -28,14 +28,14 @@ export const markdownToHtml = async (markdown: string): Promise<string> => {
     .use(emoji)
     .use(container)
     .use(caption)
-    .use(prism, {plugins: prismPlugins})
+    .use(prism, { plugins: prismPlugins })
     .use(externalLink)
     .use(footnotes)
-    .use(remark2rehype, {allowDangerousHtml: true})
+    .use(remark2rehype, { allowDangerousHtml: true })
     .use(slug)
-    .use(headings, {behavior: "wrap"})
+    .use(headings, { behavior: "wrap" })
     .use(katex)
-    .use(stringify, {allowDangerousHtml: true})
+    .use(stringify, { allowDangerousHtml: true })
     .process(markdown);
 
   return result.toString();
