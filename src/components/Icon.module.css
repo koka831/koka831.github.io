@@ -13,5 +13,11 @@ ul.icon li {
 }
 
 ul.icon li.green {
-  background-color: var(--orange);
+  background-color: var(--mos);
+}
+
+@media (prefers-color-scheme: dark) {
+  ul.icon li.green {
+    background-color: var(--orange);
+  }
 }

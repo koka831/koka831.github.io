@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import styles from "./Comments.module.css";
 
-const Comments: React.VFC = () => {
+export const Comments = () => {
   useEffect(() => {
     // mount external script that loads iframe
     const comment = document.getElementById("github-comment-container");
@@ -26,5 +26,3 @@ const Comments: React.VFC = () => {
     </div>
   );
 };
-
-export default Comments;

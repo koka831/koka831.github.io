@@ -6,7 +6,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const PublishDate: React.VFC<Props> = ({ date, children }: Props) => {
+export const PublishDate = ({ date, children }: Props) => {
   return (
     <time
       dateTime={date}
@@ -17,5 +17,3 @@ export const PublishDate: React.VFC<Props> = ({ date, children }: Props) => {
     </time>
   );
 };
-
-export default PublishDate;

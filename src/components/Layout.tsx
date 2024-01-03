@@ -7,12 +7,10 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Layout: React.VFC<Props> = ({ children }: Props) => (
+export const Layout = ({ children }: Props) => (
   <>
     <Header />
     <main className={styles.container}>{children}</main>
     <Footer />
   </>
 );
-
-export default Layout;

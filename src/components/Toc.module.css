@@ -22,6 +22,6 @@
 }
 
 .toc__h1:hover,.toc__h2:hover,.toc__h3:hover {
-    color: var(--orange);
+    color: var(--hover-color);
     cursor: pointer;
 }

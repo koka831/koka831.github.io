@@ -5,17 +5,14 @@
 
   display: flex;
   padding: 10px;
-  color: var(--black);
   font-size: 1.5em;
   font-weight: 600;
-  border-bottom: 1px solid var(--black);
+  border-bottom: 1px solid var(--border-color);
 }
-
 
 .navigation__container a:hover {
-  color: var(--orange);
+  color: var(--hover-color);
 }
-
 
 .navigation {
   width: 100%;

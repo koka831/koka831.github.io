@@ -22,8 +22,8 @@
 
 .article {
   width: 100%;
-  color: var(--black);
-  background-color: var(--beige);
+  color: var(--fg);
+  background-color: var(--container-color);
   padding: 40px;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .article a:hover {
-  color: var(--orange);
+  color: var(--hover-color);
 }
 
 .article hr {

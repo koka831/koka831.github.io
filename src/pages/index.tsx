@@ -3,7 +3,7 @@ import React from "react";
 import { Layout, Icon } from "../components";
 import styles from "./index.module.css";
 
-const Index: React.VFC = () => {
+const Index = () => {
   return (
     <Layout>
       <div className={styles.container}>
@@ -16,7 +16,7 @@ const Index: React.VFC = () => {
   );
 };
 
-const Profile: React.VFC = () => {
+const Profile = () => {
   return (
     <section
       itemScope
@@ -46,7 +46,7 @@ const Profile: React.VFC = () => {
   );
 };
 
-const Skills: React.VFC = () => {
+const Skills = () => {
   return (
     <section className={styles.skills_container}>
       <h1>Skills</h1>
@@ -169,7 +169,7 @@ const Skills: React.VFC = () => {
   );
 };
 
-const Projects: React.VFC = () => {
+const Projects = () => {
   return (
     <section className={styles.projects_container}>
       <h2>Side Projects</h2>
@@ -251,7 +251,7 @@ const Projects: React.VFC = () => {
   );
 };
 
-const Contact: React.VFC = () => {
+const Contact = () => {
   return (
     <section itemScope className={styles.contact_container}>
       <h2>Contact</h2>

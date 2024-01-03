@@ -1,15 +1,15 @@
 :root {
   --max-width: 900px;
 
-  --black: #19191a;
+  --deep-black: #191919;
+  --black: #282828;
   --white: #ebdbb2;
   --creamy: #fcf7ec;
 
-  --bg: var(--creamy);
   --beige: #ddd4bb;
   --gray: #adaa9b;
   --mocha: #a89984;
-  --green: #98971a;
+  --green: #a8a85f;
   --mos: #3f4638;
   --brown: #7c6f64;
   --orange: #d79921;
@@ -25,10 +25,37 @@
   --code-bg2: #7c6f64;
   --code-gray: #3c3836;
   --code-light-gray: #a89984;
-  --code-red: #fb4934;
-  --code-green: #b8bb26;
-  --code-blue: #83a598;
+  --code-red: #f55e55;
+  --code-blue: #a8a85f;
+  --code-green: #82a884;
   --code-aqua: #8ec07c;
-  --code-yellow: #fabd2f;
+  --code-yellow: #f5a95e;
   --code-orange: #fe8019;
+
+  --inline-code-fg: #fbf1c7;
+  --inline-code-bg: var(--code-bg2);
+
+  --fg: var(--black);
+  --bg: var(--creamy);
+  --container-color: var(--beige);
+  --hover-color: var(--mos);
+  --border-color: var(--black);
+  --tag-icon-color: var(--green);
+  --quote-color: var(--gray);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: var(--mocha);
+    --bg: var(--deep-black);
+    --container-color: var(--black);
+    --hover-color: var(--orange);
+    --border-color: var(--mocha);
+    --tag-icon-color: var(--orange);
+    --quote-color: var(--mos);
+
+    --inline-code-fg: var(--fg);
+    --inline-code-bg: var(--code-gray);
+    --code-black: var(--deep-black);
+  }
 }

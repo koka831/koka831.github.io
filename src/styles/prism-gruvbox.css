@@ -36,9 +36,9 @@ pre[class*="language-"] {
 
 :not(pre) > code {
   padding: 0.1em 0.3em;
-  border-radius: 0.3em;
-  color: #fbf1c7;
-  background: #a89984;
+  border-radius: 0.2em;
+  color: var(--inline-code-fg);
+  background: var(--inline-code-bg);
 }
 
 /*********************************************************

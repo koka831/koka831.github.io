@@ -14,7 +14,7 @@ type Props = {
   post: Post;
 };
 
-const Page: React.VFC<Props> = ({ post }: Props) => {
+const Page = ({ post }: Props) => {
   return (
     <Layout>
       <Head>

@@ -21,7 +21,7 @@ type Headings = {
   minDepth: number;
 };
 
-const TableOfContent: React.VFC = () => {
+export const TableOfContent = () => {
   const [headings, setHeadings] = useState<Headings>({
     titles: [],
     nodes: [],
@@ -86,12 +86,7 @@ type TocProps = {
   onClick: React.MouseEventHandler;
 };
 
-const TocTitle: React.VFC<TocProps> = ({
-  title,
-  depth,
-  active,
-  onClick,
-}: TocProps) => {
+const TocTitle = ({ title, depth, active, onClick }: TocProps) => {
   const head = `toc__h${depth}`;
   return (
     <li
@@ -105,5 +100,3 @@ const TocTitle: React.VFC<TocProps> = ({
     </li>
   );
 };
-
-export default TableOfContent;

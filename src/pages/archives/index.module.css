@@ -1,35 +1,12 @@
-.flex {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.title {
-  color: var(--mos);
-}
-
 .posts {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-
   padding: 20px;
-  color: var(--black);
 }
 
-.posts__wrapper {
+.post__wrapper {
   padding: 15px;
-  background-color: var(--beige);
-}
-
-@media (max-width: 900px) {
-  .flex {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .title {
-    margin-left: 20px;
-  }
+  color: var(--fg);
+  background-color: var(--container-color);
 }

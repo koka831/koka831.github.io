@@ -16,7 +16,7 @@ type Props = {
   updatedAt?: string;
 };
 
-const PostHeader: React.VFC<Props> = ({
+export const ArticleHeader = ({
   title,
   description,
   slug,
@@ -54,4 +54,4 @@ const PostHeader: React.VFC<Props> = ({
   );
 };
 
-export default PostHeader;
+export default ArticleHeader;

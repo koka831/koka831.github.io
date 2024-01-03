@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Icon.module.css";
 
-const Icon: React.VFC = () => {
+export const Icon = () => {
   return (
     <div className={styles.icon__container}>
       <ul className={styles.icon}>
@@ -42,5 +42,3 @@ const Icon: React.VFC = () => {
     </div>
   );
 };
-
-export default Icon;

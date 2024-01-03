@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap");
 
 html,
 body {
@@ -8,6 +8,9 @@ body {
   font-family: IBM Plex Mono, -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
     sans-serif;
+
+  color: var(--fg);
+  background: var(--bg);
 }
 
 a {
@@ -38,69 +41,58 @@ article {
   }
 }
 
-figure {
-  figcaption {
-    padding-top: 0.5em;
-    text-align: center;
-    color: var(--brown);
-  }
+figure figcaption {
+  padding-top: 0.5em;
+  text-align: center;
+  color: var(--brown);
 }
 
 blockquote {
   position: relative;
   margin: 0.1rem 0;
-  color: lighten(var(--black), 20%);
-  border-left: 3px solid var(--gray);
+  color: lighten(var(--quote-color), 20%);
+  border-left: 3px solid var(--quote-color);
   padding: 2rem 0 0.5rem 1rem;
+}
 
-  p {
-    margin: 0;
-  }
+blockquote::before {
+  font-size: 2.5em;
+  content: '"';
+  color: var(--quote-color);
+  font-weight: 900;
+  position: absolute;
+  top: 0.2em;
+  left: 0.3em;
+}
 
-  &::before {
-    font-size: 2.5em;
-    content: '"';
-    color: var(--gray);
-    font-weight: 900;
-    position: absolute;
-    top: 0.2em;
-    left: 0.3em;
-  }
+blockquote p {
+  margin: 0;
 }
 
 hr {
   margin-top: 16px;
-  border: 1px dotted var(--mos);
+  border: 1px dotted var(--border-color);
 }
 
-/* // h1 > a:hover .. h6 > a:hover */
-/* @for $i from 1 through 6 { */
-/*   h#{$i} > a:hover { */
-/*     text-decoration: underline; */
-
-/*     &::before { */
-/*       text-decoration: underline; */
-/*     } */
-/*   } */
-
-/*   h#{$i} > a::before { */
-/*     content: "#"; */
-/*     display: inline-block; */
-/*     margin-right: 0.5rem; */
-/*   } */
-/* } */
+h1 > a::before,
+h2 > a::before,
+h3 > a::before {
+  content: "#";
+  display: inline-block;
+  margin-right: 0.5rem;
+}
 
 table {
   margin: 0 auto;
+}
 
-  thead {
-    background-color: var(--mocha);
-  }
+table thead {
+  background-color: var(--mocha);
+}
 
-  th,
-  td {
-    padding: 0.25rem 1rem;
-  }
+th,
+td {
+  padding: 0.25rem 1rem;
 }
 
 .remark-container {
@@ -116,6 +108,7 @@ table {
 }
 
 .remark-container.danger {
+  font-weight: 700;
   background-color: var(--orange);
 }
 
@@ -126,7 +119,7 @@ table {
 }
 
 a.footnote-ref:hover {
-  color: var(--dark-red);
+  color: var(--hover-color);
 }
 
 .katex-html {
@@ -134,8 +127,18 @@ a.footnote-ref:hover {
 }
 
 @media (prefers-color-scheme: dark) {
-  html,
-  body {
-    background: var(--bg);
+  .remark-container.info {
+    color: var(--white);
+    background-color: var(--mos);
+  }
+
+  .remark-container.warn {
+    color: var(--black);
+    background-color: var(--brown);
+  }
+
+  .remark-container.danger {
+    color: var(--black);
+    background-color: var(--dark-red);
   }
 }

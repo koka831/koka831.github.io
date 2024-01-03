@@ -17,7 +17,7 @@
 }
 
 .post__title:hover {
-  color: var(--orange);
+  color: var(--hover-color);
 }
 
 .post__tags {
@@ -29,7 +29,7 @@
   .tags__icon {
     width: 1em;
     margin-right: 0.2em;
-    color: var(--green);
+    color: var(--tag-icon-color);
   }
 }
 

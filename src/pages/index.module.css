@@ -35,7 +35,7 @@
 .skills_container a:hover,
 .projects_container a:hover,
 .contact_container a:hover {
-  color: var(--orange);
+  color: var(--hover-color);
 }
 .profile_container {
   display: flex;
@@ -73,8 +73,8 @@
   line-height: 1.5em;
 }
 
-.contact li + .contact li,
-.skills li + .skills li {
+.contact > li + li,
+.skills > li + li {
   margin-top: 1em;
 }
 
@@ -103,5 +103,25 @@
   .projects_container h2,
   .contact_container h2 {
     margin-top: 0;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .container {
+    color: var(--black);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .container {
+    color: var(--fg);
+  }
+
+  .profile_container,
+  .skills_container,
+  .projects_container,
+  .contact_container {
+    color: var(--fg);
+    background-color: var(--container-color);
   }
 }

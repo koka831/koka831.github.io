@@ -7,7 +7,7 @@ type Props = {
   logs: CommitLog[];
 };
 
-export const CommitLogs: React.VFC<Props> = ({ logs }: Props) => {
+export const CommitLogs = ({ logs }: Props) => {
   return (
     <div className={styles.commit_logs} role="log">
       <h2>Commits</h2>
@@ -26,5 +26,3 @@ export const CommitLogs: React.VFC<Props> = ({ logs }: Props) => {
     </div>
   );
 };
-
-export default CommitLogs;

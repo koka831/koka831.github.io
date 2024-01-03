@@ -17,3 +17,12 @@
     padding: 10px 20px;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .comment {
+    background-color: var(--container-color);
+    .title {
+      color: var(--fg);
+    }
+  }
+}
