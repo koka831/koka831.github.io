@@ -43,7 +43,7 @@
     "husky": "^9.0.6",
     "identity-obj-proxy": "^3.0.0",
     "prettier": "^2.8.7",
-    "rehype-autolink-headings": "^6.1.1",
+    "rehype-autolink-headings": "^7.1.0",
     "rehype-katex": "^6.0.2",
     "rehype-slug": "^5.1.0",
     "rehype-stringify": "^9.0.3",
