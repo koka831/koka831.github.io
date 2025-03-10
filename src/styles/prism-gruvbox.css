@@ -122,7 +122,7 @@ pre[class*="language-"] {
   text-decoration: underline;
 }
 
-// git diff highlight
+/* git diff highlight */
 pre.language-git {
   .token.string {
     color: var(--code-white);

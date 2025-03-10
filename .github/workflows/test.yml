@@ -10,18 +10,18 @@ jobs:
       run:
         working-directory: ./
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-blog-${{ hashFiles('**/package-lock.json') }}
       - name: build
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
       - run: npm install
       - run: npm run lint
       - run: npm run build
