@@ -5,7 +5,7 @@ import headings from "rehype-autolink-headings";
 import katex from "rehype-katex";
 import math from "remark-math";
 import prism from "remark-prism";
-import { remark } from "remark";
+import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remark2rehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
@@ -18,7 +18,7 @@ import caption from "./remark-image-caption";
 const prismPlugins = ["autolinker", "command-line", "diff-highlight", "line-numbers"];
 
 export const markdownToHtml = async (markdown: string): Promise<string> => {
-  const result = await remark()
+  const result = await unified()
     .use(gfm)
     .use(math)
     .use(emoji)
