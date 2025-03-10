@@ -13,7 +13,7 @@ type Props = {
   posts: Post[];
 };
 
-const Index: React.VFC<Props> = ({ posts }: Props) => {
+const Index: React.FC<Props> = ({ posts }: Props) => {
   return (
     <Layout>
       <Head>
