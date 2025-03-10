@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import throttle from "../lib/throttle";
 
 import styles from "./Toc.module.css";
@@ -36,9 +36,7 @@ export const TableOfContent = () => {
 
   useEffect(() => {
     const selector = ["h1", "h2", "h3", "h4"].join(",");
-    const nodes: HTMLElement[] = Array.from(
-      document.querySelectorAll(selector)
-    );
+    const nodes: HTMLElement[] = Array.from(document.querySelectorAll(selector));
     const titles = nodes.map((n) => ({
       title: n.innerText,
       depth: Number(n.nodeName[1]),
@@ -52,9 +50,7 @@ export const TableOfContent = () => {
     const scrollHandler = throttle(() => {
       const { titles, nodes } = headings;
       const offsets = nodes.map((e) => accumulateOffset(e));
-      const activeIndex = offsets.findIndex(
-        (offset) => offset > window.scrollY
-      );
+      const activeIndex = offsets.findIndex((offset) => offset > window.scrollY);
       setActive(activeIndex === -1 ? titles.length - 1 : activeIndex - 1);
     });
 

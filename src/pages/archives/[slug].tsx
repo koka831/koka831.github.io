@@ -1,5 +1,5 @@
 import React from "react";
-import { GetStaticPaths } from "next";
+import type { GetStaticPaths } from "next";
 import Head from "next/head";
 
 import type { Post } from "../../types";
@@ -19,46 +19,20 @@ const Page = ({ post }: Props) => {
     <Layout>
       <Head>
         <title>{post.title} | /var/log/koka</title>
-        <meta
-          key="title"
-          property="title"
-          content={`${post.title} | /var/log/koka`}
-        />
-        <meta
-          key="og:title"
-          property="og:title"
-          content={`${post.title} | /var/log/koka`}
-        />
-        <meta
-          key="twitter:title"
-          property="twitter:title"
-          content={`${post.title} | /var/log/koka`}
-        />
-        <meta
-          key="description"
-          property="description"
-          content={post.description}
-        />
-        <meta
-          key="og:description"
-          property="og:description"
-          content={post.description}
-        />
-        <meta
-          key="twitter:description"
-          property="twitter:description"
-          content={post.description}
-        />
+        <meta key="title" property="title" content={`${post.title} | /var/log/koka`} />
+        <meta key="og:title" property="og:title" content={`${post.title} | /var/log/koka`} />
+        <meta key="twitter:title" property="twitter:title" content={`${post.title} | /var/log/koka`} />
+        <meta key="description" property="description" content={post.description} />
+        <meta key="og:description" property="og:description" content={post.description} />
+        <meta key="twitter:description" property="twitter:description" content={post.description} />
         <meta key="og:image" property="og:image" content={post.image} />
       </Head>
       <div className={styles.container}>
         <div className={styles.main}>
-          <article className={styles.article} role="article">
+          <article className={styles.article}>
             <ArticleHeader {...post} />
-            <div
-              className={styles.article__body}
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
+            <div className={styles.article__body} dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
           <CommitLogs logs={post.commits} />
           <Comments />
@@ -77,9 +51,7 @@ type Params = {
   };
 };
 
-export const getStaticProps = async ({
-  params,
-}: Params): Promise<{ props: Props }> => {
+export const getStaticProps = async ({ params }: Params): Promise<{ props: Props }> => {
   const post = await getPostBySlug(params.slug);
   return {
     props: {

@@ -1,8 +1,7 @@
-import React from "react";
 import { Layout } from "../components";
 import styles from "./404.module.css";
 
-const NotFound: React.FC = () => {
+const NotFound = () => {
   return (
     <Layout>
       <div className={styles.container}>
