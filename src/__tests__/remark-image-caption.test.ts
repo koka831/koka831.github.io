@@ -1,19 +1,20 @@
-import { remark } from "remark";
-import { Processor } from "unified";
-import type { VFileCompatible } from "vfile";
+import remarkParse from "remark-parse";
+import { unified } from "unified";
+import type { Compatible, VFileCompatible } from "vfile";
 import gfm from "remark-gfm";
 import remark2rehype from "remark-rehype";
 import stringify from "rehype-stringify";
 
 import caption from "../lib/remark-image-caption";
 
-const compiler: Processor = remark()
+const compiler = unified()
+.use(remarkParse)
     .use(gfm)
     .use(caption)
     .use(remark2rehype)
     .use(stringify);
 
-const process = async (contents: VFileCompatible): Promise<VFileCompatible> => {
+const process = async (contents?: Compatible | undefined): Promise<VFileCompatible> => {
     return compiler.process(contents).then((file) => file.value);
 };
 
