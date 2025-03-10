@@ -1,5 +1,5 @@
-import React from "react";
-import { GetStaticProps } from "next";
+import type React from "react";
+import type { GetStaticProps } from "next";
 import Head from "next/head";
 
 import type { Post } from "../../types";
@@ -13,7 +13,7 @@ type Props = {
   posts: Post[];
 };
 
-const Index: React.FC<Props> = ({ posts }: Props) => {
+const Index = ({ posts }: Props) => {
   return (
     <Layout>
       <Head>
