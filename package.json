@@ -41,7 +41,7 @@
     "eslint-config-prettier": "^9.1.0",
     "gray-matter": "^4.0.3",
     "happy-dom": "^17.4.3",
-    "husky": "^9.0.6",
+    "husky": "^9.1.7",
     "identity-obj-proxy": "^3.0.0",
     "prettier": "^2.8.7",
     "rehype-autolink-headings": "^7.1.0",
