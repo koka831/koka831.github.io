@@ -7,7 +7,11 @@ type Props = {
 
 export const PublishDate = ({ date, children }: Props) => {
   return (
-    <time dateTime={date} itemProp="datePublished" className={styles.post__date}>
+    <time
+      dateTime={date}
+      itemProp="datePublished"
+      className={styles.post__date}
+    >
       {children}
     </time>
   );

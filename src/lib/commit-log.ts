@@ -2,7 +2,7 @@ import util from "util";
 import path from "path";
 import { exec as sync_exec } from "child_process";
 
-import { CommitLog } from "../types";
+import type { CommitLog } from "../types";
 import { markdownToHtml } from "./interpreter";
 import Moment from "./moment";
 

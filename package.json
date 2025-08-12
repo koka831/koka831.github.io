@@ -5,12 +5,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "lint": "next lint",
+    "lint": "biome lint ./",
+    "lint:fix": "biome lint --write ./",
+    "format": "biome format --write ./",
+    "check": "biome check ./",
     "build": "next build",
     "start": "next start",
     "test": "vitest run",
-    "prepare": "husky install",
-    "format": "prettier --write . && npm run lint -- --fix"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -25,24 +27,19 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.1.4",
     "@testing-library/react": "^16.3.0",
     "@types/node": "^20.10.6",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
     "@types/rss": "^0.0.32",
     "@types/unist": "^3.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.50.0",
-    "@typescript-eslint/parser": "^5.62.0",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.21",
-    "eslint": "^8.38.0",
-    "eslint-config-next": "15.2.4",
-    "eslint-config-prettier": "^10.1.5",
     "gray-matter": "^4.0.3",
     "happy-dom": "^17.4.7",
     "husky": "^9.1.7",
     "identity-obj-proxy": "^3.0.0",
-    "prettier": "^3.5.3",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-external-links": "^3.0.0",
     "rehype-katex": "^7.0.1",
@@ -70,4 +67,5 @@
   "overrides": {
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4"
-  }}
+  }
+}

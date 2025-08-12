@@ -2,7 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
 
-import { Post } from "../types";
+import type { Post } from "../types";
 import { markdownToHtml } from "./interpreter";
 import getCommitLogs from "./commit-log";
 import Moment from "./moment";
@@ -12,7 +12,7 @@ import * as CONST from "./const";
 export const getPosts = async (): Promise<Post[]> => {
   const files = await fs.readdir(CONST.POSTS_DIR);
   const posts = await Promise.all(
-    files.map(async (file) => await getMarkdownContent(file))
+    files.map(async (file) => await getMarkdownContent(file)),
   );
 
   // order by latest
@@ -22,7 +22,7 @@ export const getPosts = async (): Promise<Post[]> => {
 export const getSlugs = async (): Promise<string[]> => {
   const files = await fs.readdir(CONST.POSTS_DIR);
   const slugs = files.map((fname) =>
-    fname.replace(RegExp(`${CONST.POST_EXT}$`), "")
+    fname.replace(RegExp(`${CONST.POST_EXT}$`), ""),
   );
 
   return slugs.reverse();
@@ -37,7 +37,7 @@ export const getPostBySlug = async (slug: string): Promise<Post> => {
 const getMarkdownContent = async (fname: string): Promise<Post> => {
   const rawContent = await fs.readFile(
     path.join(CONST.POSTS_DIR, fname),
-    "utf8"
+    "utf8",
   );
   const { content, data } = matter(rawContent);
   const html = await markdownToHtml(content);

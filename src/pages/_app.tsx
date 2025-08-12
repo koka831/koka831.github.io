@@ -24,14 +24,27 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <meta key="og:type" property="og:type" content="website" />
         <meta key="og:title" property="og:title" content={title} />
         <meta key="og:url" property="og:url" content={url} />
-        <meta key="og:description" property="og:description" content={description} />
+        <meta
+          key="og:description"
+          property="og:description"
+          content={description}
+        />
         <meta key="og:site_name" property="og:site_name" content={title} />
-        <meta key="og:image" property="og:image" content={`${url}/img/icon.png`} />
+        <meta
+          key="og:image"
+          property="og:image"
+          content={`${url}/img/icon.png`}
+        />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:site" content="@k_0ka" />
         <meta name="twitter:description" content={description} />
-        <link rel="alternate" type="application/rss+xml" href={`${url}/feed.xml`} title="/var/log/koka RSS2.0" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          href={`${url}/feed.xml`}
+          title="/var/log/koka RSS2.0"
+        />
       </Head>
       <Component {...pageProps} />
     </>

@@ -1,7 +1,7 @@
 import type { Node, Parent } from "unist";
 import type { Image } from "mdast";
 import { visit } from "unist-util-visit";
-import { Processor, Transformer } from "unified";
+import type { Processor, Transformer } from "unified";
 
 function plugin(this: Processor): Transformer {
   const transformer: Transformer = (tree: Node): void => {
@@ -9,7 +9,11 @@ function plugin(this: Processor): Transformer {
     let count = 0;
     visit(
       tree,
-      (node: Node, index: number | undefined, parent: Parent | undefined): void => {
+      (
+        node: Node,
+        index: number | undefined,
+        parent: Parent | undefined,
+      ): void => {
         if (node.type !== "image") return;
         if (!parent) return;
 
@@ -34,7 +38,7 @@ function plugin(this: Processor): Transformer {
             },
           ],
         } as Parent;
-      }
+      },
     );
   };
 

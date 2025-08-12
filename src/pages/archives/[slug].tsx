@@ -19,12 +19,36 @@ const Page = ({ post }: Props) => {
     <Layout>
       <Head>
         <title>{post.title} | /var/log/koka</title>
-        <meta key="title" property="title" content={`${post.title} | /var/log/koka`} />
-        <meta key="og:title" property="og:title" content={`${post.title} | /var/log/koka`} />
-        <meta key="twitter:title" property="twitter:title" content={`${post.title} | /var/log/koka`} />
-        <meta key="description" property="description" content={post.description} />
-        <meta key="og:description" property="og:description" content={post.description} />
-        <meta key="twitter:description" property="twitter:description" content={post.description} />
+        <meta
+          key="title"
+          property="title"
+          content={`${post.title} | /var/log/koka`}
+        />
+        <meta
+          key="og:title"
+          property="og:title"
+          content={`${post.title} | /var/log/koka`}
+        />
+        <meta
+          key="twitter:title"
+          property="twitter:title"
+          content={`${post.title} | /var/log/koka`}
+        />
+        <meta
+          key="description"
+          property="description"
+          content={post.description}
+        />
+        <meta
+          key="og:description"
+          property="og:description"
+          content={post.description}
+        />
+        <meta
+          key="twitter:description"
+          property="twitter:description"
+          content={post.description}
+        />
         <meta key="og:image" property="og:image" content={post.image} />
       </Head>
       <div className={styles.container}>
@@ -32,7 +56,10 @@ const Page = ({ post }: Props) => {
           <article className={styles.article}>
             <ArticleHeader {...post} />
             {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
-            <div className={styles.article__body} dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div
+              className={styles.article__body}
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
           </article>
           <CommitLogs logs={post.commits} />
           <Comments />
@@ -51,7 +78,9 @@ type Params = {
   };
 };
 
-export const getStaticProps = async ({ params }: Params): Promise<{ props: Props }> => {
+export const getStaticProps = async ({
+  params,
+}: Params): Promise<{ props: Props }> => {
   const post = await getPostBySlug(params.slug);
   return {
     props: {

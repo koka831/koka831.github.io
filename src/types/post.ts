@@ -1,4 +1,4 @@
-import CommitLog from "./git";
+import type CommitLog from "./git";
 
 type Post = {
   slug: string;

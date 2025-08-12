@@ -15,7 +15,12 @@ import stringify from "rehype-stringify";
 import container from "remark-custom-container";
 import caption from "./remark-image-caption";
 
-const prismPlugins = ["autolinker", "command-line", "diff-highlight", "line-numbers"];
+const prismPlugins = [
+  "autolinker",
+  "command-line",
+  "diff-highlight",
+  "line-numbers",
+];
 
 export const markdownToHtml = async (markdown: string): Promise<string> => {
   const result = await unified()

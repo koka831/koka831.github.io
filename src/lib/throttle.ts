@@ -1,6 +1,6 @@
 const throttle = <T extends []>(
   cb: (..._: T) => void,
-  wait = 500 /* ms */
+  wait = 500 /* ms */,
 ): ((..._: T) => void) => {
   let queued: boolean;
 
