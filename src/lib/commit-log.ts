@@ -1,6 +1,6 @@
-import util from "util";
-import path from "path";
-import { exec as sync_exec } from "child_process";
+import util from "node:util";
+import path from "node:path";
+import { exec as sync_exec } from "node:child_process";
 
 import type { CommitLog } from "../types";
 import { markdownToHtml } from "./interpreter";

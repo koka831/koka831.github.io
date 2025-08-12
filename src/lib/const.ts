@@ -1,3 +1,4 @@
+// biome-ignore lint/style/useNodejsImportProtocol: used in browser environment via webpack
 import path from "path";
 
 export const HOMEPAGE_URL = "https://koka831.github.io";

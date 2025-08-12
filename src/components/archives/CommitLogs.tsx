@@ -1,4 +1,3 @@
-import React from "react";
 import type { CommitLog } from "../../types";
 
 import styles from "./CommitLogs.module.css";
@@ -19,8 +18,10 @@ export const CommitLogs = ({ logs }: Props) => {
               <span className={styles.commit__hash}>{log.hash}</span>
               <span className={styles.commit__message}>{log.title}</span>
             </summary>
-            {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
-            <div dangerouslySetInnerHTML={{ __html: log.diff }} />
+            <div
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted git diff content
+              dangerouslySetInnerHTML={{ __html: log.diff }}
+            />
           </details>
         );
       })}

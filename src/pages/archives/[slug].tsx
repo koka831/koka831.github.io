@@ -1,4 +1,3 @@
-import React from "react";
 import type { GetStaticPaths } from "next";
 import Head from "next/head";
 
@@ -55,9 +54,9 @@ const Page = ({ post }: Props) => {
         <div className={styles.main}>
           <article className={styles.article}>
             <ArticleHeader {...post} />
-            {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
             <div
               className={styles.article__body}
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted markdown content processed server-side
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </article>

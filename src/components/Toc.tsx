@@ -63,7 +63,7 @@ export const TableOfContent = () => {
   }, [headings]);
 
   return (
-    <nav className={styles.toc__nav} role="navigation">
+    <nav className={styles.toc__nav}>
       <ul className={styles.toc}>
         {headings.titles.map(({ title, depth }, index) => (
           <TocTitle
@@ -88,15 +88,12 @@ type TocProps = {
 
 const TocTitle = ({ title, depth, active, onClick }: TocProps) => {
   const head = `toc__h${depth}`;
+
   return (
-    <li
-      onClick={onClick}
-      className={`
-        ${active ? styles.toc__active : ""}
-        ${styles[head]}
-        `}
-    >
-      {title}
+    <li className={`${active ? styles.toc__active : ""} ${styles[head]}`}>
+      <button type="button" onClick={onClick} className={styles.toc__button}>
+        {title}
+      </button>
     </li>
   );
 };
