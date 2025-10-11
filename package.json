@@ -37,7 +37,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.21",
     "gray-matter": "^4.0.3",
-    "happy-dom": "^17.4.7",
+    "happy-dom": "^20.0.0",
     "husky": "^9.1.7",
     "identity-obj-proxy": "^3.0.0",
     "rehype-autolink-headings": "^7.1.0",
