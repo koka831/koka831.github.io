@@ -61,7 +61,7 @@
     "typescript": "^5.3",
     "unified": "^11.0.5",
     "vfile": "^6.0.3",
-    "vite": "^6.4.1",
+    "vite": "^7.2.2",
     "vitest": "^3.2.0"
   },
   "overrides": {
