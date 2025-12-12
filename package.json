@@ -20,7 +20,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "modern-normalize": "^3.0.1",
-    "next": "15.4.9",
+    "next": "15.4.10",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "rss": "^1.2.2",
